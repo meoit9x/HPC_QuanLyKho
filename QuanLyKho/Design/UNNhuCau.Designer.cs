@@ -56,6 +56,7 @@
             this.tbDenNgay.Size = new System.Drawing.Size(87, 26);
             this.tbDenNgay.TabIndex = 92;
             this.tbDenNgay.ValidatingType = typeof(System.DateTime);
+            this.tbDenNgay.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbDenNgay_KeyUp);
             // 
             // label1
             // 
@@ -76,6 +77,7 @@
             this.tbTuNgay.Size = new System.Drawing.Size(87, 26);
             this.tbTuNgay.TabIndex = 90;
             this.tbTuNgay.ValidatingType = typeof(System.DateTime);
+            this.tbTuNgay.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbTuNgay_KeyUp);
             // 
             // tbNgayHoaDon
             // 

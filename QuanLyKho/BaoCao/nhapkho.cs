@@ -75,7 +75,7 @@ namespace QuanLyKho.BaoCao
             dataSheet.Cells[rowCurrent, 6].Style.Font.Bold = true;
 
 
-            dataSheet.Cells[rowCurrent + 2, 3].Value = Util.Utils.DocTienBangChu((long)money, " đồng");
+            dataSheet.Cells[rowCurrent + 2, 2].Value = Util.Utils.DocTienBangChu((long)money, " đồng");
 
             MemoryStream excelStream = new MemoryStream();
             excelPackage.SaveAs(excelStream);
@@ -119,7 +119,7 @@ namespace QuanLyKho.BaoCao
                 var now = DateTime.Now;
                 dataSheet.Cells[5, 3].Value = "Ngày " + now.Day + " tháng " + now.Month + " năm " + now.Year;
             }
-            
+
             dataSheet.Cells[5, 7].Value = items.FirstOrDefault().pSD.smaso;
 
             dataSheet.InsertRow(rowStart, items.Count, rowStart);
@@ -130,6 +130,7 @@ namespace QuanLyKho.BaoCao
                 dataSheet.Cells[rowCurrent, 1].Value = i;
                 dataSheet.Cells[rowCurrent, 2].Value = item.dVT.vTen;
                 dataSheet.Cells[rowCurrent, 3].Value = item.dDVT.dvt;
+                dataSheet.Cells[rowCurrent, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                 dataSheet.Cells[rowCurrent, 4].Value = item.sdctsoluong;
                 dataSheet.Cells[rowCurrent, 4].Style.Numberformat.Format = "#,###.00";
                 dataSheet.Cells[rowCurrent, 5].Value = item.dongia;
@@ -137,6 +138,7 @@ namespace QuanLyKho.BaoCao
                 dataSheet.Cells[rowCurrent, 6].Value = thanhtien;
                 dataSheet.Cells[rowCurrent, 6].Style.Numberformat.Format = "#,###";
                 dataSheet.Cells[rowCurrent, 7].Value = item.dMay.tenmay;
+                dataSheet.Cells[rowCurrent, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
                 money = money + thanhtien;
                 i++;
@@ -294,10 +296,11 @@ namespace QuanLyKho.BaoCao
                 }
 
                 if (item.dVT.dDVT != null)
-                    dataSheet.Cells[rowCurrent, 5].Value = item.dVT.dDVT.dvt;
+                    dataSheet.Cells[rowCurrent, 5].Value = item.dVT.dvt1;
 
                 dataSheet.Cells[rowCurrent, 6].Value = item.ncsoluong;
                 dataSheet.Cells[rowCurrent, 7].Value = item.diengiai;
+                dataSheet.Cells[rowCurrent, 8].Value = item.tonsoluong;
 
                 i++;
                 rowCurrent++;

@@ -18,5 +18,10 @@ namespace QuanLyKho.Service
         {
             return (from ncct in Main.db.pNCCT where ncct.pNC.ncid == id select ncct).ToList();
         }
+
+        public static List<pNC> GetNCByDate(DateTime tungay, DateTime denngay)
+        {
+            return (from nc in Main.db.pNC where nc.kid == Main.OBJ_KHO.kid where nc.ncdate >= tungay where nc.ncdate <= denngay select nc).ToList();
+        }
     }
 }

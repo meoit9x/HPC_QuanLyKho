@@ -22,13 +22,12 @@ namespace QuanLyKho.Design
 
         private void UNNhuCau_Load(object sender, EventArgs e)
         {
+            lNC = SNhuCau.GetAll();
             Load_LvHoaDon();
         }
 
         private void Load_LvHoaDon()
         {
-            lNC = SNhuCau.GetAll();
-
             lvPhieuNhap.Items.Clear();
             lvPhieuNhap.Columns.Clear();
             lvPhieuNhap.View = View.Details;
@@ -61,6 +60,13 @@ namespace QuanLyKho.Design
             chDiaChi.TextAlign = HorizontalAlignment.Center;
             lvPhieuNhap.Columns.Add(chDiaChi);
 
+            ColumnHeader chTrangThai;
+            chTrangThai = new ColumnHeader();
+            chTrangThai.Text = "Trạng thái";
+            chTrangThai.Width = 120;
+            chTrangThai.TextAlign = HorizontalAlignment.Center;
+            lvPhieuNhap.Columns.Add(chTrangThai);
+
             ColumnHeader chMucDichSD;
             chMucDichSD = new ColumnHeader();
             chMucDichSD.Text = "Mục đích sử dụng";
@@ -78,6 +84,7 @@ namespace QuanLyKho.Design
                 lvPhieuNhap.Items.Add((i + 1) + "");
                 lvPhieuNhap.Items[i].SubItems.Add(pn.maso);
                 lvPhieuNhap.Items[i].SubItems.Add(Convert.ToString(pn.ncdate));
+                lvPhieuNhap.Items[i].SubItems.Add(pn.isgui == 1 ?"Đã gửi chờ duyệt":"Chưa gửi");
                 lvPhieuNhap.Items[i].SubItems.Add(Convert.ToString(pn.tgcan));
                 lvPhieuNhap.Items[i].SubItems.Add(pn.mucdich);
                 i++;
@@ -98,5 +105,35 @@ namespace QuanLyKho.Design
         {
             Main.AddNhuCauCT(null);
         }
+
+        private void Search()
+        {
+            try
+            {
+                DateTime tungay = new DateTime();
+                DateTime denngay = new DateTime();
+                tungay = Convert.ToDateTime(tbTuNgay.Text);
+                denngay = Convert.ToDateTime(tbDenNgay.Text);
+                lNC = SNhuCau.GetNCByDate(tungay, denngay);
+                Load_LvHoaDon();
+            }
+            catch
+            {
+                lNC = SNhuCau.GetAll();
+                Load_LvHoaDon();
+                return;
+            }
+        }
+
+        private void tbTuNgay_KeyUp(object sender, KeyEventArgs e)
+        {
+            Search();
+        }
+
+        private void tbDenNgay_KeyUp(object sender, KeyEventArgs e)
+        {
+            Search();
+        }
+
     }
 }

@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 using System.Net.Mail;
 using System.Net;
 using QuanLyKho.Service;
+using QuanLyKho.ObjectRefrence;
 
 namespace QuanLyKho.Design
 {
@@ -36,12 +37,17 @@ namespace QuanLyKho.Design
             }
             else
             {
+                tbMucDich.Text = objNC.mucdich;
+                if (objNC.tgcan == null)
+                    objNC.tgcan = Main.getDateServer();
+                tbTgCan.Text = Convert.ToDateTime(objNC.tgcan).ToString("dd/MM/yyyy");
                 if (objNC.isgui == 0)
                 {
                     btInPhieu.Text = xoaphieu;
                 }
                 else
                 {
+                    gbContent.Enabled = false;
                     btHoanTat.Enabled = false;
                     btInPhieu.Text = inphieu;
                 }
@@ -51,7 +57,7 @@ namespace QuanLyKho.Design
 
         private void UNNhapNhuCau_Load(object sender, EventArgs e)
         {
-            
+
             Load_LvVatTu();
             autoCompleteTBVatTu();
         }
@@ -107,6 +113,13 @@ namespace QuanLyKho.Design
             chSoLuong.TextAlign = HorizontalAlignment.Center;
             lvNhuCau.Columns.Add(chSoLuong);
 
+            ColumnHeader chTon;
+            chTon = new ColumnHeader();
+            chTon.Text = "Tồn kho";
+            chTon.Width = 55;
+            chTon.TextAlign = HorizontalAlignment.Center;
+            lvNhuCau.Columns.Add(chTon);
+
             lvNhuCau.GridLines = true;
             lvNhuCau.FullRowSelect = true;
 
@@ -116,6 +129,7 @@ namespace QuanLyKho.Design
                 lvNhuCau.Items.Add((i + 1) + "");
                 lvNhuCau.Items[i].SubItems.Add(dutruct.dVT.vTen);
                 lvNhuCau.Items[i].SubItems.Add(dutruct.ncsoluong + "");
+                lvNhuCau.Items[i].SubItems.Add(dutruct.tonsoluong + "");
                 i++;
             }
         }
@@ -177,6 +191,14 @@ namespace QuanLyKho.Design
                 objNCCT.diengiai = tbDienGiai.Text;
                 objNCCT.ncid = objNC.ncid;
                 objNCCT.vid = objVatTu.vid;
+                List<ItemPhieu> litem = new List<ItemPhieu>();
+                litem = Unit.TinhTonKhoThongKe(objVatTu.vTen, "", "");
+                if (litem.Count > 0)
+                {
+                    objNCCT.tonsoluong = litem[0].SoLuong;
+                }
+                else
+                    objNCCT.tonsoluong = 0;
                 Main.db.pNCCT.Add(objNCCT);
                 Main.db.SaveChanges();
                 lbLoi.Text = "Tạo thành công!";
@@ -243,20 +265,47 @@ namespace QuanLyKho.Design
             {
                 QuanLyKho.BaoCao.nhapkho.xuatbaocaonhucau(objNC, lpncct);
             }
+            ViewEdit(false);
         }
 
         private void btHoanTat_Click(object sender, EventArgs e)
         {
+            DialogLoading loading = new DialogLoading();
+            loading.Show();
             //string reportPath = "D:\\PhanMemKCS\\BaoCao\\BaoCaoKCS_" + dateBaoCao.Date.ToString("dd_MM_yyy") + ".jpg";
+            DateTime tgCan = new DateTime();
+            try
+            {
+                tgCan = Convert.ToDateTime(tbTgCan.Text);
+            }
+            catch (Exception ex)
+            {
+                lbLoi.Text = "Định dạng ngày tháng không đúng.";
+                tbTgCan.Focus();
+                return;
+            }
+
+            if (tbMucDich.Text.Equals(""))
+            {
+                lbLoi.Text = "Mục đích không được để trống.";
+                tbMucDich.Focus();
+                return;
+            }
 
             objNC.isgui = 1;
+            objNC.mucdich = tbMucDich.Text;
+            objNC.tgcan = tgCan;
             Main.db.SaveChanges();
             String from = "ktcd.hpc@gmail.com";
-            
+
             String subject = "Nhu cầu vật tư ";
 
             DateTime dateNow = DateTime.Now.Date;
-            String body = "";
+            String body = "Kính gửi TGĐ, PTGĐ, KTCĐ,"
+                +"\n\nTổ trưởng tổ sửa chữa đơn vị "+Main.OBJ_KHO.dK.kten+"."
+                +"\nXin phép được gửi nhu cầu vật tư, chi tiết trong file đính kèm."
+                +"\n\nKính thư!"
+                +"\nNhân viên : "+Main.OBJ_KHO.uname;
             var lEmail = (from objEmail in Main.db.dEmail select objEmail).ToList();
 
             NetworkCredential loginInfo = new NetworkCredential("ktcd.hpc@gmail.com", "1AnhTuan1*");
@@ -270,11 +319,6 @@ namespace QuanLyKho.Design
                 Attachment data = new Attachment(reportPath);
                 email.Attachments.Add(data);
             }*/
-
-            foreach (var objEmail in lEmail)
-            {
-                email.CC.Add(objEmail.addEmail);
-            }
 
             for (int i = 0; i < lEmail.Count; i++)
             {
@@ -292,8 +336,9 @@ namespace QuanLyKho.Design
             client.Credentials = loginInfo;
             client.Send(email);
             lbLoi.Text = "Gửi mail thành công.";
-            
-            
+            btInPhieu.Text = inphieu;
+            gbContent.Enabled = false;
+            loading.Dispose();
         }
 
     }

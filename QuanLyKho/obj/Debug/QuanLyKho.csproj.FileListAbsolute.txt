@@ -1,0 +1,16 @@
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\bin\Debug\QuanLyKho.exe.config
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Properties.Resources.resources
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.csproj.GenerateResource.Cache
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\bin\Debug\QuanLyKho.exe
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\bin\Debug\QuanLyKho.pdb
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\bin\Debug\EntityFramework.dll
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\bin\Debug\EntityFramework.xml
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Design.Main.resources
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.exe
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.pdb
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Design.UCDonViTinh.resources
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Design.UCNhomVatTu.resources
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Design.UCQuyCach.resources
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Design.UCVatTu.resources
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.csprojResolveAssemblyReference.cache
+E:\HPC\QuanLyKho\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Design.UCQuyCachChiTiet.resources

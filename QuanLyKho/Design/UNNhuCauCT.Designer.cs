@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.lvNhuCau = new System.Windows.Forms.ListView();
-            this.tbNHD = new System.Windows.Forms.MaskedTextBox();
+            this.tbTgCan = new System.Windows.Forms.MaskedTextBox();
             this.tbNgayHoaDon = new System.Windows.Forms.Label();
-            this.tbSoHoaDon = new System.Windows.Forms.TextBox();
+            this.tbMucDich = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btHoanTat = new System.Windows.Forms.Button();
             this.btInPhieu = new System.Windows.Forms.Button();
             this.btQuayLai = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbContent = new System.Windows.Forms.GroupBox();
             this.lbLoi = new System.Windows.Forms.Label();
             this.btXoa = new System.Windows.Forms.Button();
             this.btTao = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@
             this.tbSoLuong = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbVatTu = new System.Windows.Forms.TextBox();
-            this.groupBox1.SuspendLayout();
+            this.gbContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvNhuCau
@@ -59,15 +59,15 @@
             this.lvNhuCau.UseCompatibleStateImageBehavior = false;
             this.lvNhuCau.SelectedIndexChanged += new System.EventHandler(this.lvNhuCau_SelectedIndexChanged);
             // 
-            // tbNHD
+            // tbTgCan
             // 
-            this.tbNHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbNHD.Location = new System.Drawing.Point(124, 377);
-            this.tbNHD.Mask = "00/00/0000";
-            this.tbNHD.Name = "tbNHD";
-            this.tbNHD.Size = new System.Drawing.Size(87, 26);
-            this.tbNHD.TabIndex = 82;
-            this.tbNHD.ValidatingType = typeof(System.DateTime);
+            this.tbTgCan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.tbTgCan.Location = new System.Drawing.Point(124, 377);
+            this.tbTgCan.Mask = "00/00/0000";
+            this.tbTgCan.Name = "tbTgCan";
+            this.tbTgCan.Size = new System.Drawing.Size(87, 26);
+            this.tbTgCan.TabIndex = 82;
+            this.tbTgCan.ValidatingType = typeof(System.DateTime);
             // 
             // tbNgayHoaDon
             // 
@@ -79,13 +79,13 @@
             this.tbNgayHoaDon.TabIndex = 81;
             this.tbNgayHoaDon.Text = "Thời gian cần : ";
             // 
-            // tbSoHoaDon
+            // tbMucDich
             // 
-            this.tbSoHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbSoHoaDon.Location = new System.Drawing.Point(367, 377);
-            this.tbSoHoaDon.Name = "tbSoHoaDon";
-            this.tbSoHoaDon.Size = new System.Drawing.Size(169, 26);
-            this.tbSoHoaDon.TabIndex = 83;
+            this.tbMucDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.tbMucDich.Location = new System.Drawing.Point(367, 377);
+            this.tbMucDich.Name = "tbMucDich";
+            this.tbMucDich.Size = new System.Drawing.Size(169, 26);
+            this.tbMucDich.TabIndex = 83;
             // 
             // label5
             // 
@@ -130,23 +130,23 @@
             this.btQuayLai.UseVisualStyleBackColor = true;
             this.btQuayLai.Click += new System.EventHandler(this.btQuayLai_Click);
             // 
-            // groupBox1
+            // gbContent
             // 
-            this.groupBox1.Controls.Add(this.lbLoi);
-            this.groupBox1.Controls.Add(this.btXoa);
-            this.groupBox1.Controls.Add(this.btTao);
-            this.groupBox1.Controls.Add(this.btThoat);
-            this.groupBox1.Controls.Add(this.tbDienGiai);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.tbSoLuong);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.tbVatTu);
-            this.groupBox1.Location = new System.Drawing.Point(505, 14);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(378, 340);
-            this.groupBox1.TabIndex = 88;
-            this.groupBox1.TabStop = false;
+            this.gbContent.Controls.Add(this.lbLoi);
+            this.gbContent.Controls.Add(this.btXoa);
+            this.gbContent.Controls.Add(this.btTao);
+            this.gbContent.Controls.Add(this.btThoat);
+            this.gbContent.Controls.Add(this.tbDienGiai);
+            this.gbContent.Controls.Add(this.label1);
+            this.gbContent.Controls.Add(this.label3);
+            this.gbContent.Controls.Add(this.tbSoLuong);
+            this.gbContent.Controls.Add(this.label2);
+            this.gbContent.Controls.Add(this.tbVatTu);
+            this.gbContent.Location = new System.Drawing.Point(505, 14);
+            this.gbContent.Name = "gbContent";
+            this.gbContent.Size = new System.Drawing.Size(378, 340);
+            this.gbContent.TabIndex = 88;
+            this.gbContent.TabStop = false;
             // 
             // lbLoi
             // 
@@ -253,20 +253,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbContent);
             this.Controls.Add(this.btHoanTat);
             this.Controls.Add(this.btInPhieu);
             this.Controls.Add(this.btQuayLai);
-            this.Controls.Add(this.tbSoHoaDon);
+            this.Controls.Add(this.tbMucDich);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.tbNHD);
+            this.Controls.Add(this.tbTgCan);
             this.Controls.Add(this.tbNgayHoaDon);
             this.Controls.Add(this.lvNhuCau);
             this.Name = "UNNhuCauCT";
             this.Size = new System.Drawing.Size(894, 424);
             this.Load += new System.EventHandler(this.UNNhapNhuCau_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbContent.ResumeLayout(false);
+            this.gbContent.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,14 +275,14 @@
         #endregion
 
         private System.Windows.Forms.ListView lvNhuCau;
-        private System.Windows.Forms.MaskedTextBox tbNHD;
+        private System.Windows.Forms.MaskedTextBox tbTgCan;
         private System.Windows.Forms.Label tbNgayHoaDon;
-        private System.Windows.Forms.TextBox tbSoHoaDon;
+        private System.Windows.Forms.TextBox tbMucDich;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btHoanTat;
         private System.Windows.Forms.Button btInPhieu;
         private System.Windows.Forms.Button btQuayLai;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbContent;
         private System.Windows.Forms.Button btXoa;
         private System.Windows.Forms.Button btTao;
         private System.Windows.Forms.Button btThoat;

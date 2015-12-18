@@ -160,9 +160,7 @@ namespace QuanLyKho.Design
 
         private void btXemBaoCao_Click(object sender, EventArgs e)
         {
-            DateTime fromdate = DateTime.Parse(tbTuNgay.Text);
-            DateTime todate = DateTime.Parse(tbDenNgay.Text);
-            QuanLyKho.BaoCao.nhapkho.xuatbaocaosudung(lpsdct, fromdate, todate);
+            QuanLyKho.BaoCao.nhapkho.xuatbaocaosudung(lpsdct, null, null);
         }
 
         private void SetupComboBoxMSD()

@@ -268,6 +268,7 @@
           <Property Name="vid" Type="int" />
           <Property Name="ncsoluong" Type="float" />
           <Property Name="diengiai" Type="nvarchar" MaxLength="100" />
+          <Property Name="tonsoluong" Type="float" />
         </EntityType>
         <EntityType Name="pNCT">
           <Key>
@@ -913,6 +914,7 @@
           <Property Name="diengiai" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="dVT" Relationship="HPC_DBModel.FK_pNCCT_dVT" FromRole="pNCCT" ToRole="dVT" />
           <NavigationProperty Name="pNC" Relationship="HPC_DBModel.FK_pNCCT_pNC" FromRole="pNCCT" ToRole="pNC" />
+          <Property Type="Double" Name="tonsoluong" />
         </EntityType>
         <EntityType Name="pNCT">
           <Key>
@@ -1425,6 +1427,7 @@
           <EntitySetMapping Name="pNCCT">
             <EntityTypeMapping TypeName="HPC_DBModel.pNCCT">
               <MappingFragment StoreEntitySet="pNCCT">
+                <ScalarProperty Name="tonsoluong" ColumnName="tonsoluong" />
                 <ScalarProperty Name="ncctid" ColumnName="ncctid" />
                 <ScalarProperty Name="ncid" ColumnName="ncid" />
                 <ScalarProperty Name="vid" ColumnName="vid" />

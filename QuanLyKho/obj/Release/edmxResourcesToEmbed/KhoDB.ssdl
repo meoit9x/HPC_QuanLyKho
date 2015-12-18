@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HPC_DBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="HPC_DBModelStoreContainer">
+    <EntitySet Name="dDVT" EntityType="HPC_DBModel.Store.dDVT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="dEmail" EntityType="HPC_DBModel.Store.dEmail" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="dK" EntityType="HPC_DBModel.Store.dK" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="dKH" EntityType="HPC_DBModel.Store.dKH" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="dMay" EntityType="HPC_DBModel.Store.dMay" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="dNVT" EntityType="HPC_DBModel.Store.dNVT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="dQC" EntityType="HPC_DBModel.Store.dQC" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="dQCCT" EntityType="HPC_DBModel.Store.dQCCT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="duser" EntityType="HPC_DBModel.Store.duser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="dVT" EntityType="HPC_DBModel.Store.dVT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pC" EntityType="HPC_DBModel.Store.pC" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pCCT" EntityType="HPC_DBModel.Store.pCCT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pN" EntityType="HPC_DBModel.Store.pN" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pNC" EntityType="HPC_DBModel.Store.pNC" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pNCCT" EntityType="HPC_DBModel.Store.pNCCT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pNCT" EntityType="HPC_DBModel.Store.pNCT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pSD" EntityType="HPC_DBModel.Store.pSD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pSDCT" EntityType="HPC_DBModel.Store.pSDCT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="pTB" EntityType="HPC_DBModel.Store.pTB" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_dMay_dK" Association="HPC_DBModel.Store.FK_dMay_dK">
+      <End Role="dK" EntitySet="dK" />
+      <End Role="dMay" EntitySet="dMay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dQCCT_dDVT" Association="HPC_DBModel.Store.FK_dQCCT_dDVT">
+      <End Role="dDVT" EntitySet="dDVT" />
+      <End Role="dQCCT" EntitySet="dQCCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dQCCT_dQC" Association="HPC_DBModel.Store.FK_dQCCT_dQC">
+      <End Role="dQC" EntitySet="dQC" />
+      <End Role="dQCCT" EntitySet="dQCCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dQCCT_dVT" Association="HPC_DBModel.Store.FK_dQCCT_dVT">
+      <End Role="dVT" EntitySet="dVT" />
+      <End Role="dQCCT" EntitySet="dQCCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_duser_dK" Association="HPC_DBModel.Store.FK_duser_dK">
+      <End Role="dK" EntitySet="dK" />
+      <End Role="duser" EntitySet="duser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dVT_dDVT" Association="HPC_DBModel.Store.FK_dVT_dDVT">
+      <End Role="dDVT" EntitySet="dDVT" />
+      <End Role="dVT" EntitySet="dVT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dVT_dNVT1" Association="HPC_DBModel.Store.FK_dVT_dNVT1">
+      <End Role="dNVT" EntitySet="dNVT" />
+      <End Role="dVT" EntitySet="dVT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pC_dK" Association="HPC_DBModel.Store.FK_pC_dK">
+      <End Role="dK" EntitySet="dK" />
+      <End Role="pC" EntitySet="pC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pC_dK1" Association="HPC_DBModel.Store.FK_pC_dK1">
+      <End Role="dK" EntitySet="dK" />
+      <End Role="pC" EntitySet="pC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pCCT_dVT" Association="HPC_DBModel.Store.FK_pCCT_dVT">
+      <End Role="dVT" EntitySet="dVT" />
+      <End Role="pCCT" EntitySet="pCCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pCCT_pC" Association="HPC_DBModel.Store.FK_pCCT_pC">
+      <End Role="pC" EntitySet="pC" />
+      <End Role="pCCT" EntitySet="pCCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pN_dK" Association="HPC_DBModel.Store.FK_pN_dK">
+      <End Role="dK" EntitySet="dK" />
+      <End Role="pN" EntitySet="pN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pNC_dK" Association="HPC_DBModel.Store.FK_pNC_dK">
+      <End Role="dK" EntitySet="dK" />
+      <End Role="pNC" EntitySet="pNC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pNCCT_dVT" Association="HPC_DBModel.Store.FK_pNCCT_dVT">
+      <End Role="dVT" EntitySet="dVT" />
+      <End Role="pNCCT" EntitySet="pNCCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pNCCT_pNC" Association="HPC_DBModel.Store.FK_pNCCT_pNC">
+      <End Role="pNC" EntitySet="pNC" />
+      <End Role="pNCCT" EntitySet="pNCCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pNCT_dDVT1" Association="HPC_DBModel.Store.FK_pNCT_dDVT1">
+      <End Role="dDVT" EntitySet="dDVT" />
+      <End Role="pNCT" EntitySet="pNCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pNCT_dKH" Association="HPC_DBModel.Store.FK_pNCT_dKH">
+      <End Role="dKH" EntitySet="dKH" />
+      <End Role="pNCT" EntitySet="pNCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pNCT_dVT" Association="HPC_DBModel.Store.FK_pNCT_dVT">
+      <End Role="dVT" EntitySet="dVT" />
+      <End Role="pNCT" EntitySet="pNCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pNCT_pN" Association="HPC_DBModel.Store.FK_pNCT_pN">
+      <End Role="pN" EntitySet="pN" />
+      <End Role="pNCT" EntitySet="pNCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pSD_dK" Association="HPC_DBModel.Store.FK_pSD_dK">
+      <End Role="dK" EntitySet="dK" />
+      <End Role="pSD" EntitySet="pSD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pSDCT_dDVT" Association="HPC_DBModel.Store.FK_pSDCT_dDVT">
+      <End Role="dDVT" EntitySet="dDVT" />
+      <End Role="pSDCT" EntitySet="pSDCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pSDCT_dMay" Association="HPC_DBModel.Store.FK_pSDCT_dMay">
+      <End Role="dMay" EntitySet="dMay" />
+      <End Role="pSDCT" EntitySet="pSDCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pSDCT_dVT" Association="HPC_DBModel.Store.FK_pSDCT_dVT">
+      <End Role="dVT" EntitySet="dVT" />
+      <End Role="pSDCT" EntitySet="pSDCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pSDCT_pSD1" Association="HPC_DBModel.Store.FK_pSDCT_pSD1">
+      <End Role="pSD" EntitySet="pSD" />
+      <End Role="pSDCT" EntitySet="pSDCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pTB_dK" Association="HPC_DBModel.Store.FK_pTB_dK">
+      <End Role="dK" EntitySet="dK" />
+      <End Role="pTB" EntitySet="pTB" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="dDVT">
+    <Key>
+      <PropertyRef Name="dvtid" />
+    </Key>
+    <Property Name="dvtid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="dvt" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="dEmail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="addEmail" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="dK">
+    <Key>
+      <PropertyRef Name="kid" />
+    </Key>
+    <Property Name="kid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="kten" Type="nvarchar" MaxLength="100" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="dKH">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ten" Type="nvarchar" MaxLength="100" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="200" />
+    <Property Name="dienthoai" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="dMay">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="maso" Type="nvarchar" MaxLength="100" />
+    <Property Name="tenmay" Type="nvarchar" MaxLength="100" />
+    <Property Name="kid" Type="int" />
+  </EntityType>
+  <EntityType Name="dNVT">
+    <Key>
+      <PropertyRef Name="nvtid" />
+    </Key>
+    <Property Name="nvtid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="tennhom" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="dQC">
+    <Key>
+      <PropertyRef Name="qid" />
+    </Key>
+    <Property Name="qid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="qten" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="dQCCT">
+    <Key>
+      <PropertyRef Name="cqid" />
+    </Key>
+    <Property Name="cqid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="qid" Type="int" />
+    <Property Name="vid" Type="int" />
+    <Property Name="qthongso" Type="nvarchar" MaxLength="100" />
+    <Property Name="dvtid" Type="int" />
+  </EntityType>
+  <EntityType Name="duser">
+    <Key>
+      <PropertyRef Name="uid" />
+    </Key>
+    <Property Name="uid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="uname" Type="nvarchar" MaxLength="100" />
+    <Property Name="uuser" Type="varchar" MaxLength="50" />
+    <Property Name="upass" Type="varchar" MaxLength="50" />
+    <Property Name="kid" Type="int" />
+    <Property Name="position" Type="int" />
+  </EntityType>
+  <EntityType Name="dVT">
+    <Key>
+      <PropertyRef Name="vid" />
+    </Key>
+    <Property Name="vid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="dvt" Type="nvarchar" MaxLength="50" />
+    <Property Name="nvtid" Type="int" />
+    <Property Name="vTen" Type="nvarchar" MaxLength="200" />
+    <Property Name="giathanh" Type="float" />
+    <Property Name="isupdate" Type="int" />
+    <Property Name="mavt" Type="nvarchar" MaxLength="50" />
+    <Property Name="iddvt" Type="int" />
+  </EntityType>
+  <EntityType Name="pC">
+    <Key>
+      <PropertyRef Name="cid" />
+    </Key>
+    <Property Name="cid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="pdate" Type="datetime" />
+    <Property Name="pfrom" Type="int" />
+    <Property Name="pto" Type="int" />
+    <Property Name="cmaso" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="pCCT">
+    <Key>
+      <PropertyRef Name="cctid" />
+    </Key>
+    <Property Name="cctid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vid" Type="int" />
+    <Property Name="cctsoluong" Type="float" />
+    <Property Name="cid" Type="int" />
+    <Property Name="diengiai" Type="nvarchar" MaxLength="200" />
+    <Property Name="accept" Type="int" />
+    <Property Name="dongia" Type="float" />
+  </EntityType>
+  <EntityType Name="pN">
+    <Key>
+      <PropertyRef Name="nid" />
+    </Key>
+    <Property Name="nid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ndate" Type="datetime" />
+    <Property Name="kid" Type="int" />
+    <Property Name="nmaso" Type="varchar" MaxLength="50" />
+    <Property Name="ngayhd" Type="datetime" />
+    <Property Name="isupdate" Type="int" />
+  </EntityType>
+  <EntityType Name="pNC">
+    <Key>
+      <PropertyRef Name="ncid" />
+    </Key>
+    <Property Name="ncid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ncdate" Type="datetime" />
+    <Property Name="kid" Type="int" />
+    <Property Name="tgcan" Type="datetime" />
+    <Property Name="mucdich" Type="nvarchar" MaxLength="200" />
+    <Property Name="maso" Type="nvarchar" MaxLength="50" />
+    <Property Name="isgui" Type="int" />
+  </EntityType>
+  <EntityType Name="pNCCT">
+    <Key>
+      <PropertyRef Name="ncctid" />
+    </Key>
+    <Property Name="ncctid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ncid" Type="int" />
+    <Property Name="vid" Type="int" />
+    <Property Name="ncsoluong" Type="float" />
+    <Property Name="diengiai" Type="nvarchar" MaxLength="100" />
+    <Property Name="tonsoluong" Type="float" />
+  </EntityType>
+  <EntityType Name="pNCT">
+    <Key>
+      <PropertyRef Name="nctid" />
+    </Key>
+    <Property Name="nctid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vid" Type="int" />
+    <Property Name="nctsoluong" Type="float" />
+    <Property Name="nid" Type="int" />
+    <Property Name="idKH" Type="int" />
+    <Property Name="giathanh" Type="float" />
+    <Property Name="dvt" Type="int" />
+  </EntityType>
+  <EntityType Name="pSD">
+    <Key>
+      <PropertyRef Name="sdid" />
+    </Key>
+    <Property Name="sdid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="sdate" Type="datetime" />
+    <Property Name="kid" Type="int" />
+    <Property Name="smaso" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="pSDCT">
+    <Key>
+      <PropertyRef Name="sdctid" />
+    </Key>
+    <Property Name="sdctid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="vid" Type="int" />
+    <Property Name="sdctsoluong" Type="bigint" />
+    <Property Name="sdid" Type="int" />
+    <Property Name="diengiai" Type="nvarchar" MaxLength="200" />
+    <Property Name="mid" Type="int" />
+    <Property Name="hansudung" Type="float" />
+    <Property Name="dongia" Type="float" />
+    <Property Name="iddvt" Type="int" />
+  </EntityType>
+  <EntityType Name="pTB">
+    <Key>
+      <PropertyRef Name="tbid" />
+    </Key>
+    <Property Name="tbid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="diengiai" Type="nvarchar" MaxLength="100" />
+    <Property Name="accept" Type="int" />
+    <Property Name="kid" Type="int" />
+    <Property Name="tacvu" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_dMay_dK">
+    <End Role="dK" Type="HPC_DBModel.Store.dK" Multiplicity="0..1" />
+    <End Role="dMay" Type="HPC_DBModel.Store.dMay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dK">
+        <PropertyRef Name="kid" />
+      </Principal>
+      <Dependent Role="dMay">
+        <PropertyRef Name="kid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dQCCT_dDVT">
+    <End Role="dDVT" Type="HPC_DBModel.Store.dDVT" Multiplicity="0..1" />
+    <End Role="dQCCT" Type="HPC_DBModel.Store.dQCCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dDVT">
+        <PropertyRef Name="dvtid" />
+      </Principal>
+      <Dependent Role="dQCCT">
+        <PropertyRef Name="dvtid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dQCCT_dQC">
+    <End Role="dQC" Type="HPC_DBModel.Store.dQC" Multiplicity="0..1" />
+    <End Role="dQCCT" Type="HPC_DBModel.Store.dQCCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dQC">
+        <PropertyRef Name="qid" />
+      </Principal>
+      <Dependent Role="dQCCT">
+        <PropertyRef Name="qid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dQCCT_dVT">
+    <End Role="dVT" Type="HPC_DBModel.Store.dVT" Multiplicity="0..1" />
+    <End Role="dQCCT" Type="HPC_DBModel.Store.dQCCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dVT">
+        <PropertyRef Name="vid" />
+      </Principal>
+      <Dependent Role="dQCCT">
+        <PropertyRef Name="vid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_duser_dK">
+    <End Role="dK" Type="HPC_DBModel.Store.dK" Multiplicity="0..1" />
+    <End Role="duser" Type="HPC_DBModel.Store.duser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dK">
+        <PropertyRef Name="kid" />
+      </Principal>
+      <Dependent Role="duser">
+        <PropertyRef Name="kid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dVT_dDVT">
+    <End Role="dDVT" Type="HPC_DBModel.Store.dDVT" Multiplicity="0..1" />
+    <End Role="dVT" Type="HPC_DBModel.Store.dVT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dDVT">
+        <PropertyRef Name="dvtid" />
+      </Principal>
+      <Dependent Role="dVT">
+        <PropertyRef Name="iddvt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dVT_dNVT1">
+    <End Role="dNVT" Type="HPC_DBModel.Store.dNVT" Multiplicity="0..1" />
+    <End Role="dVT" Type="HPC_DBModel.Store.dVT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dNVT">
+        <PropertyRef Name="nvtid" />
+      </Principal>
+      <Dependent Role="dVT">
+        <PropertyRef Name="nvtid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pC_dK">
+    <End Role="dK" Type="HPC_DBModel.Store.dK" Multiplicity="0..1" />
+    <End Role="pC" Type="HPC_DBModel.Store.pC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dK">
+        <PropertyRef Name="kid" />
+      </Principal>
+      <Dependent Role="pC">
+        <PropertyRef Name="pfrom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pC_dK1">
+    <End Role="dK" Type="HPC_DBModel.Store.dK" Multiplicity="0..1" />
+    <End Role="pC" Type="HPC_DBModel.Store.pC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dK">
+        <PropertyRef Name="kid" />
+      </Principal>
+      <Dependent Role="pC">
+        <PropertyRef Name="pto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pCCT_dVT">
+    <End Role="dVT" Type="HPC_DBModel.Store.dVT" Multiplicity="0..1" />
+    <End Role="pCCT" Type="HPC_DBModel.Store.pCCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dVT">
+        <PropertyRef Name="vid" />
+      </Principal>
+      <Dependent Role="pCCT">
+        <PropertyRef Name="vid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pCCT_pC">
+    <End Role="pC" Type="HPC_DBModel.Store.pC" Multiplicity="0..1" />
+    <End Role="pCCT" Type="HPC_DBModel.Store.pCCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pC">
+        <PropertyRef Name="cid" />
+      </Principal>
+      <Dependent Role="pCCT">
+        <PropertyRef Name="cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pN_dK">
+    <End Role="dK" Type="HPC_DBModel.Store.dK" Multiplicity="0..1" />
+    <End Role="pN" Type="HPC_DBModel.Store.pN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dK">
+        <PropertyRef Name="kid" />
+      </Principal>
+      <Dependent Role="pN">
+        <PropertyRef Name="kid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pNC_dK">
+    <End Role="dK" Type="HPC_DBModel.Store.dK" Multiplicity="0..1" />
+    <End Role="pNC" Type="HPC_DBModel.Store.pNC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dK">
+        <PropertyRef Name="kid" />
+      </Principal>
+      <Dependent Role="pNC">
+        <PropertyRef Name="kid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pNCCT_dVT">
+    <End Role="dVT" Type="HPC_DBModel.Store.dVT" Multiplicity="0..1" />
+    <End Role="pNCCT" Type="HPC_DBModel.Store.pNCCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dVT">
+        <PropertyRef Name="vid" />
+      </Principal>
+      <Dependent Role="pNCCT">
+        <PropertyRef Name="vid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pNCCT_pNC">
+    <End Role="pNC" Type="HPC_DBModel.Store.pNC" Multiplicity="0..1" />
+    <End Role="pNCCT" Type="HPC_DBModel.Store.pNCCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pNC">
+        <PropertyRef Name="ncid" />
+      </Principal>
+      <Dependent Role="pNCCT">
+        <PropertyRef Name="ncid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pNCT_dDVT1">
+    <End Role="dDVT" Type="HPC_DBModel.Store.dDVT" Multiplicity="0..1" />
+    <End Role="pNCT" Type="HPC_DBModel.Store.pNCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dDVT">
+        <PropertyRef Name="dvtid" />
+      </Principal>
+      <Dependent Role="pNCT">
+        <PropertyRef Name="dvt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pNCT_dKH">
+    <End Role="dKH" Type="HPC_DBModel.Store.dKH" Multiplicity="0..1" />
+    <End Role="pNCT" Type="HPC_DBModel.Store.pNCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dKH">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pNCT">
+        <PropertyRef Name="idKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pNCT_dVT">
+    <End Role="dVT" Type="HPC_DBModel.Store.dVT" Multiplicity="0..1" />
+    <End Role="pNCT" Type="HPC_DBModel.Store.pNCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dVT">
+        <PropertyRef Name="vid" />
+      </Principal>
+      <Dependent Role="pNCT">
+        <PropertyRef Name="vid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pNCT_pN">
+    <End Role="pN" Type="HPC_DBModel.Store.pN" Multiplicity="0..1" />
+    <End Role="pNCT" Type="HPC_DBModel.Store.pNCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pN">
+        <PropertyRef Name="nid" />
+      </Principal>
+      <Dependent Role="pNCT">
+        <PropertyRef Name="nid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pSD_dK">
+    <End Role="dK" Type="HPC_DBModel.Store.dK" Multiplicity="0..1" />
+    <End Role="pSD" Type="HPC_DBModel.Store.pSD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dK">
+        <PropertyRef Name="kid" />
+      </Principal>
+      <Dependent Role="pSD">
+        <PropertyRef Name="kid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pSDCT_dDVT">
+    <End Role="dDVT" Type="HPC_DBModel.Store.dDVT" Multiplicity="0..1" />
+    <End Role="pSDCT" Type="HPC_DBModel.Store.pSDCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dDVT">
+        <PropertyRef Name="dvtid" />
+      </Principal>
+      <Dependent Role="pSDCT">
+        <PropertyRef Name="iddvt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pSDCT_dMay">
+    <End Role="dMay" Type="HPC_DBModel.Store.dMay" Multiplicity="0..1" />
+    <End Role="pSDCT" Type="HPC_DBModel.Store.pSDCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dMay">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pSDCT">
+        <PropertyRef Name="mid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pSDCT_dVT">
+    <End Role="dVT" Type="HPC_DBModel.Store.dVT" Multiplicity="0..1" />
+    <End Role="pSDCT" Type="HPC_DBModel.Store.pSDCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dVT">
+        <PropertyRef Name="vid" />
+      </Principal>
+      <Dependent Role="pSDCT">
+        <PropertyRef Name="vid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pSDCT_pSD1">
+    <End Role="pSD" Type="HPC_DBModel.Store.pSD" Multiplicity="0..1" />
+    <End Role="pSDCT" Type="HPC_DBModel.Store.pSDCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pSD">
+        <PropertyRef Name="sdid" />
+      </Principal>
+      <Dependent Role="pSDCT">
+        <PropertyRef Name="sdid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pTB_dK">
+    <End Role="dK" Type="HPC_DBModel.Store.dK" Multiplicity="0..1" />
+    <End Role="pTB" Type="HPC_DBModel.Store.pTB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dK">
+        <PropertyRef Name="kid" />
+      </Principal>
+      <Dependent Role="pTB">
+        <PropertyRef Name="kid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

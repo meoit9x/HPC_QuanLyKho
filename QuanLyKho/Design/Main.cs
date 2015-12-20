@@ -130,9 +130,16 @@ namespace QuanLyKho.Design
 
         public static void AddTongTon()
         {
-            UNSuDungCT thongke = new UNSuDungCT();
+            UNSuDung thongke = new UNSuDung();
             pnParent.Controls.Clear();
             pnParent.Controls.Add(thongke);
+        }
+
+        public static void AddSuDungCT(pSD objSD)
+        {
+            UNSuDungCT UnSDCT = new UNSuDungCT(objSD);
+            pnParent.Controls.Clear();
+            pnParent.Controls.Add(UnSDCT);
         }
 
         public static void AddKhachHang()

@@ -18,6 +18,7 @@ namespace QuanLyKho.Design
         pSDCT objSDCT;
         List<pSDCT> lsd = new List<pSDCT>();
         List<dK> lkho;
+        List<dMay> lMSD;
         private int indexlv = 0;
         List<ItemPhieu> lTonKho;
         private ItemPhieu itemphieu;
@@ -43,44 +44,66 @@ namespace QuanLyKho.Design
                 cbDonVi.Enabled = false;
                 tbDienGiai.Enabled = false;
                 tbSoLuong.Enabled = false;
+                cbMaySuDung.Enabled = false;
             }
             this.lTonKho = Unit.TinhTonKho("");
             Load_LvVatTu();
         }
 
-        private void UNChuyenChiTiet_Load(object sender, EventArgs e)
+        private void UNSDChiTiet_Load(object sender, EventArgs e)
         {
             SetupComboBox();
-            Load_LvPhieuNhap();
+            SetupComboBoxMay();
+            Load_LvSuDung();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UNChuyen dieuchuyen = new UNChuyen();
+            UNSuDung sudung = new UNSuDung();
             Main.pnParent.Controls.Clear();
-            Main.pnParent.Controls.Add(dieuchuyen);
+            Main.pnParent.Controls.Add(sudung);
         }
-        
+
         private void SetupComboBox()
         {
             lkho = new List<dK>();
-            lkho = SKho.SelectKhoByNonUser();
+            lkho = SKho.SearchKho();
             foreach (dK objKho in lkho)
             {
                 cbDonVi.Items.Add(objKho.kten);
             }
 
             if (objSD.dK == null)
-            {
                 cbDonVi.SelectedIndex = 0;
-            }
             else
-            {
-                cbDonVi.Text = objSD.dK.kten;
-            }
+                cbDonVi.Text = Main.OBJ_KHO.dK.kten;
+
             cbDonVi.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
+
+        private void SetupComboBoxMay()
+        {
+            lMSD = SMay.GetAll();
+            cbMaySuDung.Items.Add("Tất cả");
+            foreach (dMay objMSD in lMSD)
+            {
+                cbMaySuDung.Items.Add(objMSD.maso);
+            }
+
+            if (cbMaySuDung.Items.Count > 0)
+                cbMaySuDung.SelectedIndex = 0;
+
+            if (objSDCT == null)
+                cbMaySuDung.SelectedIndex = 0;
+            else
+                cbMaySuDung.SelectedValue = objSDCT.dMay.id;
+
+            cbMaySuDung.DropDownStyle = ComboBoxStyle.DropDownList;
+
+        }
+
         private void EditForm(bool isEdit)
         {
             btTao.Text = (isEdit && objSD.dK == null) ? "Sửa" : "Tạo";
@@ -89,6 +112,7 @@ namespace QuanLyKho.Design
             tbVatTu.Text = isEdit ? objSDCT.dVT.vTen : "";
             tbSoLuong.Text = isEdit ? objSDCT.sdctsoluong + "" : "";
             tbDienGiai.Text = isEdit ? objSDCT.diengiai + "" : "";
+            cbMaySuDung.SelectedIndex = isEdit ? cbMaySuDung.FindStringExact(objSDCT.dMay.maso) : 0;
         }
 
         private void tbSoLuong_KeyPress(object sender, KeyPressEventArgs e)
@@ -101,7 +125,7 @@ namespace QuanLyKho.Design
             EditForm(false);
         }
 
-        private void Load_LvPhieuNhap()
+        private void Load_LvSuDung()
         {
             lvSuDung.Items.Clear();
             lvSuDung.Columns.Clear();
@@ -120,6 +144,13 @@ namespace QuanLyKho.Design
             chTenNhom.Width = 120;
             chTenNhom.TextAlign = HorizontalAlignment.Center;
             lvSuDung.Columns.Add(chTenNhom);
+
+            ColumnHeader chMaySuDung;
+            chMaySuDung = new ColumnHeader();
+            chMaySuDung.Text = "Máy sử dụng";
+            chMaySuDung.Width = 35;
+            chMaySuDung.TextAlign = HorizontalAlignment.Center;
+            lvSuDung.Columns.Add(chMaySuDung);
 
             ColumnHeader chDiaChi;
             chDiaChi = new ColumnHeader();
@@ -140,29 +171,18 @@ namespace QuanLyKho.Design
 
             int i = 0;
             double tongtien = 0;
-            foreach (pSDCT pcct in lsd)
+            foreach (pSDCT pSDCT in lsd)
             {
                 lvSuDung.Items.Add((i + 1) + "");
-                //lvPhieuNhap.Items[i].SubItems.Add(pcct.dVT.mavt);
-                lvSuDung.Items[i].SubItems.Add(pcct.dVT.vTen);
-                lvSuDung.Items[i].SubItems.Add(pcct.sdctsoluong + "");
-                lvSuDung.Items[i].SubItems.Add(pcct.dVT.dvt1);
-                Double giathanh = Math.Round((Convert.ToDouble(pcct.dongia) * Convert.ToDouble(pcct.sdctsoluong)), 2);
+                lvSuDung.Items[i].SubItems.Add(pSDCT.dVT.vTen);
+                lvSuDung.Items[i].SubItems.Add(pSDCT.dMay.tenmay);
+                lvSuDung.Items[i].SubItems.Add(pSDCT.sdctsoluong + "");
+                lvSuDung.Items[i].SubItems.Add(pSDCT.dVT.dvt1);
+                Double giathanh = Math.Round((Convert.ToDouble(pSDCT.dongia) * Convert.ToDouble(pSDCT.sdctsoluong)), 2);
                 //lvPhieuNhap.Items[i].SubItems.Add(giathanh + "");
                 tongtien += Convert.ToDouble(giathanh);
                 i++;
             }
-
-            /*if (lsd.Count != 0)
-            {
-                lvPhieuNhap.Items.Add("");
-                lvPhieuNhap.Items[i].SubItems.Add("");
-                lvPhieuNhap.Items[i].SubItems.Add("Tổng tiền : ");
-                lvPhieuNhap.Items[i].SubItems.Add("");
-                lvPhieuNhap.Items[i].SubItems.Add("");
-                lvPhieuNhap.Items[i].SubItems.Add(tongtien + "");
-            }*/
-
         }
 
         private void Load_LvVatTu()
@@ -207,7 +227,7 @@ namespace QuanLyKho.Design
             {
                 lvTonKho.Items.Add((i + 1) + "");
                 var vattu = SVatTu.SelectVTbyID(item.IdVatTu);
-                string tenvt,donvitinh;
+                string tenvt, donvitinh;
                 if (vattu != null)
                 {
                     tenvt = vattu.vTen;
@@ -223,7 +243,6 @@ namespace QuanLyKho.Design
                 lvTonKho.Items[i].SubItems.Add(donvitinh);
                 i++;
             }
-
         }
 
         private void btXoa_Click(object sender, EventArgs e)
@@ -257,7 +276,7 @@ namespace QuanLyKho.Design
                 }
             }
             Load_LvVatTu();
-            Load_LvPhieuNhap();
+            Load_LvSuDung();
             EditForm(false);
         }
 
@@ -365,9 +384,9 @@ namespace QuanLyKho.Design
                 EditForm(false);
             }
             Load_LvVatTu();
-            Load_LvPhieuNhap();
+            Load_LvSuDung();
         }
-        
+
         private void lvTonKho_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (ListViewItem listviewItem in lvTonKho.SelectedItems)
@@ -379,6 +398,7 @@ namespace QuanLyKho.Design
                 indexTon = listviewItem.Index;
                 itemphieu = lTonKho[indexTon];
                 tbSoLuong.Text = itemphieu.SoLuong + "";
+                //cbMaySuDung.Text = itemphieu.
                 var vattu = SVatTu.SelectVTbyID(itemphieu.IdVatTu);
                 tbVatTu.Text = vattu.vTen;
                 lbLoi.Text = "";
@@ -401,7 +421,7 @@ namespace QuanLyKho.Design
                 {
                     soluong = itemphieu.SoLuong;
                 }
-                else if(btThoat.Enabled == true)
+                else if (btThoat.Enabled == true)
                 {
                     foreach (pSDCT objItem in lsd)
                     {
@@ -422,7 +442,7 @@ namespace QuanLyKho.Design
 
         private void btHoanTat_Click(object sender, EventArgs e)
         {
-            if(tbSoHoaDon.Text.Equals(""))
+            if (tbSoHoaDon.Text.Equals(""))
             {
                 lbLoi.Text = "Số hóa đơn không được để trống.";
                 tbSoHoaDon.Focus();
@@ -439,6 +459,7 @@ namespace QuanLyKho.Design
                 objSD.smaso = tbSoHoaDon.Text;
                 objSD.sdate = Main.getDateServer();
                 objSD.kid = Convert.ToInt32(Main.OBJ_KHO.kid);
+
                 Main.db.pSD.Add(objSD);
                 Main.db.SaveChanges();
                 foreach (pSDCT objSDCT in lsd)
@@ -455,7 +476,7 @@ namespace QuanLyKho.Design
                 tbVatTu.Enabled = false;
                 btXoa.Enabled = false;
                 btThoat.Enabled = false;
-                cbDonVi.Enabled = false;
+                cbMaySuDung.Enabled = false;
                 tbDienGiai.Enabled = false;
                 tbSoLuong.Enabled = false;
                 btXuatThang.Enabled = true;

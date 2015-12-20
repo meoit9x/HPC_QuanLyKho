@@ -47,6 +47,8 @@
             this.cbDonVi = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lvTonKho = new System.Windows.Forms.ListView();
+            this.lbMay = new System.Windows.Forms.Label();
+            this.cbMaySuDung = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btHoanTat
@@ -213,7 +215,7 @@
             // 
             this.tbVatTu.Enabled = false;
             this.tbVatTu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbVatTu.Location = new System.Drawing.Point(533, 130);
+            this.tbVatTu.Location = new System.Drawing.Point(533, 134);
             this.tbVatTu.Margin = new System.Windows.Forms.Padding(4);
             this.tbVatTu.Name = "tbVatTu";
             this.tbVatTu.Size = new System.Drawing.Size(300, 30);
@@ -253,7 +255,7 @@
             // 
             // lvTonKho
             // 
-            this.lvTonKho.Location = new System.Drawing.Point(28, 22);
+            this.lvTonKho.Location = new System.Drawing.Point(0, 22);
             this.lvTonKho.Margin = new System.Windows.Forms.Padding(4);
             this.lvTonKho.Name = "lvTonKho";
             this.lvTonKho.Size = new System.Drawing.Size(356, 413);
@@ -261,10 +263,33 @@
             this.lvTonKho.UseCompatibleStateImageBehavior = false;
             this.lvTonKho.SelectedIndexChanged += new System.EventHandler(this.lvTonKho_SelectedIndexChanged);
             // 
+            // lbMay
+            // 
+            this.lbMay.AutoSize = true;
+            this.lbMay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbMay.Location = new System.Drawing.Point(377, 83);
+            this.lbMay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbMay.Name = "lbMay";
+            this.lbMay.Size = new System.Drawing.Size(141, 25);
+            this.lbMay.TabIndex = 96;
+            this.lbMay.Text = "Máy sử dụng : ";
+            // 
+            // cbMaySuDung
+            // 
+            this.cbMaySuDung.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.cbMaySuDung.FormattingEnabled = true;
+            this.cbMaySuDung.Location = new System.Drawing.Point(533, 80);
+            this.cbMaySuDung.Margin = new System.Windows.Forms.Padding(4);
+            this.cbMaySuDung.Name = "cbMaySuDung";
+            this.cbMaySuDung.Size = new System.Drawing.Size(300, 33);
+            this.cbMaySuDung.TabIndex = 97;
+            // 
             // UNSuDungCT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbMaySuDung);
+            this.Controls.Add(this.lbMay);
             this.Controls.Add(this.lvTonKho);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbDonVi);
@@ -287,7 +312,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UNSuDungCT";
             this.Size = new System.Drawing.Size(1192, 522);
-            this.Load += new System.EventHandler(this.UNChuyenChiTiet_Load);
+            this.Load += new System.EventHandler(this.UNSDChiTiet_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,5 +339,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbDienGiai;
         private System.Windows.Forms.ListView lvTonKho;
+        private System.Windows.Forms.Label lbMay;
+        private System.Windows.Forms.ComboBox cbMaySuDung;
     }
 }

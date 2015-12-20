@@ -486,7 +486,7 @@ namespace QuanLyKho.Design
 
         private void btXuatThang_Click(object sender, EventArgs e)
         {
-            QuanLyKho.BaoCao.nhapkho.xuatbaocaochuyen(objSD.sdid);
+            QuanLyKho.BaoCao.nhapkho.xuatbaocaosudung(lsd);
         }
 
         private void cbDonVi_SelectedIndexChanged(object sender, EventArgs e)

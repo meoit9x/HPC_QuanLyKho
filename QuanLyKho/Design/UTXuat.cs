@@ -160,7 +160,7 @@ namespace QuanLyKho.Design
 
         private void btXemBaoCao_Click(object sender, EventArgs e)
         {
-            QuanLyKho.BaoCao.nhapkho.xuatbaocaosudung(lpsdct, null, null);
+            QuanLyKho.BaoCao.nhapkho.xuatbaocaosudung(lpsdct);
         }
 
         private void SetupComboBoxMSD()

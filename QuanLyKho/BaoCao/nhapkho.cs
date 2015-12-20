@@ -84,7 +84,7 @@ namespace QuanLyKho.BaoCao
             Util.Utils.DialogSave(excelStream);
         }
 
-        public static void xuatbaocaosudung(List<pSDCT> lpsdct, DateTime? fromDate, DateTime? toDate)
+        public static void xuatbaocaosudung(List<pSDCT> lpsdct)
         {
             int i = 1;
             int rowStart = 9;
@@ -103,21 +103,17 @@ namespace QuanLyKho.BaoCao
             dataSheet = book.Worksheets.FirstOrDefault();
 
             var items = lpsdct;
+            var psd = lpsdct.FirstOrDefault().pSD;
 
             var dK = Main.db.dK.FirstOrDefault(x => x.kid == Main.OBJ_KHO.kid);
 
             dataSheet.Cells[1, 1].Value = dK.kten;
             dataSheet.Cells[2, 2].Value = dK.diachi;
-            if (fromDate.HasValue && toDate.HasValue)
-            {
-                dataSheet.Cells[5, 3].Value = "Từ ngày " + fromDate.Value.Day + " tháng " + fromDate.Value.Month + " năm " + fromDate.Value.Year;
 
-                dataSheet.Cells[6, 3].Value = "Đến ngày " + toDate.Value.Day + " tháng " + toDate.Value.Month + " năm " + toDate.Value.Year;
-            }
-            else
+            var now = DateTime.Now;
+            if (psd.sdate != null)
             {
-                var now = DateTime.Now;
-                dataSheet.Cells[5, 3].Value = "Ngày " + now.Day + " tháng " + now.Month + " năm " + now.Year;
+                dataSheet.Cells[5, 3].Value = "Ngày " + psd.sdate.Value.Day + " tháng " + psd.sdate.Value.Month + " năm " + psd.sdate.Value.Year;
             }
 
             dataSheet.Cells[5, 7].Value = items.FirstOrDefault().pSD.smaso;

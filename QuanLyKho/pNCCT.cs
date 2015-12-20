@@ -20,6 +20,9 @@ namespace QuanLyKho
         public Nullable<double> ncsoluong { get; set; }
         public string diengiai { get; set; }
         public Nullable<double> tonsoluong { get; set; }
+        public Nullable<double> tongtien { get; set; }
+        public Nullable<int> idkh { get; set; }
+        public Nullable<int> accept { get; set; }
     
         public virtual dVT dVT { get; set; }
         public virtual pNC pNC { get; set; }

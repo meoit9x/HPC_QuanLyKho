@@ -26,6 +26,8 @@ namespace QuanLyKho
         public string mucdich { get; set; }
         public string maso { get; set; }
         public Nullable<int> isgui { get; set; }
+        public Nullable<int> xetduyet { get; set; }
+        public Nullable<int> idpn { get; set; }
     
         public virtual dK dK { get; set; }
         public virtual ICollection<pNCCT> pNCCT { get; set; }

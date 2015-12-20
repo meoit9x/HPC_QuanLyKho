@@ -17,43 +17,63 @@ namespace QuanLyKho.Design
 {
     public partial class UNXetDuyetNhuCauCT : UserControl
     {
+        pNC objNC = new pNC();
+        List<pNCCT> lpncct = new List<pNCCT>();
+        pNCCT objPNCCT = new pNCCT();
+        List<dKH> lKH;
+        private string inphieu = "In phiếu";
+        pN phieunhap = new pN();
 
-
-        public UNXetDuyetNhuCauCT()
+        public UNXetDuyetNhuCauCT(pNC objNC)
         {
             InitializeComponent();
+            this.objNC = objNC;
+            if (objNC.idpn != 0)
+            {
+                phieunhap = SPhieuNhap.SearchPhieuNhapByID(Convert.ToInt32(objNC.idpn));
+                if(phieunhap.dK != null)
+                {
+                    tbSoHoaDon.Text = phieunhap.nmaso;
+                    tbNHD.Text = phieunhap.ngayhd.ToString();
+                }
+                if (objNC.xetduyet == 2)
+                {
+                    tbNHD.Enabled = false;
+                    tbSoHoaDon.Enabled = false;
+                    gbContent.Enabled = false;
+                    btHoanTat.Text = inphieu;
+                }
+             }
         }
 
         private void UNNhapNhuCau_Load(object sender, EventArgs e)
         {
-            LoadDataForm();
-            autoCompleteTBVatTu();
+            Load_LvVatTu();
+            SetupComboBox();
         }
 
-        private void LoadDataForm()
+        private void SetupComboBox()
         {
-            
-        }
-
-        private void autoCompleteTBVatTu()
-        {
-            var dmNVT = SVatTu.SearchVatTu("");
-            AutoCompleteStringCollection combData = new AutoCompleteStringCollection();
-            foreach (dVT vt in dmNVT)
+            lKH = new List<dKH>();
+            lKH = SKH.GetAll();
+            foreach (dKH objKH in lKH)
             {
-                combData.Add(vt.vTen);
+                cbKhachHang.Items.Add(objKH.ten);
             }
-            tbVatTu.AutoCompleteMode = AutoCompleteMode.Append;
-            tbVatTu.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            tbVatTu.AutoCompleteCustomSource = combData;
 
-            tbVatTu.AutoCompleteMode = AutoCompleteMode.Suggest;
-            tbVatTu.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            tbVatTu.AutoCompleteCustomSource = combData;
+            cbKhachHang.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
 
         private void Load_LvVatTu()
         {
+            if (objNC == null)
+                return;
+            lpncct = SNhuCau.GetNCCTByIDNC(objNC.ncid);
+            if (lpncct.Count != 0)
+                btHoanTat.Enabled = true;
+            else
+                btHoanTat.Enabled = false;
             lvNhuCau.Items.Clear();
             lvNhuCau.Columns.Clear();
             lvNhuCau.View = View.Details;
@@ -79,29 +99,45 @@ namespace QuanLyKho.Design
             chSoLuong.TextAlign = HorizontalAlignment.Center;
             lvNhuCau.Columns.Add(chSoLuong);
 
+            ColumnHeader chTon;
+            chTon = new ColumnHeader();
+            chTon.Text = "Tồn kho";
+            chTon.Width = 55;
+            chTon.TextAlign = HorizontalAlignment.Center;
+            lvNhuCau.Columns.Add(chTon);
+
+            ColumnHeader chTongTien;
+            chTongTien = new ColumnHeader();
+            chTongTien.Text = "Tổng tiền";
+            chTongTien.Width = 100;
+            chTongTien.TextAlign = HorizontalAlignment.Center;
+            lvNhuCau.Columns.Add(chTongTien);
+
+            ColumnHeader chDuyet;
+            chDuyet = new ColumnHeader();
+            chDuyet.Text = "Trạng thái";
+            chDuyet.Width = 70;
+            chTon.TextAlign = HorizontalAlignment.Center;
+            lvNhuCau.Columns.Add(chDuyet);
+
             lvNhuCau.GridLines = true;
             lvNhuCau.FullRowSelect = true;
 
             int i = 0;
-            
-        }
-
-        private void btTao_Click(object sender, EventArgs e)
-        {
-            AddAndEdit(false);
+            foreach (pNCCT dutruct in lpncct)
+            {
+                lvNhuCau.Items.Add((i + 1) + "");
+                lvNhuCau.Items[i].SubItems.Add(dutruct.dVT.vTen);
+                lvNhuCau.Items[i].SubItems.Add(dutruct.ncsoluong + "");
+                lvNhuCau.Items[i].SubItems.Add(dutruct.tonsoluong + "");
+                lvNhuCau.Items[i].SubItems.Add(dutruct.tongtien + "");
+                lvNhuCau.Items[i].SubItems.Add(dutruct.accept == 1 ? "Đã duyệt" : "");
+                i++;
+            }
         }
 
         private void cbDateTime_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            LoadDataForm();
-            ViewEdit(false);
-        }
-
-        private void tbSearch_KeyUp(object sender, KeyEventArgs e)
-        {
-            
-            Load_LvVatTu();
             ViewEdit(false);
         }
 
@@ -109,16 +145,61 @@ namespace QuanLyKho.Design
         {
             foreach (ListViewItem listviewItem in lvNhuCau.SelectedItems)
             {
-               
+                objPNCCT = lpncct[listviewItem.Index];
                 ViewEdit(true);
             }
         }
 
         private void ViewEdit(bool isEdit)
         {
-            
-            btHuy.Enabled = isEdit;
-            btXacNhan.Enabled = !isEdit;
+            tbVatTu.Text = isEdit ? objPNCCT.dVT.vTen : "";
+            tbDienGiai.Text = isEdit ? objPNCCT.diengiai : "";
+            tbSoLuong.Text = isEdit ? objPNCCT.ncsoluong + "" : "";
+            tbTongTien.Text = isEdit ? objPNCCT.tongtien + "" : "";
+            btThoat.Enabled = isEdit;
+            btTao.Enabled = isEdit;
+        }
+
+        private void btQuayLai_Click(object sender, EventArgs e)
+        {
+            Main.AddNhuCau();
+        }
+
+        private void tbTongTien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Unit.IsNumberic(sender, e);
+        }
+
+        private void tbSoLuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Unit.IsNumberic(sender, e);
+        }
+
+        private void btTao_Click(object sender, EventArgs e)
+        {
+            if (tbSoLuong.Text.Equals(""))
+            {
+                lbLoi.Text = "Số lượng không được để trống.";
+                tbSoLuong.Focus();
+                return;
+            }
+            if (tbTongTien.Text.Equals(""))
+            {
+                lbLoi.Text = "Tổng tiền không được để trống.";
+                tbTongTien.Focus();
+                return;
+            }
+            objPNCCT.tongtien = Convert.ToDouble(tbTongTien.Text);
+            objPNCCT.accept = 1;
+            objPNCCT.ncsoluong = Convert.ToDouble(tbSoLuong.Text);
+            var objKH = SKH.SearchMaKH(cbKhachHang.Text);
+            if (objKH != null)
+            {
+                objPNCCT.idkh = objKH.id;
+            }
+            Main.db.SaveChanges();
+            Load_LvVatTu();
+            ViewEdit(false);
         }
 
         private void btThoat_Click(object sender, EventArgs e)
@@ -126,56 +207,76 @@ namespace QuanLyKho.Design
             ViewEdit(false);
         }
 
-        private void btSua_Click(object sender, EventArgs e)
+        private void btHoanTat_Click(object sender, EventArgs e)
         {
-            AddAndEdit(true);
-        }
-
-        private void AddAndEdit(bool isEdit)
-        {
-            if ("".Equals(tbVatTu.Text))
+            if (btHoanTat.Text.Equals(inphieu))
             {
-                lbLoi.Text = "Tên vật tư không được để trống.";
-                return;
-            }
-
-            if ("".Equals(tbSoLuong.Text))
-            {
-                lbLoi.Text = "Số lượng không được để trống.";
-                return;
-            }
-
-            var objVatTu = SVatTu.SelectVTbyTen(tbVatTu.Text);
-            if (objVatTu == null)
-            {
-                lbLoi.Text = "Vật tư này không tồn tại.";
-                return;
-            }
-
-            if (isEdit)
-            {
-               
-                Main.db.SaveChanges();
-                lbLoi.Text = "Sửa thành công!";
+                BaoCao.nhapkho.xuatbaocaonhap(phieunhap.nid);
             }
             else
             {
-               
-                lbLoi.Text = "Tạo thành công!";
+                if (tbSoHoaDon.Text.Equals(""))
+                {
+                    lbLoi.Text = "Số hóa đơn không được để trống.";
+                    tbSoHoaDon.Focus();
+                    return;
+                }
+
+                DateTime ngayhoadon = new DateTime();
+                try
+                {
+                    ngayhoadon = Convert.ToDateTime(tbNHD.Text);
+                }
+                catch
+                {
+                    lbLoi.Text = "Sai định dạng ngày tháng.";
+                    tbNgayHoaDon.Focus();
+                    return;
+                }
+                // show dialog
+                DialogLoading loading = new DialogLoading();
+                loading.Show();
+
+                if (phieunhap.dK == null)
+                {
+                    phieunhap = new pN();
+                    phieunhap.kid = objNC.dK.kid;
+                    phieunhap.ngayhd = ngayhoadon;
+                    phieunhap.nmaso = tbSoHoaDon.Text;
+                    phieunhap.ndate = Main.getDateServer();
+                    Main.db.pN.Add(phieunhap);
+                    Main.db.SaveChanges();
+                }
+                
+                foreach (pNCCT objPNCCT in lpncct)
+                {
+                    pNCT objPNCT = new pNCT();
+                    objPNCT.nctsoluong = objPNCCT.ncsoluong;
+                    objPNCT.giathanh = objPNCCT.tongtien;
+                    objPNCT.idKH = objPNCCT.idkh;
+                    objPNCT.nid = phieunhap.nid;
+                    objPNCT.vid = objPNCCT.vid;
+                    Main.db.pNCT.Add(objPNCT);
+                    Main.db.SaveChanges();
+                }
+                objNC.xetduyet = 2;
+                objNC.idpn = phieunhap.nid;
+                Main.db.SaveChanges();
+                btHoanTat.Text = inphieu;
+                gbContent.Enabled = false;
+                tbNHD.Enabled = false;
+                tbSoHoaDon.Enabled = false;
+
+                String subject = "Xác nhận nhu cầu vật tư";
+                String body = "Kính gửi TGĐ, PTGĐ, KTCĐ,"
+                    + "\n\nTổ trưởng tổ sửa chữa đơn vị " + Main.OBJ_KHO.dK.kten + "."
+                    + "\nXin phép được gửi nhu cầu vật tư, chi tiết trong file đính kèm."
+                    + "\n\nKính thư!"
+                    + "\nNhân viên : " + Main.OBJ_KHO.uname;
+                Unit.sendMail(subject, body);
+                loading.Dispose();
+                lbLoi.Text = "Hoàn tất nhu cầu.";
             }
-            Load_LvVatTu();
-        }
-
-        private void btXoa_Click(object sender, EventArgs e)
-        {
-            
-            Main.db.SaveChanges();
-            ViewEdit(false);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
         }
 
     }

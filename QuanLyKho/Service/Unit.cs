@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using QuanLyKho.Design;
 using QuanLyKho.ObjectRefrence;
 using System.Windows.Forms;
+using System.Net.Mail;
+using System.Net;
 
 namespace QuanLyKho.Service
 {
@@ -287,6 +289,45 @@ namespace QuanLyKho.Service
             }
             tonkho.AddRange(ptongs);
             return tonkho;
+        }
+
+        public static void sendMail(string subject, string body)
+        {
+            String from = "ktcd.hpc@gmail.com";
+
+            
+
+            DateTime dateNow = DateTime.Now.Date;
+            
+            var lEmail = (from objEmail in Main.db.dEmail select objEmail).ToList();
+
+            NetworkCredential loginInfo = new NetworkCredential("ktcd.hpc@gmail.com", "1AnhTuan1*");
+
+            MailMessage email = new MailMessage(from, lEmail[0].addEmail, subject, body);
+            /*if (error.Length != 0)
+            {
+                ImageExportOptions image = baocao.ExportOptions.Image;
+
+                baocao.ExportToImage(reportPath, image);
+                Attachment data = new Attachment(reportPath);
+                email.Attachments.Add(data);
+            }*/
+
+            for (int i = 0; i < lEmail.Count; i++)
+            {
+                if (i != 0)
+                {
+                    var objEmail = lEmail[i];
+                    email.CC.Add(objEmail.addEmail);
+                }
+            }
+
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            client.EnableSsl = true;
+            client.Port = 25;
+            client.UseDefaultCredentials = true;
+            client.Credentials = loginInfo;
+            client.Send(email);
         }
     }
 }

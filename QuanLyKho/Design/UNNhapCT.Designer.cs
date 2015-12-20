@@ -271,7 +271,7 @@
             this.lvPhieuNhap.UseCompatibleStateImageBehavior = false;
             this.lvPhieuNhap.SelectedIndexChanged += new System.EventHandler(this.lvPhieuNhap_SelectedIndexChanged);
             // 
-            // UNNhapVatTu
+            // UNNhapCT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -284,7 +284,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lvPhieuNhap);
-            this.Name = "UNNhapVatTu";
+            this.Name = "UNNhapCT";
             this.Size = new System.Drawing.Size(894, 424);
             this.Load += new System.EventHandler(this.UNNhapVatTu_Load);
             this.groupBox1.ResumeLayout(false);

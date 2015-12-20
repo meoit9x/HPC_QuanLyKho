@@ -34,7 +34,7 @@ namespace QuanLyKho.BaoCao
 
             var item = SBaoCao.GetPhieuNhap(id);
 
-            var dK = Main.db.dK.FirstOrDefault(x => x.kid == Main.OBJ_KHO.kid);
+            var dK = Main.db.dK.FirstOrDefault(x => x.kid == item.kid);
             var ngaynhap = item.ndate.Value;
 
             dataSheet.Cells[1, 1].Value = dK.kten;
@@ -48,7 +48,7 @@ namespace QuanLyKho.BaoCao
             {
                 dataSheet.Cells[rowCurrent, 1].Value = i;
                 dataSheet.Cells[rowCurrent, 2].Value = ct.dVT1.vTen;
-                dataSheet.Cells[rowCurrent, 3].Value = ct.dDVT.dvt;
+                dataSheet.Cells[rowCurrent, 3].Value = ct.dVT1.dvt1;
                 dataSheet.Cells[rowCurrent, 4].Value = ct.nctsoluong;
                 dataSheet.Cells[rowCurrent, 4].Style.Numberformat.Format = "#,###.00";
                 dataSheet.Cells[rowCurrent, 5].Value = ct.giathanh / ct.nctsoluong;

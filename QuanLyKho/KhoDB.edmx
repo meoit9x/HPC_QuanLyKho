@@ -258,6 +258,8 @@
           <Property Name="mucdich" Type="nvarchar" MaxLength="200" />
           <Property Name="maso" Type="nvarchar" MaxLength="50" />
           <Property Name="isgui" Type="int" />
+          <Property Name="xetduyet" Type="int" />
+          <Property Name="idpn" Type="int" />
         </EntityType>
         <EntityType Name="pNCCT">
           <Key>
@@ -269,6 +271,9 @@
           <Property Name="ncsoluong" Type="float" />
           <Property Name="diengiai" Type="nvarchar" MaxLength="100" />
           <Property Name="tonsoluong" Type="float" />
+          <Property Name="tongtien" Type="float" />
+          <Property Name="idkh" Type="int" />
+          <Property Name="accept" Type="int" />
         </EntityType>
         <EntityType Name="pNCT">
           <Key>
@@ -902,6 +907,8 @@
           <NavigationProperty Name="dK" Relationship="HPC_DBModel.FK_pNC_dK" FromRole="pNC" ToRole="dK" />
           <NavigationProperty Name="pNCCT" Relationship="HPC_DBModel.FK_pNCCT_pNC" FromRole="pNC" ToRole="pNCCT" />
           <Property Type="Int32" Name="isgui" />
+          <Property Type="Int32" Name="xetduyet" />
+          <Property Type="Int32" Name="idpn" />
         </EntityType>
         <EntityType Name="pNCCT">
           <Key>
@@ -915,6 +922,9 @@
           <NavigationProperty Name="dVT" Relationship="HPC_DBModel.FK_pNCCT_dVT" FromRole="pNCCT" ToRole="dVT" />
           <NavigationProperty Name="pNC" Relationship="HPC_DBModel.FK_pNCCT_pNC" FromRole="pNCCT" ToRole="pNC" />
           <Property Type="Double" Name="tonsoluong" />
+          <Property Type="Double" Name="tongtien" />
+          <Property Type="Int32" Name="idkh" />
+          <Property Type="Int32" Name="accept" />
         </EntityType>
         <EntityType Name="pNCT">
           <Key>
@@ -1414,6 +1424,8 @@
           <EntitySetMapping Name="pNC">
             <EntityTypeMapping TypeName="HPC_DBModel.pNC">
               <MappingFragment StoreEntitySet="pNC">
+                <ScalarProperty Name="idpn" ColumnName="idpn" />
+                <ScalarProperty Name="xetduyet" ColumnName="xetduyet" />
                 <ScalarProperty Name="isgui" ColumnName="isgui" />
                 <ScalarProperty Name="ncid" ColumnName="ncid" />
                 <ScalarProperty Name="ncdate" ColumnName="ncdate" />
@@ -1427,6 +1439,9 @@
           <EntitySetMapping Name="pNCCT">
             <EntityTypeMapping TypeName="HPC_DBModel.pNCCT">
               <MappingFragment StoreEntitySet="pNCCT">
+                <ScalarProperty Name="accept" ColumnName="accept" />
+                <ScalarProperty Name="idkh" ColumnName="idkh" />
+                <ScalarProperty Name="tongtien" ColumnName="tongtien" />
                 <ScalarProperty Name="tonsoluong" ColumnName="tonsoluong" />
                 <ScalarProperty Name="ncctid" ColumnName="ncctid" />
                 <ScalarProperty Name="ncid" ColumnName="ncid" />

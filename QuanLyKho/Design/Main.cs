@@ -39,6 +39,7 @@ namespace QuanLyKho.Design
             mncDuTru.ElementClick += mncNhuCau_ElementClick;
             mncKhachHang.ElementClick += mncKhachHang_ElementClick;
             mncMaySuDung.ElementClick += mncTMaySuDung_ElementClick;
+            mncXetDuyet.ElementClick += mncXetNhuCau_ElementClick;
             tbMatKhau.PasswordChar = '*';
             
         }
@@ -75,6 +76,13 @@ namespace QuanLyKho.Design
             UCMay qc = new UCMay();
             pnContent.Controls.Clear();
             pnContent.Controls.Add(qc);
+        }
+
+        public static void AddNhuCau()
+        {
+            UNXetDuyetNhuCau qc = new UNXetDuyetNhuCau();
+            pnParent.Controls.Clear();
+            pnParent.Controls.Add(qc);
         }
 
         public void AddKho()
@@ -199,7 +207,10 @@ namespace QuanLyKho.Design
         public static DateTime getDateServer()
         {
             var query = db.Database.SqlQuery<DateTime>("SELECT getdate()");
-            return query.AsEnumerable().First();
+            DateTime dateserver = new DateTime();
+            dateserver = query.AsEnumerable().First();
+            dateserver = dateserver.Date;
+            return dateserver;
         }
 
         private void LoginForm()
@@ -288,6 +299,12 @@ namespace QuanLyKho.Design
         private void mncTMaySuDung_ElementClick(object sender, DevExpress.XtraBars.Navigation.NavElementEventArgs e)
         {
             AddMaySuDung();
+            tileNavPane1.HideDropDownWindow();
+        }
+
+        private void mncXetNhuCau_ElementClick(object sender, DevExpress.XtraBars.Navigation.NavElementEventArgs e)
+        {
+            AddNhuCau();
             tileNavPane1.HideDropDownWindow();
         }
 

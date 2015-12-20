@@ -296,45 +296,15 @@ namespace QuanLyKho.Design
             objNC.mucdich = tbMucDich.Text;
             objNC.tgcan = tgCan;
             Main.db.SaveChanges();
-            String from = "ktcd.hpc@gmail.com";
 
             String subject = "Nhu cầu vật tư ";
-
-            DateTime dateNow = DateTime.Now.Date;
             String body = "Kính gửi TGĐ, PTGĐ, KTCĐ,"
-                +"\n\nTổ trưởng tổ sửa chữa đơn vị "+Main.OBJ_KHO.dK.kten+"."
-                +"\nXin phép được gửi nhu cầu vật tư, chi tiết trong file đính kèm."
-                +"\n\nKính thư!"
-                +"\nNhân viên : "+Main.OBJ_KHO.uname;
-            var lEmail = (from objEmail in Main.db.dEmail select objEmail).ToList();
+                + "\n\nTổ trưởng tổ sửa chữa đơn vị " + Main.OBJ_KHO.dK.kten + "."
+                + "\nXin phép được gửi nhu cầu vật tư, chi tiết trong file đính kèm."
+                + "\n\nKính thư!"
+                + "\nNhân viên : " + Main.OBJ_KHO.uname;
+            Unit.sendMail(subject, body);
 
-            NetworkCredential loginInfo = new NetworkCredential("ktcd.hpc@gmail.com", "1AnhTuan1*");
-
-            MailMessage email = new MailMessage(from, lEmail[0].addEmail, subject, body);
-            /*if (error.Length != 0)
-            {
-                ImageExportOptions image = baocao.ExportOptions.Image;
-
-                baocao.ExportToImage(reportPath, image);
-                Attachment data = new Attachment(reportPath);
-                email.Attachments.Add(data);
-            }*/
-
-            for (int i = 0; i < lEmail.Count; i++)
-            {
-                if (i != 0)
-                {
-                    var objEmail = lEmail[i];
-                    email.CC.Add(objEmail.addEmail);
-                }
-            }
-
-            SmtpClient client = new SmtpClient("smtp.gmail.com");
-            client.EnableSsl = true;
-            client.Port = 25;
-            client.UseDefaultCredentials = true;
-            client.Credentials = loginInfo;
-            client.Send(email);
             lbLoi.Text = "Gửi mail thành công.";
             btInPhieu.Text = inphieu;
             gbContent.Enabled = false;

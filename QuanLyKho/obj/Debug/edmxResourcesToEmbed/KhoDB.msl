@@ -14,6 +14,27 @@
         <MappingFragment StoreEntitySet="dK">
           <ScalarProperty Name="kid" ColumnName="kid" />
           <ScalarProperty Name="kten" ColumnName="kten" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dKH">
+      <EntityTypeMapping TypeName="HPC_DBModel.dKH">
+        <MappingFragment StoreEntitySet="dKH">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ten" ColumnName="ten" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="dienthoai" ColumnName="dienthoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dMay">
+      <EntityTypeMapping TypeName="HPC_DBModel.dMay">
+        <MappingFragment StoreEntitySet="dMay">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="maso" ColumnName="maso" />
+          <ScalarProperty Name="tenmay" ColumnName="tenmay" />
+          <ScalarProperty Name="kid" ColumnName="kid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -63,6 +84,10 @@
           <ScalarProperty Name="dvt1" ColumnName="dvt" />
           <ScalarProperty Name="nvtid" ColumnName="nvtid" />
           <ScalarProperty Name="vTen" ColumnName="vTen" />
+          <ScalarProperty Name="giathanh" ColumnName="giathanh" />
+          <ScalarProperty Name="isupdate" ColumnName="isupdate" />
+          <ScalarProperty Name="mavt" ColumnName="mavt" />
+          <ScalarProperty Name="iddvt" ColumnName="iddvt" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -73,6 +98,7 @@
           <ScalarProperty Name="pdate" ColumnName="pdate" />
           <ScalarProperty Name="pfrom" ColumnName="pfrom" />
           <ScalarProperty Name="pto" ColumnName="pto" />
+          <ScalarProperty Name="cmaso" ColumnName="cmaso" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -83,6 +109,9 @@
           <ScalarProperty Name="vid" ColumnName="vid" />
           <ScalarProperty Name="cctsoluong" ColumnName="cctsoluong" />
           <ScalarProperty Name="cid" ColumnName="cid" />
+          <ScalarProperty Name="diengiai" ColumnName="diengiai" />
+          <ScalarProperty Name="accept" ColumnName="accept" />
+          <ScalarProperty Name="dongia" ColumnName="dongia" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -92,6 +121,39 @@
           <ScalarProperty Name="nid" ColumnName="nid" />
           <ScalarProperty Name="ndate" ColumnName="ndate" />
           <ScalarProperty Name="kid" ColumnName="kid" />
+          <ScalarProperty Name="nmaso" ColumnName="nmaso" />
+          <ScalarProperty Name="ngayhd" ColumnName="ngayhd" />
+          <ScalarProperty Name="isupdate" ColumnName="isupdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pNC">
+      <EntityTypeMapping TypeName="HPC_DBModel.pNC">
+        <MappingFragment StoreEntitySet="pNC">
+          <ScalarProperty Name="idpn" ColumnName="idpn" />
+          <ScalarProperty Name="xetduyet" ColumnName="xetduyet" />
+          <ScalarProperty Name="isgui" ColumnName="isgui" />
+          <ScalarProperty Name="ncid" ColumnName="ncid" />
+          <ScalarProperty Name="ncdate" ColumnName="ncdate" />
+          <ScalarProperty Name="kid" ColumnName="kid" />
+          <ScalarProperty Name="tgcan" ColumnName="tgcan" />
+          <ScalarProperty Name="mucdich" ColumnName="mucdich" />
+          <ScalarProperty Name="maso" ColumnName="maso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pNCCT">
+      <EntityTypeMapping TypeName="HPC_DBModel.pNCCT">
+        <MappingFragment StoreEntitySet="pNCCT">
+          <ScalarProperty Name="accept" ColumnName="accept" />
+          <ScalarProperty Name="idkh" ColumnName="idkh" />
+          <ScalarProperty Name="tongtien" ColumnName="tongtien" />
+          <ScalarProperty Name="tonsoluong" ColumnName="tonsoluong" />
+          <ScalarProperty Name="ncctid" ColumnName="ncctid" />
+          <ScalarProperty Name="ncid" ColumnName="ncid" />
+          <ScalarProperty Name="vid" ColumnName="vid" />
+          <ScalarProperty Name="ncsoluong" ColumnName="ncsoluong" />
+          <ScalarProperty Name="diengiai" ColumnName="diengiai" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -102,6 +164,9 @@
           <ScalarProperty Name="vid" ColumnName="vid" />
           <ScalarProperty Name="nctsoluong" ColumnName="nctsoluong" />
           <ScalarProperty Name="nid" ColumnName="nid" />
+          <ScalarProperty Name="idKH" ColumnName="idKH" />
+          <ScalarProperty Name="giathanh" ColumnName="giathanh" />
+          <ScalarProperty Name="dvt" ColumnName="dvt" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -111,6 +176,7 @@
           <ScalarProperty Name="sdid" ColumnName="sdid" />
           <ScalarProperty Name="sdate" ColumnName="sdate" />
           <ScalarProperty Name="kid" ColumnName="kid" />
+          <ScalarProperty Name="smaso" ColumnName="smaso" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -121,17 +187,30 @@
           <ScalarProperty Name="vid" ColumnName="vid" />
           <ScalarProperty Name="sdctsoluong" ColumnName="sdctsoluong" />
           <ScalarProperty Name="sdid" ColumnName="sdid" />
+          <ScalarProperty Name="diengiai" ColumnName="diengiai" />
+          <ScalarProperty Name="mid" ColumnName="mid" />
+          <ScalarProperty Name="hansudung" ColumnName="hansudung" />
+          <ScalarProperty Name="dongia" ColumnName="dongia" />
+          <ScalarProperty Name="iddvt" ColumnName="iddvt" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="HPC_DBModel.sysdiagrams">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
+    <EntitySetMapping Name="pTB">
+      <EntityTypeMapping TypeName="HPC_DBModel.pTB">
+        <MappingFragment StoreEntitySet="pTB">
+          <ScalarProperty Name="tbid" ColumnName="tbid" />
+          <ScalarProperty Name="diengiai" ColumnName="diengiai" />
+          <ScalarProperty Name="accept" ColumnName="accept" />
+          <ScalarProperty Name="kid" ColumnName="kid" />
+          <ScalarProperty Name="tacvu" ColumnName="tacvu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dEmail">
+      <EntityTypeMapping TypeName="HPC_DBModel.dEmail">
+        <MappingFragment StoreEntitySet="dEmail">
+          <ScalarProperty Name="addEmail" ColumnName="addEmail" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

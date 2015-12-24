@@ -241,6 +241,10 @@ namespace QuanLyKho.Design
                 pnParent.Controls.Clear();
                 pnParent.Controls.Add(ucthongbao);
             }
+            else
+            {
+                lbLoi.Text = "Tài khoản không tồn tại.";
+            }
             DateTime sdate = getDateServer();
             Console.Write(sdate.ToString());
         }
@@ -254,7 +258,11 @@ namespace QuanLyKho.Design
             btExit.Visible = isShow;
             pnLogin.Visible = !isShow;
             if (position == 1)
+            {
                 mnDanhMuc.Visible = false;
+                mnNghiepVu.Items.RemoveAt(0);
+                mnNghiepVu.Items.RemoveAt(3);
+            }
             else if (isShow)
                 mnDanhMuc.Visible = true;
             else
@@ -269,7 +277,6 @@ namespace QuanLyKho.Design
             tbMatKhau.Text = "";
             tbTenDangNhap.Text = "";
             HidenLoginForm(-1);
-            
         }
         
         private void mncTon_ElementClick(object sender, DevExpress.XtraBars.Navigation.NavElementEventArgs e)

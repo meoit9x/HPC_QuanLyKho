@@ -21,14 +21,10 @@ namespace QuanLyKho.Design
             InitializeComponent();
         }
 
-        private void UCMay_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void Load_LvKhachHang()
         {
-            lMay = SMay.GetAll();
+            
             lvNhomHang.Items.Clear();
             lvNhomHang.Columns.Clear();
             lvNhomHang.View = View.Details;
@@ -124,6 +120,7 @@ namespace QuanLyKho.Design
                 lbLoi.Text = "Tạo thành công.";
                 DisplayEdit(false);
             }
+            lMay = SMay.GetAll();
             Load_LvKhachHang();
         }
 
@@ -143,12 +140,19 @@ namespace QuanLyKho.Design
         {
             Main.db.dMay.Remove(dmay);
             Main.db.SaveChanges();
+            lMay = SMay.GetAll();
             Load_LvKhachHang();
             DisplayEdit(false);
             lbLoi.Text = "Xóa thành công.";
         }
 
-        private void tbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        private void UCMay_Load(object sender, EventArgs e)
+        {
+            lMay = SMay.GetAll();
+            Load_LvKhachHang();
+        }
+
+        private void tbSearch_KeyUp(object sender, KeyEventArgs e)
         {
             lMay = SMay.SearchTen(tbSearch.Text);
             Load_LvKhachHang();

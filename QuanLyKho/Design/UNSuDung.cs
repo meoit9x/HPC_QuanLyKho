@@ -13,7 +13,9 @@ namespace QuanLyKho.Design
 {
     public partial class UNSuDung : UserControl
     {
-        List<pSD> lsd = new List<pSD>();
+        private List<pSD> lsd = new List<pSD>();
+        private pSD objSD = new pSD();
+
         public UNSuDung()
         {
             InitializeComponent();
@@ -95,10 +97,13 @@ namespace QuanLyKho.Design
         {
             foreach (ListViewItem listviewItem in lvSuDung.SelectedItems)
             {
-                pSD objSD = new pSD();
                 objSD = lsd[listviewItem.Index];
-                Main.AddSuDungCT(objSD);
             }
+        }
+        
+        private void btChiTiet_Click(object sender, EventArgs e)
+        {
+            Main.AddSuDungCT(objSD);
         }
     }
 }

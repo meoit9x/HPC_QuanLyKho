@@ -112,6 +112,7 @@
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(270, 26);
             this.tbSearch.TabIndex = 11;
+            this.tbSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyUp);
             // 
             // label1
             // 
@@ -167,6 +168,7 @@
             this.Controls.Add(this.lvNhomHang);
             this.Name = "UCMay";
             this.Size = new System.Drawing.Size(894, 424);
+            this.Load += new System.EventHandler(this.UCMay_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

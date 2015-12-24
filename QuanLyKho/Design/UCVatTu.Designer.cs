@@ -34,6 +34,8 @@
             this.lbLoi = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbDonViTinh = new System.Windows.Forms.TextBox();
             this.btBaoCao = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.tbTenVT = new System.Windows.Forms.TextBox();
@@ -42,8 +44,6 @@
             this.btXoa = new System.Windows.Forms.Button();
             this.btThoat = new System.Windows.Forms.Button();
             this.btTao = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbDonViTinh = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -82,7 +82,7 @@
             this.lbLoi.BackColor = System.Drawing.SystemColors.Control;
             this.lbLoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbLoi.ForeColor = System.Drawing.Color.Red;
-            this.lbLoi.Location = new System.Drawing.Point(19, 28);
+            this.lbLoi.Location = new System.Drawing.Point(17, 16);
             this.lbLoi.Name = "lbLoi";
             this.lbLoi.Size = new System.Drawing.Size(0, 17);
             this.lbLoi.TabIndex = 13;
@@ -117,6 +117,24 @@
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.Location = new System.Drawing.Point(58, 144);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 20);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Đơn vị tính : ";
+            // 
+            // tbDonViTinh
+            // 
+            this.tbDonViTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.tbDonViTinh.Location = new System.Drawing.Point(155, 141);
+            this.tbDonViTinh.Name = "tbDonViTinh";
+            this.tbDonViTinh.Size = new System.Drawing.Size(226, 26);
+            this.tbDonViTinh.TabIndex = 29;
             // 
             // btBaoCao
             // 
@@ -199,24 +217,6 @@
             this.btTao.Text = "Tạo ";
             this.btTao.UseVisualStyleBackColor = true;
             this.btTao.Click += new System.EventHandler(this.btTao_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(58, 144);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 20);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "Đơn vị tính : ";
-            // 
-            // tbDonViTinh
-            // 
-            this.tbDonViTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbDonViTinh.Location = new System.Drawing.Point(155, 141);
-            this.tbDonViTinh.Name = "tbDonViTinh";
-            this.tbDonViTinh.Size = new System.Drawing.Size(226, 26);
-            this.tbDonViTinh.TabIndex = 29;
             // 
             // UCVatTu
             // 

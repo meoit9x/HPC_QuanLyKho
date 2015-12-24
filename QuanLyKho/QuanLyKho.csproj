@@ -177,54 +177,6 @@
     <Compile Include="Design\DialogLoading.Designer.cs">
       <DependentUpon>DialogLoading.cs</DependentUpon>
     </Compile>
-    <Compile Include="Design\UCKhachHang.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Design\UCKhachHang.Designer.cs">
-      <DependentUpon>UCKhachHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Design\UCMay.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Design\UCMay.Designer.cs">
-      <DependentUpon>UCMay.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Design\UNChuyenCT.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Design\UNChuyenCT.Designer.cs">
-      <DependentUpon>UNChuyenCT.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Design\UNChuyen.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Design\UNChuyen.Designer.cs">
-      <DependentUpon>UNChuyen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Design\UNNhap.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Design\UNNhap.Designer.cs">
-      <DependentUpon>UNNhap.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Design\UNNhuCau.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Design\UNNhuCau.Designer.cs">
-      <DependentUpon>UNNhuCau.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Design\UNXetDuyetNhuCau.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Design\UNXetDuyetNhuCau.Designer.cs">
-      <DependentUpon>UNXetDuyetNhuCau.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Design\UNXetDuyetNhuCauCT.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Design\UNXetDuyetNhuCauCT.Designer.cs">
-      <DependentUpon>UNXetDuyetNhuCauCT.cs</DependentUpon>
-    </Compile>
     <Compile Include="Design\DialogXuatThang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,11 +201,23 @@
     <Compile Include="Design\UCDonViTinh.Designer.cs">
       <DependentUpon>UCDonViTinh.cs</DependentUpon>
     </Compile>
+    <Compile Include="Design\UCKhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\UCKhachHang.Designer.cs">
+      <DependentUpon>UCKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Design\UCKho.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Design\UCKho.Designer.cs">
       <DependentUpon>UCKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\UCMay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\UCMay.Designer.cs">
+      <DependentUpon>UCMay.cs</DependentUpon>
     </Compile>
     <Compile Include="Design\UCNhomVatTu.cs">
       <SubType>UserControl</SubType>
@@ -285,11 +249,53 @@
     <Compile Include="Design\UCThongBaoChiTiet.Designer.cs">
       <DependentUpon>UCThongBaoChiTiet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Design\UCVatTu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\UCVatTu.Designer.cs">
+      <DependentUpon>UCVatTu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\UNChuyen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\UNChuyen.Designer.cs">
+      <DependentUpon>UNChuyen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\UNChuyenCT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\UNChuyenCT.Designer.cs">
+      <DependentUpon>UNChuyenCT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\UNNhap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\UNNhap.Designer.cs">
+      <DependentUpon>UNNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\UNNhapCT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\UNNhapCT.Designer.cs">
+      <DependentUpon>UNNhapCT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\UNNhuCau.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\UNNhuCau.Designer.cs">
+      <DependentUpon>UNNhuCau.cs</DependentUpon>
+    </Compile>
     <Compile Include="Design\UNNhuCauCT.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Design\UNNhuCauCT.Designer.cs">
       <DependentUpon>UNNhuCauCT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\UNSuDung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\UNSuDung.Designer.cs">
+      <DependentUpon>UNSuDung.cs</DependentUpon>
     </Compile>
     <Compile Include="Design\UNSuDungCT.cs">
       <SubType>UserControl</SubType>
@@ -297,17 +303,17 @@
     <Compile Include="Design\UNSuDungCT.Designer.cs">
       <DependentUpon>UNSuDungCT.cs</DependentUpon>
     </Compile>
-    <Compile Include="Design\UCVatTu.cs">
+    <Compile Include="Design\UNXetDuyetNhuCau.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Design\UCVatTu.Designer.cs">
-      <DependentUpon>UCVatTu.cs</DependentUpon>
+    <Compile Include="Design\UNXetDuyetNhuCau.Designer.cs">
+      <DependentUpon>UNXetDuyetNhuCau.cs</DependentUpon>
     </Compile>
-    <Compile Include="Design\UNNhapCT.cs">
+    <Compile Include="Design\UNXetDuyetNhuCauCT.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Design\UNNhapCT.Designer.cs">
-      <DependentUpon>UNNhapCT.cs</DependentUpon>
+    <Compile Include="Design\UNXetDuyetNhuCauCT.Designer.cs">
+      <DependentUpon>UNXetDuyetNhuCauCT.cs</DependentUpon>
     </Compile>
     <Compile Include="Design\UTDieuChuyen.cs">
       <SubType>UserControl</SubType>
@@ -425,30 +431,7 @@
     <EmbeddedResource Include="Design\DialogLoading.resx">
       <DependentUpon>DialogLoading.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Design\UCKhachHang.resx">
-      <DependentUpon>UCKhachHang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Design\UCMay.resx">
-      <DependentUpon>UCMay.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Design\UNChuyenCT.resx">
-      <DependentUpon>UNChuyenCT.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Design\UNChuyen.resx">
-      <DependentUpon>UNChuyen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Design\UNNhap.resx">
-      <DependentUpon>UNNhap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Design\UNNhuCau.resx">
-      <DependentUpon>UNNhuCau.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Design\UNXetDuyetNhuCau.resx">
-      <DependentUpon>UNXetDuyetNhuCau.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Design\UNXetDuyetNhuCauCT.resx">
-      <DependentUpon>UNXetDuyetNhuCauCT.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Design\DialogThongBao.resx" />
     <EmbeddedResource Include="Design\DialogXuatThang.resx">
       <DependentUpon>DialogXuatThang.cs</DependentUpon>
     </EmbeddedResource>
@@ -461,8 +444,14 @@
     <EmbeddedResource Include="Design\UCdonvitinh.resx">
       <DependentUpon>UCDonViTinh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Design\UCKhachHang.resx">
+      <DependentUpon>UCKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Design\UCKho.resx">
       <DependentUpon>UCKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\UCMay.resx">
+      <DependentUpon>UCMay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Design\UCNhomVatTu.resx">
       <DependentUpon>UCNhomVatTu.cs</DependentUpon>
@@ -479,17 +468,38 @@
     <EmbeddedResource Include="Design\UCThongBaoChiTiet.resx">
       <DependentUpon>UCThongBaoChiTiet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Design\UCVatTu.resx">
+      <DependentUpon>UCVatTu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\UNChuyen.resx">
+      <DependentUpon>UNChuyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\UNChuyenCT.resx">
+      <DependentUpon>UNChuyenCT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\UNNhap.resx">
+      <DependentUpon>UNNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\UNNhapCT.resx">
+      <DependentUpon>UNNhapCT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\UNNhuCau.resx">
+      <DependentUpon>UNNhuCau.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Design\UNNhuCauCT.resx">
       <DependentUpon>UNNhuCauCT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\UNSuDung.resx">
+      <DependentUpon>UNSuDung.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Design\UNSuDungCT.resx">
       <DependentUpon>UNSuDungCT.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Design\UCVatTu.resx">
-      <DependentUpon>UCVatTu.cs</DependentUpon>
+    <EmbeddedResource Include="Design\UNXetDuyetNhuCau.resx">
+      <DependentUpon>UNXetDuyetNhuCau.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Design\UNNhapCT.resx">
-      <DependentUpon>UNNhapCT.cs</DependentUpon>
+    <EmbeddedResource Include="Design\UNXetDuyetNhuCauCT.resx">
+      <DependentUpon>UNXetDuyetNhuCauCT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Design\UTDieuChuyen.resx">
       <DependentUpon>UTDieuChuyen.cs</DependentUpon>
@@ -517,6 +527,12 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>KhoDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="bin\Debug\QuanLyKho.exe.config" />
+    <None Include="bin\Debug\QuanLyKho.vshost.exe.config" />
+    <None Include="bin\Debug\QuanLyKho.vshost.exe.manifest" />
+    <None Include="bin\Release\QuanLyKho.exe.config" />
+    <None Include="bin\Release\QuanLyKho.vshost.exe.config" />
+    <None Include="bin\Release\QuanLyKho.vshost.exe.manifest" />
     <None Include="KhoDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>KhoDB.edmx</DependentUpon>
@@ -531,6 +547,7 @@
       <LastGenOutput>KhoDB.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties.rar" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -577,6 +594,10 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\QuanLyKho.vshost.exe" />
+    <Content Include="bin\Release\QuanLyKho.vshost.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -36,14 +36,14 @@
             this.tbSoHoaDon = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btHoanTat = new System.Windows.Forms.Button();
+            this.btChiTiet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvSuDung
             // 
-            this.lvSuDung.Location = new System.Drawing.Point(19, 59);
-            this.lvSuDung.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvSuDung.Location = new System.Drawing.Point(14, 48);
             this.lvSuDung.Name = "lvSuDung";
-            this.lvSuDung.Size = new System.Drawing.Size(1151, 445);
+            this.lvSuDung.Size = new System.Drawing.Size(864, 362);
             this.lvSuDung.TabIndex = 76;
             this.lvSuDung.UseCompatibleStateImageBehavior = false;
             this.lvSuDung.SelectedIndexChanged += new System.EventHandler(this.lvSuDung_SelectedIndexChanged);
@@ -51,11 +51,10 @@
             // tbTuNgay
             // 
             this.tbTuNgay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbTuNgay.Location = new System.Drawing.Point(129, 15);
-            this.tbTuNgay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbTuNgay.Location = new System.Drawing.Point(97, 12);
             this.tbTuNgay.Mask = "00/00/0000";
             this.tbTuNgay.Name = "tbTuNgay";
-            this.tbTuNgay.Size = new System.Drawing.Size(115, 30);
+            this.tbTuNgay.Size = new System.Drawing.Size(87, 26);
             this.tbTuNgay.TabIndex = 82;
             this.tbTuNgay.ValidatingType = typeof(System.DateTime);
             this.tbTuNgay.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbTuNgay_KeyUp);
@@ -64,21 +63,19 @@
             // 
             this.tbNgayHoaDon.AutoSize = true;
             this.tbNgayHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbNgayHoaDon.Location = new System.Drawing.Point(19, 18);
-            this.tbNgayHoaDon.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.tbNgayHoaDon.Location = new System.Drawing.Point(14, 15);
             this.tbNgayHoaDon.Name = "tbNgayHoaDon";
-            this.tbNgayHoaDon.Size = new System.Drawing.Size(100, 25);
+            this.tbNgayHoaDon.Size = new System.Drawing.Size(77, 20);
             this.tbNgayHoaDon.TabIndex = 81;
             this.tbNgayHoaDon.Text = "Từ ngày : ";
             // 
             // tbDenNgay
             // 
             this.tbDenNgay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbDenNgay.Location = new System.Drawing.Point(380, 15);
-            this.tbDenNgay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbDenNgay.Location = new System.Drawing.Point(285, 12);
             this.tbDenNgay.Mask = "00/00/0000";
             this.tbDenNgay.Name = "tbDenNgay";
-            this.tbDenNgay.Size = new System.Drawing.Size(115, 30);
+            this.tbDenNgay.Size = new System.Drawing.Size(87, 26);
             this.tbDenNgay.TabIndex = 84;
             this.tbDenNgay.ValidatingType = typeof(System.DateTime);
             this.tbDenNgay.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbDenNgay_KeyUp);
@@ -87,20 +84,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(253, 18);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(190, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 25);
+            this.label1.Size = new System.Drawing.Size(89, 20);
             this.label1.TabIndex = 83;
             this.label1.Text = "Đến ngày : ";
             // 
             // tbSoHoaDon
             // 
             this.tbSoHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbSoHoaDon.Location = new System.Drawing.Point(649, 15);
-            this.tbSoHoaDon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbSoHoaDon.Location = new System.Drawing.Point(487, 12);
             this.tbSoHoaDon.Name = "tbSoHoaDon";
-            this.tbSoHoaDon.Size = new System.Drawing.Size(192, 30);
+            this.tbSoHoaDon.Size = new System.Drawing.Size(145, 26);
             this.tbSoHoaDon.TabIndex = 85;
             this.tbSoHoaDon.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbSoHoaDon_KeyUp);
             // 
@@ -108,29 +103,39 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(504, 18);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(378, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 25);
+            this.label2.Size = new System.Drawing.Size(103, 20);
             this.label2.TabIndex = 86;
             this.label2.Text = "Số hóa đơn : ";
             // 
             // btHoanTat
             // 
             this.btHoanTat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btHoanTat.Location = new System.Drawing.Point(1029, 11);
-            this.btHoanTat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btHoanTat.Location = new System.Drawing.Point(772, 9);
             this.btHoanTat.Name = "btHoanTat";
-            this.btHoanTat.Size = new System.Drawing.Size(141, 41);
+            this.btHoanTat.Size = new System.Drawing.Size(106, 33);
             this.btHoanTat.TabIndex = 87;
             this.btHoanTat.Text = "Tạo mới";
             this.btHoanTat.UseVisualStyleBackColor = true;
             this.btHoanTat.Click += new System.EventHandler(this.btHoanTat_Click);
             // 
+            // btChiTiet
+            // 
+            this.btChiTiet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btChiTiet.Location = new System.Drawing.Point(660, 9);
+            this.btChiTiet.Name = "btChiTiet";
+            this.btChiTiet.Size = new System.Drawing.Size(106, 33);
+            this.btChiTiet.TabIndex = 88;
+            this.btChiTiet.Text = "Chi tiết";
+            this.btChiTiet.UseVisualStyleBackColor = true;
+            this.btChiTiet.Click += new System.EventHandler(this.btChiTiet_Click);
+            // 
             // UNSuDung
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btChiTiet);
             this.Controls.Add(this.btHoanTat);
             this.Controls.Add(this.tbSoHoaDon);
             this.Controls.Add(this.label2);
@@ -139,9 +144,8 @@
             this.Controls.Add(this.tbTuNgay);
             this.Controls.Add(this.tbNgayHoaDon);
             this.Controls.Add(this.lvSuDung);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UNSuDung";
-            this.Size = new System.Drawing.Size(1192, 522);
+            this.Size = new System.Drawing.Size(894, 424);
             this.Load += new System.EventHandler(this.UNHoaDon_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -158,5 +162,6 @@
         private System.Windows.Forms.TextBox tbSoHoaDon;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btHoanTat;
+        private System.Windows.Forms.Button btChiTiet;
     }
 }

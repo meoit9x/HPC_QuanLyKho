@@ -38,9 +38,16 @@ namespace QuanLyKho.Design
             ColumnHeader chTenNhom;
             chTenNhom = new ColumnHeader();
             chTenNhom.Text = "Tên kho";
-            chTenNhom.Width = 317;
+            chTenNhom.Width = 80;
             chTenNhom.TextAlign = HorizontalAlignment.Center;
             lvNhomHang.Columns.Add(chTenNhom);
+
+            ColumnHeader chTenKho;
+            chTenKho = new ColumnHeader();
+            chTenKho.Text = "Địa chỉ";
+            chTenKho.Width = 237;
+            chTenKho.TextAlign = HorizontalAlignment.Center;
+            lvNhomHang.Columns.Add(chTenKho);
 
             lvNhomHang.GridLines = true;
             lvNhomHang.FullRowSelect = true;
@@ -50,6 +57,7 @@ namespace QuanLyKho.Design
             {
                 lvNhomHang.Items.Add((i + 1) + "");
                 lvNhomHang.Items[i].SubItems.Add(dk.kten);
+                lvNhomHang.Items[i].SubItems.Add(dk.diachi);
                 i++;
             }
 
@@ -66,11 +74,19 @@ namespace QuanLyKho.Design
             if("".Equals(tbNVT.Text))
             {
                 lbLoi.Text = "Tên kho không được để trống.";
+                tbNVT.Focus();
+                return;
+            }
+            if ("".Equals(tbDiaChi.Text))
+            {
+                lbLoi.Text = "Địa chỉ kho không được để trống.";
+                tbDiaChi.Focus();
                 return;
             }
             if (btThoat.Visible == true)
             {
                 dk.kten = tbNVT.Text;
+                dk.diachi = tbDiaChi.Text;
                 lks = SKho.EditKho(dk);
                 Load_LvNhomHang();
                 lbLoi.Text = "Sửa thành công.";
@@ -79,6 +95,7 @@ namespace QuanLyKho.Design
             {
                 dK objKho = new dK();
                 objKho.kten = tbNVT.Text;
+                dk.diachi = tbDiaChi.Text;
                 lks = SKho.AddNewKho(objKho);
                 Load_LvNhomHang();
                 tbNVT.Text = "";
@@ -110,6 +127,7 @@ namespace QuanLyKho.Design
                 btTao.Text = "Tạo";
                 tbNVT.Text = "";
                 lbLoi.Text = "";
+                tbDiaChi.Text = "";
             }
         }
 
@@ -131,6 +149,16 @@ namespace QuanLyKho.Design
             {
                 lbLoi.Text = "Không thể xóa kho này.";
                 return;
+            }
+        }
+
+        private void lvNhomHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListViewItem listviewItem in lvNhomHang.SelectedItems)
+            {
+                dk = lks[listviewItem.Index];
+                tbNVT.Text = dk.kten;
+                tbDiaChi.Text = dk.diachi;
             }
         }
     }

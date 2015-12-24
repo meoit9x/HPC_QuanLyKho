@@ -65,7 +65,7 @@ namespace QuanLyKho.Service
             else
             {
                 List<dVT> lVT = new List<dVT>();
-                lVT = (from dvt in Main.db.dVT where dvt.vTen.Contains(text)  select dvt).ToList();
+                lVT = (from dvt in Main.db.dVT where dvt.mavt.Contains(text)  select dvt).ToList();
                 return lVT;
             }
         }

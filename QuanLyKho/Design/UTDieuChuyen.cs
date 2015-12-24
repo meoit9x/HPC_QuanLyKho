@@ -117,6 +117,7 @@ namespace QuanLyKho.Design
             foreach (ListViewItem listviewItem in lvTKSD.SelectedItems)
             {
                 objCCT = new pCCT();
+                objCCT = lpcct[listviewItem.Index];
                 tbVatTu.Text = objCCT.dVT.vTen;
                 tbSoLuong.Text = objCCT.cctsoluong+"";
                 tbDienGiai.Text = objCCT.diengiai;

@@ -125,7 +125,7 @@ namespace QuanLyKho.BaoCao
                 double? thanhtien = item.sdctsoluong * item.dongia;
                 dataSheet.Cells[rowCurrent, 1].Value = i;
                 dataSheet.Cells[rowCurrent, 2].Value = item.dVT.vTen;
-                dataSheet.Cells[rowCurrent, 3].Value = item.dDVT.dvt;
+                dataSheet.Cells[rowCurrent, 3].Value = item.dVT.dvt1;
                 dataSheet.Cells[rowCurrent, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                 dataSheet.Cells[rowCurrent, 4].Value = item.sdctsoluong;
                 dataSheet.Cells[rowCurrent, 4].Style.Numberformat.Format = "#,###.00";
@@ -182,6 +182,10 @@ namespace QuanLyKho.BaoCao
 
             var item = SBaoCao.GetChuyen(id);
 
+            if (item.dK == null)
+            {
+                item.dK = SKho.SelectKhoID(Convert.ToInt32(item.pfrom));
+            }
             dataSheet.Cells[1, 1].Value = item.dK.kten;
             dataSheet.Cells[2, 2].Value = item.dK.diachi;
             dataSheet.Cells[5, 3].Value = "Ngày " + item.pdate.Day + " tháng " + item.pdate.Month + " năm " + item.pdate.Year;
@@ -291,7 +295,7 @@ namespace QuanLyKho.BaoCao
                     }
                 }
 
-                if (item.dVT.dDVT != null)
+                if (item.dVT != null)
                     dataSheet.Cells[rowCurrent, 5].Value = item.dVT.dvt1;
 
                 dataSheet.Cells[rowCurrent, 6].Value = item.ncsoluong;

@@ -36,6 +36,7 @@
             this.tbTuNgay = new System.Windows.Forms.MaskedTextBox();
             this.tbNgayHoaDon = new System.Windows.Forms.Label();
             this.lvPhieuNhap = new System.Windows.Forms.ListView();
+            this.btChiTiet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btHoanTat
@@ -119,10 +120,22 @@
             this.lvPhieuNhap.UseCompatibleStateImageBehavior = false;
             this.lvPhieuNhap.SelectedIndexChanged += new System.EventHandler(this.lvPhieuNhap_SelectedIndexChanged);
             // 
-            // UNDieuChuyen
+            // btChiTiet
+            // 
+            this.btChiTiet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btChiTiet.Location = new System.Drawing.Point(661, 12);
+            this.btChiTiet.Name = "btChiTiet";
+            this.btChiTiet.Size = new System.Drawing.Size(106, 33);
+            this.btChiTiet.TabIndex = 96;
+            this.btChiTiet.Text = "Chi tiết";
+            this.btChiTiet.UseVisualStyleBackColor = true;
+            this.btChiTiet.Click += new System.EventHandler(this.btChiTiet_Click);
+            // 
+            // UNChuyen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btChiTiet);
             this.Controls.Add(this.btHoanTat);
             this.Controls.Add(this.tbSoHoaDon);
             this.Controls.Add(this.label2);
@@ -131,7 +144,7 @@
             this.Controls.Add(this.tbTuNgay);
             this.Controls.Add(this.tbNgayHoaDon);
             this.Controls.Add(this.lvPhieuNhap);
-            this.Name = "UNDieuChuyen";
+            this.Name = "UNChuyen";
             this.Size = new System.Drawing.Size(894, 424);
             this.Load += new System.EventHandler(this.UNDieuChuyen_Load);
             this.ResumeLayout(false);
@@ -149,5 +162,6 @@
         private System.Windows.Forms.MaskedTextBox tbTuNgay;
         private System.Windows.Forms.Label tbNgayHoaDon;
         private System.Windows.Forms.ListView lvPhieuNhap;
+        private System.Windows.Forms.Button btChiTiet;
     }
 }

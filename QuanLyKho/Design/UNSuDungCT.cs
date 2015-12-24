@@ -41,7 +41,6 @@ namespace QuanLyKho.Design
                 var ngayhoadon = objSD.sdate;
                 btTao.Enabled = false;
                 tbVatTu.Enabled = false;
-                cbDonVi.Enabled = false;
                 tbDienGiai.Enabled = false;
                 tbSoLuong.Enabled = false;
                 cbMaySuDung.Enabled = false;
@@ -52,7 +51,6 @@ namespace QuanLyKho.Design
 
         private void UNSDChiTiet_Load(object sender, EventArgs e)
         {
-            SetupComboBox();
             SetupComboBoxMay();
             Load_LvSuDung();
 
@@ -65,28 +63,9 @@ namespace QuanLyKho.Design
             Main.pnParent.Controls.Add(sudung);
         }
 
-        private void SetupComboBox()
-        {
-            lkho = new List<dK>();
-            lkho = SKho.SearchKho();
-            foreach (dK objKho in lkho)
-            {
-                cbDonVi.Items.Add(objKho.kten);
-            }
-
-            if (objSD.dK == null)
-                cbDonVi.SelectedIndex = 0;
-            else
-                cbDonVi.Text = Main.OBJ_KHO.dK.kten;
-
-            cbDonVi.DropDownStyle = ComboBoxStyle.DropDownList;
-
-        }
-
         private void SetupComboBoxMay()
         {
             lMSD = SMay.GetAll();
-            cbMaySuDung.Items.Add("Tất cả");
             foreach (dMay objMSD in lMSD)
             {
                 cbMaySuDung.Items.Add(objMSD.maso);
@@ -96,7 +75,7 @@ namespace QuanLyKho.Design
                 cbMaySuDung.SelectedIndex = 0;
 
             if (objSDCT == null)
-                cbMaySuDung.SelectedIndex = 0;
+                return;
             else
                 cbMaySuDung.SelectedValue = objSDCT.dMay.id;
 
@@ -175,7 +154,16 @@ namespace QuanLyKho.Design
             {
                 lvSuDung.Items.Add((i + 1) + "");
                 lvSuDung.Items[i].SubItems.Add(pSDCT.dVT.vTen);
-                lvSuDung.Items[i].SubItems.Add(pSDCT.dMay.tenmay);
+                if (pSDCT.dMay == null)
+                {
+                    pSDCT.dMay = SMay.SearchMay(Convert.ToInt32(pSDCT.mid));
+                }
+                string tenmay;
+                if (pSDCT.dMay != null)
+                    tenmay = pSDCT.dMay.tenmay;
+                else
+                    tenmay = "";
+                lvSuDung.Items[i].SubItems.Add(tenmay);
                 lvSuDung.Items[i].SubItems.Add(pSDCT.sdctsoluong + "");
                 lvSuDung.Items[i].SubItems.Add(pSDCT.dVT.dvt1);
                 Double giathanh = Math.Round((Convert.ToDouble(pSDCT.dongia) * Convert.ToDouble(pSDCT.sdctsoluong)), 2);
@@ -329,6 +317,7 @@ namespace QuanLyKho.Design
                 objSDCT.vid = vattu.vid;
                 objSDCT.dongia = Unit.GetGiaVTTB(vattu.vid);
                 objSDCT.diengiai = tbDienGiai.Text;
+                objSDCT.mid = lMSD[cbMaySuDung.SelectedIndex].id;
                 /*if (objSD.dK != null)
                 {
                     lsd = SPhieuChuyen.EditMotPhieuChuyen(objSDCT);
@@ -365,6 +354,13 @@ namespace QuanLyKho.Design
                 objSDCT.dVT = vattu;
                 objSDCT.dongia = Unit.GetGiaVTTB(vattu.vid);
                 objSDCT.diengiai = tbDienGiai.Text;
+                if (lMSD.Count != 0)
+                    objSDCT.mid = lMSD[cbMaySuDung.SelectedIndex].id;
+                else
+                {
+                    lbLoi.Text = "Máy sử dụng không được để trống.";
+                    return;
+                }
                 if (objSD.dK != null)
                 {
                     lsd = SPhieuSuDung.EditMotPhieuSD(objSDCT);
@@ -448,6 +444,13 @@ namespace QuanLyKho.Design
                 tbSoHoaDon.Focus();
                 return;
             }
+
+            if (lsd.Count == 0)
+            {
+                lbLoi.Text = "Nhập chi tiết sử dụng.";
+                tbSoLuong.Focus();
+                return;
+            }
             if (btHoanTat.Text.Equals("Sửa"))
             {
                 objSD.smaso = tbSoHoaDon.Text;
@@ -471,7 +474,6 @@ namespace QuanLyKho.Design
                 lbLoi.Text = "Dữ liệu đã được lưu";
                 btHoanTat.Text = "Sửa";
                 tbSoHoaDon.Text = objSD.smaso;
-                cbDonVi.Enabled = false;
                 btTao.Enabled = false;
                 tbVatTu.Enabled = false;
                 btXoa.Enabled = false;

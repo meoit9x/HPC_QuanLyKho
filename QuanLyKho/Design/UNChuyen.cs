@@ -14,6 +14,8 @@ namespace QuanLyKho.Design
     public partial class UNChuyen : UserControl
     {
         List<pC> lpc = new List<pC>();
+        pC objPC = new pC();
+
         public UNChuyen()
         {
             InitializeComponent();
@@ -98,9 +100,7 @@ namespace QuanLyKho.Design
         {
             foreach (ListViewItem listviewItem in lvPhieuNhap.SelectedItems)
             {
-                pC objPC = new pC();
                 objPC = lpc[listviewItem.Index];
-                SetupFormChiTiet(objPC);
             }
             
         }
@@ -114,6 +114,11 @@ namespace QuanLyKho.Design
         private void btHoanTat_Click(object sender, EventArgs e)
         {
             SetupFormChiTiet(null);
+        }
+
+        private void btChiTiet_Click(object sender, EventArgs e)
+        {
+            SetupFormChiTiet(objPC);
         }
 
 

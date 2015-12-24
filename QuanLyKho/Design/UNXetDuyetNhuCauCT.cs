@@ -31,7 +31,7 @@ namespace QuanLyKho.Design
             if (objNC.idpn != 0)
             {
                 phieunhap = SPhieuNhap.SearchPhieuNhapByID(Convert.ToInt32(objNC.idpn));
-                if(phieunhap.dK != null)
+                if(phieunhap != null)
                 {
                     tbSoHoaDon.Text = phieunhap.nmaso;
                     tbNHD.Text = phieunhap.ngayhd.ToString();
@@ -237,7 +237,7 @@ namespace QuanLyKho.Design
                 DialogLoading loading = new DialogLoading();
                 loading.Show();
 
-                if (phieunhap.dK == null)
+                if (phieunhap == null)
                 {
                     phieunhap = new pN();
                     phieunhap.kid = objNC.dK.kid;

@@ -14,6 +14,7 @@ namespace QuanLyKho.Design
     public partial class UNNhap : UserControl
     {
         List<pN> lpn = new List<pN>();
+        pN objPN = new pN();
         public UNNhap()
         {
             InitializeComponent();
@@ -104,10 +105,14 @@ namespace QuanLyKho.Design
         {
             foreach (ListViewItem listviewItem in lvPhieuNhap.SelectedItems)
             {
-                pN objPN = new pN();
+                objPN = new pN();
                 objPN = lpn[listviewItem.Index];
-                Main.AddPhieuNhapCT(objPN);
             }
+        }
+
+        private void btChiTiet_Click(object sender, EventArgs e)
+        {
+            Main.AddPhieuNhapCT(objPN);
         }
     }
 }

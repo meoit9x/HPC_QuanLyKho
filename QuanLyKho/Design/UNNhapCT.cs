@@ -33,6 +33,10 @@ namespace QuanLyKho.Design
             {
                 btHoanTat.Text = "Sửa";
                 this.objPN = objPN;
+                if (objPN.ngayhd != null)
+                {
+                    tbNHD.Text = objPN.ngayhd.ToString();
+                }
                 lpnc = SPhieuNhapCT.SearchNhapChiTietByIDPN(objPN.nid);
                 tbSoHoaDon.Text = objPN.nmaso;
                 btTao.Enabled = false;

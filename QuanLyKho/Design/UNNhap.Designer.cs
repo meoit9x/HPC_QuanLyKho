@@ -36,6 +36,7 @@
             this.tbSoHoaDon = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btHoanTat = new System.Windows.Forms.Button();
+            this.btChiTiet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvPhieuNhap
@@ -119,10 +120,22 @@
             this.btHoanTat.UseVisualStyleBackColor = true;
             this.btHoanTat.Click += new System.EventHandler(this.btHoanTat_Click);
             // 
-            // UNHoaDon
+            // btChiTiet
+            // 
+            this.btChiTiet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btChiTiet.Location = new System.Drawing.Point(660, 9);
+            this.btChiTiet.Name = "btChiTiet";
+            this.btChiTiet.Size = new System.Drawing.Size(106, 33);
+            this.btChiTiet.TabIndex = 88;
+            this.btChiTiet.Text = "Chi tiết";
+            this.btChiTiet.UseVisualStyleBackColor = true;
+            this.btChiTiet.Click += new System.EventHandler(this.btChiTiet_Click);
+            // 
+            // UNNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btChiTiet);
             this.Controls.Add(this.btHoanTat);
             this.Controls.Add(this.tbSoHoaDon);
             this.Controls.Add(this.label2);
@@ -131,7 +144,7 @@
             this.Controls.Add(this.tbTuNgay);
             this.Controls.Add(this.tbNgayHoaDon);
             this.Controls.Add(this.lvPhieuNhap);
-            this.Name = "UNHoaDon";
+            this.Name = "UNNhap";
             this.Size = new System.Drawing.Size(894, 424);
             this.Load += new System.EventHandler(this.UNHoaDon_Load);
             this.ResumeLayout(false);
@@ -149,5 +162,6 @@
         private System.Windows.Forms.TextBox tbSoHoaDon;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btHoanTat;
+        private System.Windows.Forms.Button btChiTiet;
     }
 }

@@ -14,6 +14,7 @@ namespace QuanLyKho.Design
     public partial class UNNhuCau : UserControl
     {
         private List<pNC> lNC = new List<pNC>();
+        pNC objPNC = new pNC();
 
         public UNNhuCau()
         {
@@ -95,9 +96,7 @@ namespace QuanLyKho.Design
         {
             foreach (ListViewItem listviewItem in lvPhieuNhap.SelectedItems)
             {
-                pNC objPNC = new pNC();
                 objPNC = lNC[listviewItem.Index];
-                Main.AddNhuCauCT(objPNC);
             }
         }
 
@@ -133,6 +132,11 @@ namespace QuanLyKho.Design
         private void tbDenNgay_KeyUp(object sender, KeyEventArgs e)
         {
             Search();
+        }
+
+        private void btChiTiet_Click(object sender, EventArgs e)
+        {
+            Main.AddNhuCauCT(objPNC);
         }
 
     }

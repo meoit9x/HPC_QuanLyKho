@@ -12,27 +12,27 @@ namespace QuanLyKho.Service
 
         public static List<dVT> GetAll()
         {
-            return (from vt in Main.db.dVT where vt.isupdate == 0 select vt).ToList();
+            return (from vt in Main.db.dVTs where vt.isupdate == 0 select vt).ToList();
         }
 
         public static dVT SelectVTbyID(int idVT)
         {
-            return (from vt in Main.db.dVT where vt.vid == idVT select vt).FirstOrDefault();
+            return (from vt in Main.db.dVTs where vt.vid == idVT select vt).FirstOrDefault();
         }
 
         public static dVT SelectVTbyTen(string vten)
         {
-            return (from vt in Main.db.dVT where vt.vTen == vten select vt).FirstOrDefault();
+            return (from vt in Main.db.dVTs where vt.vTen == vten select vt).FirstOrDefault();
         }
 
         public static dVT SelectVTbyMa(string vma)
         {
-            return (from vt in Main.db.dVT where vt.mavt == vma select vt).FirstOrDefault();
+            return (from vt in Main.db.dVTs where vt.mavt == vma select vt).FirstOrDefault();
         }
 
         public static void SuaTenVatTu(int idVT)
         {
-            var objvt = (from dvt in Main.db.dVT where dvt.vid == idVT select dvt).FirstOrDefault();
+            var objvt = (from dvt in Main.db.dVTs where dvt.vid == idVT select dvt).FirstOrDefault();
             //SNVatTu.EditTenVatTu(objvt);
         }
 
@@ -51,7 +51,7 @@ namespace QuanLyKho.Service
                 Main.db.dQCCT.Remove(qcct);
                 Main.db.SaveChanges();
             }
-            Main.db.dVT.Remove(dvt);
+            Main.db.dVTs.Remove(dvt);
             Main.db.SaveChanges();
             return SearchVatTu("");
         }
@@ -60,12 +60,12 @@ namespace QuanLyKho.Service
         {
             if ("".Equals(text))
             {
-                return (from dvt in Main.db.dVT  select dvt).ToList();
+                return (from dvt in Main.db.dVTs select dvt).ToList();
             }
             else
             {
                 List<dVT> lVT = new List<dVT>();
-                lVT = (from dvt in Main.db.dVT where dvt.mavt.Contains(text)  select dvt).ToList();
+                lVT = (from dvt in Main.db.dVTs where dvt.mavt.Contains(text) select dvt).ToList();
                 return lVT;
             }
         }
@@ -74,19 +74,19 @@ namespace QuanLyKho.Service
         {
             if ("".Equals(text))
             {
-                return (from dvt in Main.db.dVT  select dvt).ToList();
+                return (from dvt in Main.db.dVTs select dvt).ToList();
             }
             else
             {
                 List<dVT> lVT = new List<dVT>();
-                lVT = (from dvt in Main.db.dVT where dvt.mavt.Contains(text)  select dvt).ToList();
+                lVT = (from dvt in Main.db.dVTs where dvt.mavt.Contains(text) select dvt).ToList();
                 return lVT;
             }
         }
 
         public static List<dVT> AddNewVatTu(dVT dvt)
         {
-            Main.db.dVT.Add(dvt);
+            Main.db.dVTs.Add(dvt);
             Main.db.SaveChanges();
             return SearchVatTu("");
         }
@@ -99,7 +99,7 @@ namespace QuanLyKho.Service
 
         public static List<dVT> GetVTByNVT(int idNVT)
         {
-            return (from dvt in Main.db.dVT where dvt.dNVT.nvtid == idNVT where dvt.isupdate ==0 select dvt).ToList();
+            return (from dvt in Main.db.dVTs where dvt.dNVT.nvtid == idNVT where dvt.isupdate == 0 select dvt).ToList();
         }
 
         public static List<dVT> SaoChepVatTu(dVT dvt)
@@ -108,7 +108,7 @@ namespace QuanLyKho.Service
             objVatTu.vTen = dvt.vTen;
             objVatTu.nvtid = dvt.nvtid;
             objVatTu.isupdate = 0;
-            Main.db.dVT.Add(objVatTu);
+            Main.db.dVTs.Add(objVatTu);
             Main.db.SaveChanges();
             List<dQCCT> lqcct = new List<dQCCT>();
             lqcct = SQCCT.SelectQCCTByidVT(dvt.vid);

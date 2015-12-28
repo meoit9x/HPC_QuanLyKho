@@ -16,7 +16,7 @@ namespace QuanLyKho
     {
         public dKH()
         {
-            this.pNCT = new HashSet<pNCT>();
+            this.pNCTs = new HashSet<pNCT>();
         }
     
         public int id { get; set; }
@@ -24,6 +24,6 @@ namespace QuanLyKho
         public string diachi { get; set; }
         public string dienthoai { get; set; }
     
-        public virtual ICollection<pNCT> pNCT { get; set; }
+        public virtual ICollection<pNCT> pNCTs { get; set; }
     }
 }

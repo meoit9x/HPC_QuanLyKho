@@ -14,13 +14,13 @@ namespace QuanLyKho.Design
 {
     public partial class UNChuyenCT : UserControl
     {
-        pC objPhieuChuyen = new pC();
-        pCCT objCCT;
-        List<pCCT> lpcct = new List<pCCT>();
-        List<dK> lkho;
+        private pC objPhieuChuyen = new pC();
+        private pCCT objCCT;
+        private List<pCCT> lpcct = new List<pCCT>();
+        private List<dK> lkho;
         private int indexlv = 0;
-        List<ItemPhieu> lTonKho;
-        private ItemPhieu itemphieu;
+        private List<pTon> tonkho = new List<pTon>();
+        private pTon objectton;
         private int indexTon;
         private double soluong;
 
@@ -45,7 +45,7 @@ namespace QuanLyKho.Design
                 tbDienGiai.Enabled = false;
                 tbSoLuong.Enabled = false;
             }
-            this.lTonKho = Unit.TinhTonKho("");
+            tonkho = STon.getTon();
             Load_LvVatTu();
         }
 
@@ -204,24 +204,12 @@ namespace QuanLyKho.Design
             lvTonKho.FullRowSelect = true;
 
             int i = 0;
-            foreach (ItemPhieu item in lTonKho)
+            foreach (pTon item in tonkho)
             {
                 lvTonKho.Items.Add((i + 1) + "");
-                var vattu = SVatTu.SelectVTbyID(item.IdVatTu);
-                string tenvt,donvitinh;
-                if (vattu != null)
-                {
-                    tenvt = vattu.vTen;
-                    donvitinh = vattu.dvt1;
-                }
-                else
-                {
-                    tenvt = "";
-                    donvitinh = "";
-                }
-                lvTonKho.Items[i].SubItems.Add(tenvt);
-                lvTonKho.Items[i].SubItems.Add(item.SoLuong + "");
-                lvTonKho.Items[i].SubItems.Add(donvitinh);
+                lvTonKho.Items[i].SubItems.Add(item.dVT.vTen);
+                lvTonKho.Items[i].SubItems.Add(item.soluong + "");
+                lvTonKho.Items[i].SubItems.Add(item.dVT.dvt1);
                 i++;
             }
 
@@ -232,27 +220,28 @@ namespace QuanLyKho.Design
             pCCT objPCCT = new pCCT();
             objPCCT = lpcct[indexlv];
             lpcct.RemoveAt(indexlv);
-            ItemPhieu itemphieu = new ItemPhieu();
-            itemphieu.DonGia = Convert.ToDouble(objPCCT.dongia);
-            itemphieu.IdVatTu = Convert.ToInt32(objPCCT.vid);
-            itemphieu.SoLuong = Convert.ToDouble(objPCCT.cctsoluong);
 
-            ItemPhieu objItem = new ItemPhieu();
-            objItem = lTonKho.Find(x => x.IdVatTu == itemphieu.IdVatTu);
+            pTon objTon = new pTon();
+            objTon.dongia = Convert.ToDouble(objPCCT.dongia);
+            objTon.vid = Convert.ToInt32(objPCCT.vid);
+            objTon.soluong = Convert.ToDouble(objPCCT.cctsoluong);
+
+            pTon objItem = new pTon();
+            objItem = tonkho.Find(x => x.vid == objTon.vid);
             if (objItem == null)
             {
-                lTonKho.Add(itemphieu);
+                tonkho.Add(objTon);
             }
             else
             {
-                for (int i = 0; i < lTonKho.Count; i++)
+                for (int i = 0; i < tonkho.Count; i++)
                 {
-                    objItem = lTonKho[i];
-                    if (itemphieu.IdVatTu == objItem.IdVatTu)
+                    objItem = tonkho[i];
+                    if (objectton.vid == objItem.vid)
                     {
-                        itemphieu.SoLuong += objItem.SoLuong;
-                        lTonKho.RemoveAt(i);
-                        lTonKho.Add(itemphieu);
+                        objectton.soluong += Convert.ToDouble(objItem.soluong);
+                        tonkho.RemoveAt(i);
+                        tonkho.Add(objItem);
                         break;
                     }
                 }
@@ -320,22 +309,22 @@ namespace QuanLyKho.Design
                 lpcct.RemoveAt(indexlv);
                 lpcct.Add(objCCT);
                 //}
-                int indexfind = lTonKho.FindIndex(x => x.IdVatTu == objCCT.vid);
-                ItemPhieu objItem = new ItemPhieu();
+                int indexfind = tonkho.FindIndex(x => x.vid == objCCT.vid);
+                pTon objItem = new pTon();
                 if (indexfind >= 0)
                 {
-                    objItem = lTonKho[indexfind];
+                    objItem = tonkho[indexfind];
                     double soluongthuc = soluong - Convert.ToDouble(objCCT.cctsoluong);
-                    objItem.SoLuong = soluongthuc;
-                    lTonKho.RemoveAt(indexfind);
+                    objItem.soluong = soluongthuc;
+                    tonkho.RemoveAt(indexfind);
                     if (soluongthuc != 0)
-                        lTonKho.Add(objItem);
+                        tonkho.Add(objItem);
                 }
                 else
                 {
-                    objItem.IdVatTu = vattu.vid;
-                    objItem.SoLuong = soluong - Convert.ToDouble(tbSoLuong.Text);
-                    lTonKho.Add(objItem);
+                    objItem.vid = vattu.vid;
+                    objItem.soluong = soluong - Convert.ToDouble(tbSoLuong.Text);
+                    tonkho.Add(objItem);
                 }
                 lbLoi.Text = "Sửa thành công.";
             }
@@ -358,11 +347,11 @@ namespace QuanLyKho.Design
 
                 lbLoi.Text = "Tạo thành công.";
 
-                double soluong = itemphieu.SoLuong - Convert.ToDouble(objCCT.cctsoluong);
-                lTonKho.RemoveAt(indexTon);
-                itemphieu.SoLuong = soluong;
+                double soluong = Convert.ToDouble(objectton.soluong) - Convert.ToDouble(objCCT.cctsoluong);
+                tonkho.RemoveAt(indexTon);
+                objectton.soluong = soluong;
                 if (soluong != 0)
-                    lTonKho.Add(itemphieu);
+                    tonkho.Add(objectton);
                 EditForm(false);
             }
             Load_LvVatTu();
@@ -376,12 +365,11 @@ namespace QuanLyKho.Design
                 btTao.Text = "Tạo";
                 btXoa.Enabled = false;
                 btThoat.Enabled = false;
-                itemphieu = new ItemPhieu();
+                objectton = new pTon();
                 indexTon = listviewItem.Index;
-                itemphieu = lTonKho[indexTon];
-                tbSoLuong.Text = itemphieu.SoLuong + "";
-                var vattu = SVatTu.SelectVTbyID(itemphieu.IdVatTu);
-                tbVatTu.Text = vattu.vTen;
+                objectton = tonkho[indexTon];
+                tbSoLuong.Text = objectton.soluong + "";
+                tbVatTu.Text = objectton.dVT.vTen;
                 lbLoi.Text = "";
             }
         }
@@ -397,10 +385,10 @@ namespace QuanLyKho.Design
             }
             try
             {
-                soluong = itemphieu.SoLuong;
+                soluong = Convert.ToDouble(objectton.soluong);
                 if (lpcct.Count == 0)
                 {
-                    soluong = itemphieu.SoLuong;
+                    soluong = Convert.ToDouble(objectton.soluong);
                 }
                 else if(btThoat.Enabled == true)
                 {
@@ -448,6 +436,8 @@ namespace QuanLyKho.Design
                     objPCCT.cid = objPhieuChuyen.cid;
                     Main.db.pCCT.Add(objPCCT);
                     Main.db.SaveChanges();
+                    STon.AddTon(Convert.ToDouble(objPCCT.cctsoluong), Convert.ToInt32(objPCCT.vid), Convert.ToDouble(objPCCT.dongia), false, Convert.ToInt32(Main.OBJ_KHO.kid));
+                    STon.AddTon(Convert.ToDouble(objPCCT.cctsoluong), Convert.ToInt32(objPCCT.vid), Convert.ToDouble(objPCCT.dongia), true, Convert.ToInt32(objPhieuChuyen.pto));
                 }
                 lbLoi.Text = "Dữ liệu đã được lưu";
                 btHoanTat.Text = "Sửa";

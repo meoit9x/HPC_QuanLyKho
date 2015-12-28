@@ -16,18 +16,18 @@ namespace QuanLyKho
     {
         public dDVT()
         {
-            this.dQCCT = new HashSet<dQCCT>();
-            this.dVT1 = new HashSet<dVT>();
-            this.pNCT = new HashSet<pNCT>();
-            this.pSDCT = new HashSet<pSDCT>();
+            this.dQCCTs = new HashSet<dQCCT>();
+            this.dVTs = new HashSet<dVT>();
+            this.pNCTs = new HashSet<pNCT>();
+            this.pSDCTs = new HashSet<pSDCT>();
         }
     
         public int dvtid { get; set; }
         public string dvt { get; set; }
     
-        public virtual ICollection<dQCCT> dQCCT { get; set; }
-        public virtual ICollection<dVT> dVT1 { get; set; }
-        public virtual ICollection<pNCT> pNCT { get; set; }
-        public virtual ICollection<pSDCT> pSDCT { get; set; }
+        public virtual ICollection<dQCCT> dQCCTs { get; set; }
+        public virtual ICollection<dVT> dVTs { get; set; }
+        public virtual ICollection<pNCT> pNCTs { get; set; }
+        public virtual ICollection<pSDCT> pSDCTs { get; set; }
     }
 }

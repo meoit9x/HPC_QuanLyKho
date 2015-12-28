@@ -25,6 +25,7 @@
           <EntitySet Name="pSD" EntityType="HPC_DBModel.Store.pSD" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="pSDCT" EntityType="HPC_DBModel.Store.pSDCT" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="pTB" EntityType="HPC_DBModel.Store.pTB" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="pTon" EntityType="HPC_DBModel.Store.pTon" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_dMay_dK" Association="HPC_DBModel.Store.FK_dMay_dK">
             <End Role="dK" EntitySet="dK" />
             <End Role="dMay" EntitySet="dMay" />
@@ -124,6 +125,14 @@
           <AssociationSet Name="FK_pTB_dK" Association="HPC_DBModel.Store.FK_pTB_dK">
             <End Role="dK" EntitySet="dK" />
             <End Role="pTB" EntitySet="pTB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pTon_dK" Association="HPC_DBModel.Store.FK_pTon_dK">
+            <End Role="dK" EntitySet="dK" />
+            <End Role="pTon" EntitySet="pTon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pTon_dVT" Association="HPC_DBModel.Store.FK_pTon_dVT">
+            <End Role="dVT" EntitySet="dVT" />
+            <End Role="pTon" EntitySet="pTon" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="dDVT">
@@ -302,7 +311,7 @@
           </Key>
           <Property Name="sdctid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="vid" Type="int" />
-          <Property Name="sdctsoluong" Type="bigint" />
+          <Property Name="sdctsoluong" Type="float" />
           <Property Name="sdid" Type="int" />
           <Property Name="diengiai" Type="nvarchar" MaxLength="200" />
           <Property Name="mid" Type="int" />
@@ -319,6 +328,17 @@
           <Property Name="accept" Type="int" />
           <Property Name="kid" Type="int" />
           <Property Name="tacvu" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="pTon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="vid" Type="int" />
+          <Property Name="soluong" Type="float" />
+          <Property Name="dongia" Type="float" />
+          <Property Name="kid" Type="int" />
+          <Property Name="trangthai" Type="nvarchar" MaxLength="2" />
         </EntityType>
         <Association Name="FK_dMay_dK">
           <End Role="dK" Type="HPC_DBModel.Store.dK" Multiplicity="0..1" />
@@ -620,12 +640,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_pTon_dK">
+          <End Role="dK" Type="HPC_DBModel.Store.dK" Multiplicity="0..1" />
+          <End Role="pTon" Type="HPC_DBModel.Store.pTon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dK">
+              <PropertyRef Name="kid" />
+            </Principal>
+            <Dependent Role="pTon">
+              <PropertyRef Name="kid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pTon_dVT">
+          <End Role="dVT" Type="HPC_DBModel.Store.dVT" Multiplicity="0..1" />
+          <End Role="pTon" Type="HPC_DBModel.Store.pTon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dVT">
+              <PropertyRef Name="vid" />
+            </Principal>
+            <Dependent Role="pTon">
+              <PropertyRef Name="vid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HPC_DBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="HPC_DBEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="dDVT" EntityType="HPC_DBModel.dDVT" />
+          <EntitySet Name="dEmail" EntityType="HPC_DBModel.dEmail" />
           <EntitySet Name="dK" EntityType="HPC_DBModel.dK" />
           <EntitySet Name="dKH" EntityType="HPC_DBModel.dKH" />
           <EntitySet Name="dMay" EntityType="HPC_DBModel.dMay" />
@@ -633,7 +678,7 @@
           <EntitySet Name="dQC" EntityType="HPC_DBModel.dQC" />
           <EntitySet Name="dQCCT" EntityType="HPC_DBModel.dQCCT" />
           <EntitySet Name="duser" EntityType="HPC_DBModel.duser" />
-          <EntitySet Name="dVT" EntityType="HPC_DBModel.dVT" />
+          <EntitySet Name="dVTs" EntityType="HPC_DBModel.dVT" />
           <EntitySet Name="pC" EntityType="HPC_DBModel.pC" />
           <EntitySet Name="pCCT" EntityType="HPC_DBModel.pCCT" />
           <EntitySet Name="pN" EntityType="HPC_DBModel.pN" />
@@ -643,13 +688,14 @@
           <EntitySet Name="pSD" EntityType="HPC_DBModel.pSD" />
           <EntitySet Name="pSDCT" EntityType="HPC_DBModel.pSDCT" />
           <EntitySet Name="pTB" EntityType="HPC_DBModel.pTB" />
+          <EntitySet Name="pTon" EntityType="HPC_DBModel.pTon" />
           <AssociationSet Name="FK_dQCCT_dDVT" Association="HPC_DBModel.FK_dQCCT_dDVT">
             <End Role="dDVT" EntitySet="dDVT" />
             <End Role="dQCCT" EntitySet="dQCCT" />
           </AssociationSet>
           <AssociationSet Name="FK_dVT_dDVT" Association="HPC_DBModel.FK_dVT_dDVT">
             <End Role="dDVT" EntitySet="dDVT" />
-            <End Role="dVT" EntitySet="dVT" />
+            <End Role="dVT" EntitySet="dVTs" />
           </AssociationSet>
           <AssociationSet Name="FK_pNCT_dDVT1" Association="HPC_DBModel.FK_pNCT_dDVT1">
             <End Role="dDVT" EntitySet="dDVT" />
@@ -691,6 +737,10 @@
             <End Role="dK" EntitySet="dK" />
             <End Role="pTB" EntitySet="pTB" />
           </AssociationSet>
+          <AssociationSet Name="FK_pTon_dK" Association="HPC_DBModel.FK_pTon_dK">
+            <End Role="dK" EntitySet="dK" />
+            <End Role="pTon" EntitySet="pTon" />
+          </AssociationSet>
           <AssociationSet Name="FK_pNCT_dKH" Association="HPC_DBModel.FK_pNCT_dKH">
             <End Role="dKH" EntitySet="dKH" />
             <End Role="pNCT" EntitySet="pNCT" />
@@ -701,31 +751,35 @@
           </AssociationSet>
           <AssociationSet Name="FK_dVT_dNVT1" Association="HPC_DBModel.FK_dVT_dNVT1">
             <End Role="dNVT" EntitySet="dNVT" />
-            <End Role="dVT" EntitySet="dVT" />
+            <End Role="dVT" EntitySet="dVTs" />
           </AssociationSet>
           <AssociationSet Name="FK_dQCCT_dQC" Association="HPC_DBModel.FK_dQCCT_dQC">
             <End Role="dQC" EntitySet="dQC" />
             <End Role="dQCCT" EntitySet="dQCCT" />
           </AssociationSet>
           <AssociationSet Name="FK_dQCCT_dVT" Association="HPC_DBModel.FK_dQCCT_dVT">
-            <End Role="dVT" EntitySet="dVT" />
+            <End Role="dVT" EntitySet="dVTs" />
             <End Role="dQCCT" EntitySet="dQCCT" />
           </AssociationSet>
           <AssociationSet Name="FK_pCCT_dVT" Association="HPC_DBModel.FK_pCCT_dVT">
-            <End Role="dVT" EntitySet="dVT" />
+            <End Role="dVT" EntitySet="dVTs" />
             <End Role="pCCT" EntitySet="pCCT" />
           </AssociationSet>
           <AssociationSet Name="FK_pNCCT_dVT" Association="HPC_DBModel.FK_pNCCT_dVT">
-            <End Role="dVT" EntitySet="dVT" />
+            <End Role="dVT" EntitySet="dVTs" />
             <End Role="pNCCT" EntitySet="pNCCT" />
           </AssociationSet>
           <AssociationSet Name="FK_pNCT_dVT" Association="HPC_DBModel.FK_pNCT_dVT">
-            <End Role="dVT" EntitySet="dVT" />
+            <End Role="dVT" EntitySet="dVTs" />
             <End Role="pNCT" EntitySet="pNCT" />
           </AssociationSet>
           <AssociationSet Name="FK_pSDCT_dVT" Association="HPC_DBModel.FK_pSDCT_dVT">
-            <End Role="dVT" EntitySet="dVT" />
+            <End Role="dVT" EntitySet="dVTs" />
             <End Role="pSDCT" EntitySet="pSDCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pTon_dVT" Association="HPC_DBModel.FK_pTon_dVT">
+            <End Role="dVT" EntitySet="dVTs" />
+            <End Role="pTon" EntitySet="pTon" />
           </AssociationSet>
           <AssociationSet Name="FK_pCCT_pC" Association="HPC_DBModel.FK_pCCT_pC">
             <End Role="pC" EntitySet="pC" />
@@ -743,7 +797,6 @@
             <End Role="pSD" EntitySet="pSD" />
             <End Role="pSDCT" EntitySet="pSDCT" />
           </AssociationSet>
-          <EntitySet Name="dEmail" EntityType="HPC_DBModel.dEmail" />
         </EntityContainer>
         <EntityType Name="dDVT">
           <Key>
@@ -751,10 +804,17 @@
           </Key>
           <Property Name="dvtid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="dvt" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="dQCCT" Relationship="HPC_DBModel.FK_dQCCT_dDVT" FromRole="dDVT" ToRole="dQCCT" />
-          <NavigationProperty Name="dVT1" Relationship="HPC_DBModel.FK_dVT_dDVT" FromRole="dDVT" ToRole="dVT" />
-          <NavigationProperty Name="pNCT" Relationship="HPC_DBModel.FK_pNCT_dDVT1" FromRole="dDVT" ToRole="pNCT" />
-          <NavigationProperty Name="pSDCT" Relationship="HPC_DBModel.FK_pSDCT_dDVT" FromRole="dDVT" ToRole="pSDCT" />
+          <NavigationProperty Name="dQCCTs" Relationship="HPC_DBModel.FK_dQCCT_dDVT" FromRole="dDVT" ToRole="dQCCT" />
+          <NavigationProperty Name="dVTs" Relationship="HPC_DBModel.FK_dVT_dDVT" FromRole="dDVT" ToRole="dVT" />
+          <NavigationProperty Name="pNCTs" Relationship="HPC_DBModel.FK_pNCT_dDVT1" FromRole="dDVT" ToRole="pNCT" />
+          <NavigationProperty Name="pSDCTs" Relationship="HPC_DBModel.FK_pSDCT_dDVT" FromRole="dDVT" ToRole="pSDCT" />
+        </EntityType>
+        <EntityType Name="dEmail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="addEmail" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="dK">
           <Key>
@@ -763,14 +823,15 @@
           <Property Name="kid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="kten" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="diachi" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="dMay" Relationship="HPC_DBModel.FK_dMay_dK" FromRole="dK" ToRole="dMay" />
-          <NavigationProperty Name="duser" Relationship="HPC_DBModel.FK_duser_dK" FromRole="dK" ToRole="duser" />
-          <NavigationProperty Name="pC" Relationship="HPC_DBModel.FK_pC_dK" FromRole="dK" ToRole="pC" />
-          <NavigationProperty Name="pC1" Relationship="HPC_DBModel.FK_pC_dK1" FromRole="dK" ToRole="pC" />
-          <NavigationProperty Name="pN" Relationship="HPC_DBModel.FK_pN_dK" FromRole="dK" ToRole="pN" />
-          <NavigationProperty Name="pNC" Relationship="HPC_DBModel.FK_pNC_dK" FromRole="dK" ToRole="pNC" />
-          <NavigationProperty Name="pSD" Relationship="HPC_DBModel.FK_pSD_dK" FromRole="dK" ToRole="pSD" />
-          <NavigationProperty Name="pTB" Relationship="HPC_DBModel.FK_pTB_dK" FromRole="dK" ToRole="pTB" />
+          <NavigationProperty Name="dMays" Relationship="HPC_DBModel.FK_dMay_dK" FromRole="dK" ToRole="dMay" />
+          <NavigationProperty Name="dusers" Relationship="HPC_DBModel.FK_duser_dK" FromRole="dK" ToRole="duser" />
+          <NavigationProperty Name="pCs" Relationship="HPC_DBModel.FK_pC_dK" FromRole="dK" ToRole="pC" />
+          <NavigationProperty Name="pCs1" Relationship="HPC_DBModel.FK_pC_dK1" FromRole="dK" ToRole="pC" />
+          <NavigationProperty Name="pNs" Relationship="HPC_DBModel.FK_pN_dK" FromRole="dK" ToRole="pN" />
+          <NavigationProperty Name="pNCs" Relationship="HPC_DBModel.FK_pNC_dK" FromRole="dK" ToRole="pNC" />
+          <NavigationProperty Name="pSDs" Relationship="HPC_DBModel.FK_pSD_dK" FromRole="dK" ToRole="pSD" />
+          <NavigationProperty Name="pTBs" Relationship="HPC_DBModel.FK_pTB_dK" FromRole="dK" ToRole="pTB" />
+          <NavigationProperty Name="pTons" Relationship="HPC_DBModel.FK_pTon_dK" FromRole="dK" ToRole="pTon" />
         </EntityType>
         <EntityType Name="dKH">
           <Key>
@@ -780,7 +841,7 @@
           <Property Name="ten" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="diachi" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="dienthoai" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="pNCT" Relationship="HPC_DBModel.FK_pNCT_dKH" FromRole="dKH" ToRole="pNCT" />
+          <NavigationProperty Name="pNCTs" Relationship="HPC_DBModel.FK_pNCT_dKH" FromRole="dKH" ToRole="pNCT" />
         </EntityType>
         <EntityType Name="dMay">
           <Key>
@@ -791,7 +852,7 @@
           <Property Name="tenmay" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="kid" Type="Int32" />
           <NavigationProperty Name="dK" Relationship="HPC_DBModel.FK_dMay_dK" FromRole="dMay" ToRole="dK" />
-          <NavigationProperty Name="pSDCT" Relationship="HPC_DBModel.FK_pSDCT_dMay" FromRole="dMay" ToRole="pSDCT" />
+          <NavigationProperty Name="pSDCTs" Relationship="HPC_DBModel.FK_pSDCT_dMay" FromRole="dMay" ToRole="pSDCT" />
         </EntityType>
         <EntityType Name="dNVT">
           <Key>
@@ -799,7 +860,7 @@
           </Key>
           <Property Name="nvtid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="tennhom" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="dVT" Relationship="HPC_DBModel.FK_dVT_dNVT1" FromRole="dNVT" ToRole="dVT" />
+          <NavigationProperty Name="dVTs" Relationship="HPC_DBModel.FK_dVT_dNVT1" FromRole="dNVT" ToRole="dVT" />
         </EntityType>
         <EntityType Name="dQC">
           <Key>
@@ -807,7 +868,7 @@
           </Key>
           <Property Name="qid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="qten" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="dQCCT" Relationship="HPC_DBModel.FK_dQCCT_dQC" FromRole="dQC" ToRole="dQCCT" />
+          <NavigationProperty Name="dQCCTs" Relationship="HPC_DBModel.FK_dQCCT_dQC" FromRole="dQC" ToRole="dQCCT" />
         </EntityType>
         <EntityType Name="dQCCT">
           <Key>
@@ -848,11 +909,12 @@
           <Property Name="iddvt" Type="Int32" />
           <NavigationProperty Name="dDVT" Relationship="HPC_DBModel.FK_dVT_dDVT" FromRole="dVT" ToRole="dDVT" />
           <NavigationProperty Name="dNVT" Relationship="HPC_DBModel.FK_dVT_dNVT1" FromRole="dVT" ToRole="dNVT" />
-          <NavigationProperty Name="dQCCT" Relationship="HPC_DBModel.FK_dQCCT_dVT" FromRole="dVT" ToRole="dQCCT" />
-          <NavigationProperty Name="pCCT" Relationship="HPC_DBModel.FK_pCCT_dVT" FromRole="dVT" ToRole="pCCT" />
-          <NavigationProperty Name="pNCCT" Relationship="HPC_DBModel.FK_pNCCT_dVT" FromRole="dVT" ToRole="pNCCT" />
-          <NavigationProperty Name="pNCT" Relationship="HPC_DBModel.FK_pNCT_dVT" FromRole="dVT" ToRole="pNCT" />
-          <NavigationProperty Name="pSDCT" Relationship="HPC_DBModel.FK_pSDCT_dVT" FromRole="dVT" ToRole="pSDCT" />
+          <NavigationProperty Name="dQCCTs" Relationship="HPC_DBModel.FK_dQCCT_dVT" FromRole="dVT" ToRole="dQCCT" />
+          <NavigationProperty Name="pCCTs" Relationship="HPC_DBModel.FK_pCCT_dVT" FromRole="dVT" ToRole="pCCT" />
+          <NavigationProperty Name="pNCCTs" Relationship="HPC_DBModel.FK_pNCCT_dVT" FromRole="dVT" ToRole="pNCCT" />
+          <NavigationProperty Name="pNCTs" Relationship="HPC_DBModel.FK_pNCT_dVT" FromRole="dVT" ToRole="pNCT" />
+          <NavigationProperty Name="pSDCTs" Relationship="HPC_DBModel.FK_pSDCT_dVT" FromRole="dVT" ToRole="pSDCT" />
+          <NavigationProperty Name="pTons" Relationship="HPC_DBModel.FK_pTon_dVT" FromRole="dVT" ToRole="pTon" />
         </EntityType>
         <EntityType Name="pC">
           <Key>
@@ -865,7 +927,7 @@
           <Property Name="cmaso" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="dK" Relationship="HPC_DBModel.FK_pC_dK" FromRole="pC" ToRole="dK" />
           <NavigationProperty Name="dK1" Relationship="HPC_DBModel.FK_pC_dK1" FromRole="pC" ToRole="dK" />
-          <NavigationProperty Name="pCCT" Relationship="HPC_DBModel.FK_pCCT_pC" FromRole="pC" ToRole="pCCT" />
+          <NavigationProperty Name="pCCTs" Relationship="HPC_DBModel.FK_pCCT_pC" FromRole="pC" ToRole="pCCT" />
         </EntityType>
         <EntityType Name="pCCT">
           <Key>
@@ -892,7 +954,7 @@
           <Property Name="ngayhd" Type="DateTime" Precision="3" />
           <Property Name="isupdate" Type="Int32" />
           <NavigationProperty Name="dK" Relationship="HPC_DBModel.FK_pN_dK" FromRole="pN" ToRole="dK" />
-          <NavigationProperty Name="pNCT" Relationship="HPC_DBModel.FK_pNCT_pN" FromRole="pN" ToRole="pNCT" />
+          <NavigationProperty Name="pNCTs" Relationship="HPC_DBModel.FK_pNCT_pN" FromRole="pN" ToRole="pNCT" />
         </EntityType>
         <EntityType Name="pNC">
           <Key>
@@ -904,11 +966,11 @@
           <Property Name="tgcan" Type="DateTime" Precision="3" />
           <Property Name="mucdich" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="maso" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="isgui" Type="Int32" />
+          <Property Name="xetduyet" Type="Int32" />
+          <Property Name="idpn" Type="Int32" />
           <NavigationProperty Name="dK" Relationship="HPC_DBModel.FK_pNC_dK" FromRole="pNC" ToRole="dK" />
-          <NavigationProperty Name="pNCCT" Relationship="HPC_DBModel.FK_pNCCT_pNC" FromRole="pNC" ToRole="pNCCT" />
-          <Property Type="Int32" Name="isgui" />
-          <Property Type="Int32" Name="xetduyet" />
-          <Property Type="Int32" Name="idpn" />
+          <NavigationProperty Name="pNCCTs" Relationship="HPC_DBModel.FK_pNCCT_pNC" FromRole="pNC" ToRole="pNCCT" />
         </EntityType>
         <EntityType Name="pNCCT">
           <Key>
@@ -919,12 +981,12 @@
           <Property Name="vid" Type="Int32" />
           <Property Name="ncsoluong" Type="Double" />
           <Property Name="diengiai" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="tonsoluong" Type="Double" />
+          <Property Name="tongtien" Type="Double" />
+          <Property Name="idkh" Type="Int32" />
+          <Property Name="accept" Type="Int32" />
           <NavigationProperty Name="dVT" Relationship="HPC_DBModel.FK_pNCCT_dVT" FromRole="pNCCT" ToRole="dVT" />
           <NavigationProperty Name="pNC" Relationship="HPC_DBModel.FK_pNCCT_pNC" FromRole="pNCCT" ToRole="pNC" />
-          <Property Type="Double" Name="tonsoluong" />
-          <Property Type="Double" Name="tongtien" />
-          <Property Type="Int32" Name="idkh" />
-          <Property Type="Int32" Name="accept" />
         </EntityType>
         <EntityType Name="pNCT">
           <Key>
@@ -951,7 +1013,7 @@
           <Property Name="kid" Type="Int32" />
           <Property Name="smaso" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="dK" Relationship="HPC_DBModel.FK_pSD_dK" FromRole="pSD" ToRole="dK" />
-          <NavigationProperty Name="pSDCT" Relationship="HPC_DBModel.FK_pSDCT_pSD1" FromRole="pSD" ToRole="pSDCT" />
+          <NavigationProperty Name="pSDCTs" Relationship="HPC_DBModel.FK_pSDCT_pSD1" FromRole="pSD" ToRole="pSDCT" />
         </EntityType>
         <EntityType Name="pSDCT">
           <Key>
@@ -959,7 +1021,7 @@
           </Key>
           <Property Name="sdctid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="vid" Type="Int32" />
-          <Property Name="sdctsoluong" Type="Int64" />
+          <Property Name="sdctsoluong" Type="Double" />
           <Property Name="sdid" Type="Int32" />
           <Property Name="diengiai" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="mid" Type="Int32" />
@@ -981,6 +1043,19 @@
           <Property Name="kid" Type="Int32" />
           <Property Name="tacvu" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="dK" Relationship="HPC_DBModel.FK_pTB_dK" FromRole="pTB" ToRole="dK" />
+        </EntityType>
+        <EntityType Name="pTon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="vid" Type="Int32" />
+          <Property Name="soluong" Type="Double" />
+          <Property Name="dongia" Type="Double" />
+          <Property Name="kid" Type="Int32" />
+          <Property Name="trangthai" Type="String" MaxLength="2" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="dK" Relationship="HPC_DBModel.FK_pTon_dK" FromRole="pTon" ToRole="dK" />
+          <NavigationProperty Name="dVT" Relationship="HPC_DBModel.FK_pTon_dVT" FromRole="pTon" ToRole="dVT" />
         </EntityType>
         <Association Name="FK_dQCCT_dDVT">
           <End Role="dDVT" Type="HPC_DBModel.dDVT" Multiplicity="0..1" />
@@ -1126,6 +1201,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_pTon_dK">
+          <End Role="dK" Type="HPC_DBModel.dK" Multiplicity="0..1" />
+          <End Role="pTon" Type="HPC_DBModel.pTon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dK">
+              <PropertyRef Name="kid" />
+            </Principal>
+            <Dependent Role="pTon">
+              <PropertyRef Name="kid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_pNCT_dKH">
           <End Role="dKH" Type="HPC_DBModel.dKH" Multiplicity="0..1" />
           <End Role="pNCT" Type="HPC_DBModel.pNCT" Multiplicity="*" />
@@ -1234,6 +1321,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_pTon_dVT">
+          <End Role="dVT" Type="HPC_DBModel.dVT" Multiplicity="0..1" />
+          <End Role="pTon" Type="HPC_DBModel.pTon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dVT">
+              <PropertyRef Name="vid" />
+            </Principal>
+            <Dependent Role="pTon">
+              <PropertyRef Name="vid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_pCCT_pC">
           <End Role="pC" Type="HPC_DBModel.pC" Multiplicity="0..1" />
           <End Role="pCCT" Type="HPC_DBModel.pCCT" Multiplicity="*" />
@@ -1282,13 +1381,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="dEmail">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="addEmail" MaxLength="100" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1300,6 +1392,14 @@
               <MappingFragment StoreEntitySet="dDVT">
                 <ScalarProperty Name="dvtid" ColumnName="dvtid" />
                 <ScalarProperty Name="dvt" ColumnName="dvt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dEmail">
+            <EntityTypeMapping TypeName="HPC_DBModel.dEmail">
+              <MappingFragment StoreEntitySet="dEmail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="addEmail" ColumnName="addEmail" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1371,7 +1471,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="dVT">
+          <EntitySetMapping Name="dVTs">
             <EntityTypeMapping TypeName="HPC_DBModel.dVT">
               <MappingFragment StoreEntitySet="dVT">
                 <ScalarProperty Name="vid" ColumnName="vid" />
@@ -1424,30 +1524,30 @@
           <EntitySetMapping Name="pNC">
             <EntityTypeMapping TypeName="HPC_DBModel.pNC">
               <MappingFragment StoreEntitySet="pNC">
-                <ScalarProperty Name="idpn" ColumnName="idpn" />
-                <ScalarProperty Name="xetduyet" ColumnName="xetduyet" />
-                <ScalarProperty Name="isgui" ColumnName="isgui" />
                 <ScalarProperty Name="ncid" ColumnName="ncid" />
                 <ScalarProperty Name="ncdate" ColumnName="ncdate" />
                 <ScalarProperty Name="kid" ColumnName="kid" />
                 <ScalarProperty Name="tgcan" ColumnName="tgcan" />
                 <ScalarProperty Name="mucdich" ColumnName="mucdich" />
                 <ScalarProperty Name="maso" ColumnName="maso" />
+                <ScalarProperty Name="isgui" ColumnName="isgui" />
+                <ScalarProperty Name="xetduyet" ColumnName="xetduyet" />
+                <ScalarProperty Name="idpn" ColumnName="idpn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="pNCCT">
             <EntityTypeMapping TypeName="HPC_DBModel.pNCCT">
               <MappingFragment StoreEntitySet="pNCCT">
-                <ScalarProperty Name="accept" ColumnName="accept" />
-                <ScalarProperty Name="idkh" ColumnName="idkh" />
-                <ScalarProperty Name="tongtien" ColumnName="tongtien" />
-                <ScalarProperty Name="tonsoluong" ColumnName="tonsoluong" />
                 <ScalarProperty Name="ncctid" ColumnName="ncctid" />
                 <ScalarProperty Name="ncid" ColumnName="ncid" />
                 <ScalarProperty Name="vid" ColumnName="vid" />
                 <ScalarProperty Name="ncsoluong" ColumnName="ncsoluong" />
                 <ScalarProperty Name="diengiai" ColumnName="diengiai" />
+                <ScalarProperty Name="tonsoluong" ColumnName="tonsoluong" />
+                <ScalarProperty Name="tongtien" ColumnName="tongtien" />
+                <ScalarProperty Name="idkh" ColumnName="idkh" />
+                <ScalarProperty Name="accept" ColumnName="accept" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1500,11 +1600,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="dEmail">
-            <EntityTypeMapping TypeName="HPC_DBModel.dEmail">
-              <MappingFragment StoreEntitySet="dEmail">
-                <ScalarProperty Name="addEmail" ColumnName="addEmail" />
+          <EntitySetMapping Name="pTon">
+            <EntityTypeMapping TypeName="HPC_DBModel.pTon">
+              <MappingFragment StoreEntitySet="pTon">
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="vid" ColumnName="vid" />
+                <ScalarProperty Name="soluong" ColumnName="soluong" />
+                <ScalarProperty Name="dongia" ColumnName="dongia" />
+                <ScalarProperty Name="kid" ColumnName="kid" />
+                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1522,7 +1626,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

@@ -16,12 +16,12 @@ namespace QuanLyKho
     {
         public dQC()
         {
-            this.dQCCT = new HashSet<dQCCT>();
+            this.dQCCTs = new HashSet<dQCCT>();
         }
     
         public int qid { get; set; }
         public string qten { get; set; }
     
-        public virtual ICollection<dQCCT> dQCCT { get; set; }
+        public virtual ICollection<dQCCT> dQCCTs { get; set; }
     }
 }

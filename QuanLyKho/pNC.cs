@@ -16,7 +16,7 @@ namespace QuanLyKho
     {
         public pNC()
         {
-            this.pNCCT = new HashSet<pNCCT>();
+            this.pNCCTs = new HashSet<pNCCT>();
         }
     
         public int ncid { get; set; }
@@ -30,6 +30,6 @@ namespace QuanLyKho
         public Nullable<int> idpn { get; set; }
     
         public virtual dK dK { get; set; }
-        public virtual ICollection<pNCCT> pNCCT { get; set; }
+        public virtual ICollection<pNCCT> pNCCTs { get; set; }
     }
 }

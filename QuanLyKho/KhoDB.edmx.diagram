@@ -4,25 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="84b7579c385a4d978547abbab5893a4a" Name="Diagram1">
-        <EntityTypeShape EntityType="HPC_DBModel.dDVT" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.dK" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.dKH" Width="1.5" PointX="3" PointY="32.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.dMay" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+      <Diagram DiagramId="72eb14f3a5654d329fd40df8eaec84cf" Name="Diagram1">
+        <EntityTypeShape EntityType="HPC_DBModel.dDVT" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.dEmail" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.dK" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.dKH" Width="1.5" PointX="3" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.dMay" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HPC_DBModel.dNVT" Width="1.5" PointX="0.75" PointY="28.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.dQC" Width="1.5" PointX="6" PointY="20.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.dQCCT" Width="1.5" PointX="8.25" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.duser" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.dQC" Width="1.5" PointX="8" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.dQCCT" Width="1.5" PointX="10.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.duser" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HPC_DBModel.dVT" Width="1.5" PointX="3" PointY="27.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.pC" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.pCCT" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.pN" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.pNC" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.pNCCT" Width="1.5" PointX="8.25" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.pNCT" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.pSD" Width="1.5" PointX="3" PointY="20" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.pSDCT" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HPC_DBModel.pTB" Width="1.5" PointX="3" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.pC" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.pCCT" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.pN" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.pNC" Width="1.5" PointX="3" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.pNCCT" Width="1.5" PointX="8.25" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.pNCT" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.pSD" Width="1.5" PointX="3" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.pSDCT" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.pTB" Width="1.5" PointX="3" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HPC_DBModel.pTon" Width="1.5" PointX="8" PointY="13.375" IsExpanded="true" />
         <AssociationConnector Association="HPC_DBModel.FK_dQCCT_dDVT" ManuallyRouted="false" />
         <AssociationConnector Association="HPC_DBModel.FK_dVT_dDVT" ManuallyRouted="false" />
         <AssociationConnector Association="HPC_DBModel.FK_pNCT_dDVT1" ManuallyRouted="false" />
@@ -35,6 +37,7 @@
         <AssociationConnector Association="HPC_DBModel.FK_pNC_dK" ManuallyRouted="false" />
         <AssociationConnector Association="HPC_DBModel.FK_pSD_dK" ManuallyRouted="false" />
         <AssociationConnector Association="HPC_DBModel.FK_pTB_dK" ManuallyRouted="false" />
+        <AssociationConnector Association="HPC_DBModel.FK_pTon_dK" ManuallyRouted="false" />
         <AssociationConnector Association="HPC_DBModel.FK_pNCT_dKH" ManuallyRouted="false" />
         <AssociationConnector Association="HPC_DBModel.FK_pSDCT_dMay" ManuallyRouted="false" />
         <AssociationConnector Association="HPC_DBModel.FK_dVT_dNVT1" ManuallyRouted="false" />
@@ -44,11 +47,11 @@
         <AssociationConnector Association="HPC_DBModel.FK_pNCCT_dVT" ManuallyRouted="false" />
         <AssociationConnector Association="HPC_DBModel.FK_pNCT_dVT" ManuallyRouted="false" />
         <AssociationConnector Association="HPC_DBModel.FK_pSDCT_dVT" ManuallyRouted="false" />
+        <AssociationConnector Association="HPC_DBModel.FK_pTon_dVT" ManuallyRouted="false" />
         <AssociationConnector Association="HPC_DBModel.FK_pCCT_pC" ManuallyRouted="false" />
         <AssociationConnector Association="HPC_DBModel.FK_pNCT_pN" ManuallyRouted="false" />
         <AssociationConnector Association="HPC_DBModel.FK_pNCCT_pNC" ManuallyRouted="false" />
         <AssociationConnector Association="HPC_DBModel.FK_pSDCT_pSD1" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="HPC_DBModel.dEmail" Width="1.5" PointX="6.3314119048097233" PointY="28.397439567557274" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

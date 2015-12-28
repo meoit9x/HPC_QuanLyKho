@@ -19,8 +19,8 @@ namespace QuanLyKho.Design
         List<pSDCT> lsd = new List<pSDCT>();
         List<dMay> lMSD;
         private int indexlv = 0;
-        List<ItemPhieu> lTonKho;
-        private ItemPhieu itemphieu;
+        private List<pTon> tonkho = new List<pTon>();
+        private pTon objectton;
         private int indexTon;
         private double soluong;
 
@@ -44,7 +44,7 @@ namespace QuanLyKho.Design
                 tbSoLuong.Enabled = false;
                 cbMaySuDung.Enabled = false;
             }
-            this.lTonKho = Unit.TinhTonKho("");
+            tonkho = STon.getTon();
             Load_LvVatTu();
         }
 
@@ -210,24 +210,16 @@ namespace QuanLyKho.Design
             lvTonKho.FullRowSelect = true;
 
             int i = 0;
-            foreach (ItemPhieu item in lTonKho)
+            foreach (pTon item in tonkho)
             {
                 lvTonKho.Items.Add((i + 1) + "");
-                var vattu = SVatTu.SelectVTbyID(item.IdVatTu);
-                string tenvt, donvitinh;
-                if (vattu != null)
+                if (item.dVT == null)
                 {
-                    tenvt = vattu.vTen;
-                    donvitinh = vattu.dvt1;
+                    item.dVT = SVatTu.SelectVTbyID(Convert.ToInt32(item.vid));
                 }
-                else
-                {
-                    tenvt = "";
-                    donvitinh = "";
-                }
-                lvTonKho.Items[i].SubItems.Add(tenvt);
-                lvTonKho.Items[i].SubItems.Add(item.SoLuong + "");
-                lvTonKho.Items[i].SubItems.Add(donvitinh);
+                lvTonKho.Items[i].SubItems.Add(item.dVT.vTen);
+                lvTonKho.Items[i].SubItems.Add(item.soluong + "");
+                lvTonKho.Items[i].SubItems.Add(item.dVT.dvt1);
                 i++;
             }
         }
@@ -237,27 +229,27 @@ namespace QuanLyKho.Design
             pSDCT objSDCT = new pSDCT();
             objSDCT = lsd[indexlv];
             lsd.RemoveAt(indexlv);
-            ItemPhieu itemphieu = new ItemPhieu();
-            itemphieu.DonGia = Convert.ToDouble(objSDCT.dongia);
-            itemphieu.IdVatTu = Convert.ToInt32(objSDCT.vid);
-            itemphieu.SoLuong = Convert.ToDouble(objSDCT.sdctsoluong);
+            pTon objTon = new pTon();
+            objTon.dongia = Convert.ToDouble(objSDCT.dongia);
+            objTon.vid = Convert.ToInt32(objSDCT.vid);
+            objTon.soluong = Convert.ToDouble(objSDCT.sdctsoluong);
 
-            ItemPhieu objItem = new ItemPhieu();
-            objItem = lTonKho.Find(x => x.IdVatTu == itemphieu.IdVatTu);
+            pTon objItem = new pTon();
+            objItem = tonkho.Find(x => x.vid == objTon.vid);
             if (objItem == null)
             {
-                lTonKho.Add(itemphieu);
+                tonkho.Add(objTon);
             }
             else
             {
-                for (int i = 0; i < lTonKho.Count; i++)
+                for (int i = 0; i < tonkho.Count; i++)
                 {
-                    objItem = lTonKho[i];
-                    if (itemphieu.IdVatTu == objItem.IdVatTu)
+                    objItem = tonkho[i];
+                    if (objectton.vid == objItem.vid)
                     {
-                        itemphieu.SoLuong += objItem.SoLuong;
-                        lTonKho.RemoveAt(i);
-                        lTonKho.Add(itemphieu);
+                        objectton.soluong += Convert.ToDouble(objItem.soluong);
+                        tonkho.RemoveAt(i);
+                        tonkho.Add(objItem);
                         break;
                     }
                 }
@@ -326,29 +318,29 @@ namespace QuanLyKho.Design
                 lsd.RemoveAt(indexlv);
                 lsd.Add(objSDCT);
                 //}
-                int indexfind = lTonKho.FindIndex(x => x.IdVatTu == objSDCT.vid);
-                ItemPhieu objItem = new ItemPhieu();
+                int indexfind = tonkho.FindIndex(x => x.vid == objSDCT.vid);
+                pTon objTon = new pTon();
                 if (indexfind >= 0)
                 {
-                    objItem = lTonKho[indexfind];
+                    objTon = tonkho[indexfind];
                     double soluongthuc = soluong - Convert.ToDouble(objSDCT.sdctsoluong);
-                    objItem.SoLuong = soluongthuc;
-                    lTonKho.RemoveAt(indexfind);
+                    objTon.soluong = soluongthuc;
+                    tonkho.RemoveAt(indexfind);
                     if (soluongthuc != 0)
-                        lTonKho.Add(objItem);
+                        tonkho.Add(objTon);
                 }
                 else
                 {
-                    objItem.IdVatTu = vattu.vid;
-                    objItem.SoLuong = soluong - Convert.ToDouble(tbSoLuong.Text);
-                    lTonKho.Add(objItem);
+                    objTon.vid = vattu.vid;
+                    objTon.soluong = soluong - Convert.ToDouble(tbSoLuong.Text);
+                    tonkho.Add(objTon);
                 }
                 lbLoi.Text = "Sửa thành công.";
             }
             else
             {
                 objSDCT = new pSDCT();
-                objSDCT.sdctsoluong = long.Parse(tbSoLuong.Text);
+                objSDCT.sdctsoluong = Convert.ToDouble(tbSoLuong.Text);
                 objSDCT.vid = vattu.vid;
                 objSDCT.dVT = vattu;
                 objSDCT.dongia = Unit.GetGiaVTTB(vattu.vid);
@@ -371,11 +363,11 @@ namespace QuanLyKho.Design
 
                 lbLoi.Text = "Tạo thành công.";
 
-                double soluong = itemphieu.SoLuong - Convert.ToDouble(objSDCT.sdctsoluong);
-                lTonKho.RemoveAt(indexTon);
-                itemphieu.SoLuong = soluong;
+                double soluong = Convert.ToDouble(objectton.soluong) - Convert.ToDouble(objSDCT.sdctsoluong);
+                tonkho.RemoveAt(indexTon);
+                objectton.soluong = soluong;
                 if (soluong != 0)
-                    lTonKho.Add(itemphieu);
+                    tonkho.Add(objectton);
                 EditForm(false);
             }
             Load_LvVatTu();
@@ -389,13 +381,12 @@ namespace QuanLyKho.Design
                 btTao.Text = "Tạo";
                 btXoa.Enabled = false;
                 btThoat.Enabled = false;
-                itemphieu = new ItemPhieu();
+                objectton = new pTon();
                 indexTon = listviewItem.Index;
-                itemphieu = lTonKho[indexTon];
-                tbSoLuong.Text = itemphieu.SoLuong + "";
+                objectton = tonkho[indexTon];
+                tbSoLuong.Text = objectton.soluong + "";
                 //cbMaySuDung.Text = itemphieu.
-                var vattu = SVatTu.SelectVTbyID(itemphieu.IdVatTu);
-                tbVatTu.Text = vattu.vTen;
+                tbVatTu.Text = objectton.dVT.vTen;
                 lbLoi.Text = "";
             }
         }
@@ -411,10 +402,10 @@ namespace QuanLyKho.Design
             }
             try
             {
-                soluong = itemphieu.SoLuong;
+                soluong = Convert.ToDouble(objectton.soluong);
                 if (lsd.Count == 0)
                 {
-                    soluong = itemphieu.SoLuong;
+                    soluong = Convert.ToDouble(objectton.soluong);
                 }
                 else if (btThoat.Enabled == true)
                 {
@@ -469,6 +460,7 @@ namespace QuanLyKho.Design
                     objSDCT.sdid = objSD.sdid;
                     Main.db.pSDCT.Add(objSDCT);
                     Main.db.SaveChanges();
+                    STon.AddTon(Convert.ToDouble(objSDCT.sdctsoluong), Convert.ToInt32(objSDCT.vid), Convert.ToDouble(objSDCT.dongia), false, Convert.ToInt32(Main.OBJ_KHO.kid));
                 }
                 lbLoi.Text = "Dữ liệu đã được lưu";
                 btHoanTat.Text = "Sửa";

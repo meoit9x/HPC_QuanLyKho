@@ -16,7 +16,7 @@ namespace QuanLyKho
     {
         public int sdctid { get; set; }
         public Nullable<int> vid { get; set; }
-        public Nullable<long> sdctsoluong { get; set; }
+        public Nullable<double> sdctsoluong { get; set; }
         public Nullable<int> sdid { get; set; }
         public string diengiai { get; set; }
         public Nullable<int> mid { get; set; }

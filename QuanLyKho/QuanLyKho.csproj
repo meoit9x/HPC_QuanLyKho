@@ -417,6 +417,9 @@
     <Compile Include="pTB.cs">
       <DependentUpon>KhoDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="pTon.cs">
+      <DependentUpon>KhoDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Service\SBaoCao.cs" />
     <Compile Include="Service\SDVT.cs" />
     <Compile Include="Service\SKH.cs" />
@@ -431,6 +434,7 @@
     <Compile Include="Service\SPhieuSuDung.cs" />
     <Compile Include="Service\SQC.cs" />
     <Compile Include="Service\SQCCT.cs" />
+    <Compile Include="Service\STon.cs" />
     <Compile Include="Service\SVatTu.cs" />
     <Compile Include="Service\Unit.cs" />
     <Compile Include="Util\Utils.cs" />
@@ -531,16 +535,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="KhoDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>KhoDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="bin\Debug\QuanLyKho.exe.config" />
     <None Include="bin\Debug\QuanLyKho.vshost.exe.config" />
     <None Include="bin\Debug\QuanLyKho.vshost.exe.manifest" />
     <None Include="bin\Release\QuanLyKho.exe.config" />
     <None Include="bin\Release\QuanLyKho.vshost.exe.config" />
     <None Include="bin\Release\QuanLyKho.vshost.exe.manifest" />
+    <EntityDeploy Include="KhoDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KhoDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="KhoDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>KhoDB.edmx</DependentUpon>

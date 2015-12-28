@@ -258,6 +258,7 @@ namespace QuanLyKho.Design
                     objPNCT.vid = objPNCCT.vid;
                     Main.db.pNCT.Add(objPNCT);
                     Main.db.SaveChanges();
+                    STon.AddTon(Convert.ToDouble(objPNCT.nctsoluong), Convert.ToInt32(objPNCT.vid), Convert.ToDouble(objPNCT.giathanh / objPNCT.nctsoluong), true, Convert.ToInt32(Main.OBJ_KHO.kid));
                 }
                 objNC.xetduyet = 2;
                 objNC.idpn = phieunhap.nid;

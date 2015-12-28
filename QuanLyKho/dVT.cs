@@ -16,11 +16,12 @@ namespace QuanLyKho
     {
         public dVT()
         {
-            this.dQCCT = new HashSet<dQCCT>();
-            this.pCCT = new HashSet<pCCT>();
-            this.pNCCT = new HashSet<pNCCT>();
-            this.pNCT = new HashSet<pNCT>();
-            this.pSDCT = new HashSet<pSDCT>();
+            this.dQCCTs = new HashSet<dQCCT>();
+            this.pCCTs = new HashSet<pCCT>();
+            this.pNCCTs = new HashSet<pNCCT>();
+            this.pNCTs = new HashSet<pNCT>();
+            this.pSDCTs = new HashSet<pSDCT>();
+            this.pTons = new HashSet<pTon>();
         }
     
         public int vid { get; set; }
@@ -34,10 +35,11 @@ namespace QuanLyKho
     
         public virtual dDVT dDVT { get; set; }
         public virtual dNVT dNVT { get; set; }
-        public virtual ICollection<dQCCT> dQCCT { get; set; }
-        public virtual ICollection<pCCT> pCCT { get; set; }
-        public virtual ICollection<pNCCT> pNCCT { get; set; }
-        public virtual ICollection<pNCT> pNCT { get; set; }
-        public virtual ICollection<pSDCT> pSDCT { get; set; }
+        public virtual ICollection<dQCCT> dQCCTs { get; set; }
+        public virtual ICollection<pCCT> pCCTs { get; set; }
+        public virtual ICollection<pNCCT> pNCCTs { get; set; }
+        public virtual ICollection<pNCT> pNCTs { get; set; }
+        public virtual ICollection<pSDCT> pSDCTs { get; set; }
+        public virtual ICollection<pTon> pTons { get; set; }
     }
 }

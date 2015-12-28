@@ -16,12 +16,12 @@ namespace QuanLyKho
     {
         public dNVT()
         {
-            this.dVT = new HashSet<dVT>();
+            this.dVTs = new HashSet<dVT>();
         }
     
         public int nvtid { get; set; }
         public string tennhom { get; set; }
     
-        public virtual ICollection<dVT> dVT { get; set; }
+        public virtual ICollection<dVT> dVTs { get; set; }
     }
 }

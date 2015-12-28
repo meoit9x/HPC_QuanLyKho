@@ -16,7 +16,7 @@ namespace QuanLyKho
     {
         public dMay()
         {
-            this.pSDCT = new HashSet<pSDCT>();
+            this.pSDCTs = new HashSet<pSDCT>();
         }
     
         public int id { get; set; }
@@ -25,6 +25,6 @@ namespace QuanLyKho
         public Nullable<int> kid { get; set; }
     
         public virtual dK dK { get; set; }
-        public virtual ICollection<pSDCT> pSDCT { get; set; }
+        public virtual ICollection<pSDCT> pSDCTs { get; set; }
     }
 }

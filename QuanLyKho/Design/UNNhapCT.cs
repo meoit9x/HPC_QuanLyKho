@@ -166,7 +166,10 @@ namespace QuanLyKho.Design
             tbSoLuong.Text = isEdit ? objPNCT.nctsoluong + "" : "";
             tbTongTien.Text = isEdit ? objPNCT.giathanh + "" : "";
             if (isEdit)
-                cbKhachHang.Text = objPNCT.dDVT.dvt;
+            {
+                if (objPNCT.dKH != null)
+                    cbKhachHang.Text = objPNCT.dKH.ten;
+            }
             else
                 cbKhachHang.SelectedIndex = -1;
         }
@@ -323,6 +326,7 @@ namespace QuanLyKho.Design
                     objPNCT.nid = objPN.nid;
                     Main.db.pNCT.Add(objPNCT);
                     Main.db.SaveChanges();
+                    STon.AddTon(Convert.ToDouble(objPNCT.nctsoluong), Convert.ToInt32(objPNCT.vid), Convert.ToDouble(objPNCT.giathanh / objPNCT.nctsoluong), true, Convert.ToInt32(Main.OBJ_KHO.kid));
                 }
                 lbLoi.Text = "Dữ liệu đã được lưu.";
                 btXuatThang.Enabled = true;

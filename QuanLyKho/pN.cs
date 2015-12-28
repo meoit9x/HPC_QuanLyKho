@@ -16,7 +16,7 @@ namespace QuanLyKho
     {
         public pN()
         {
-            this.pNCT = new HashSet<pNCT>();
+            this.pNCTs = new HashSet<pNCT>();
         }
     
         public int nid { get; set; }
@@ -27,6 +27,6 @@ namespace QuanLyKho
         public Nullable<int> isupdate { get; set; }
     
         public virtual dK dK { get; set; }
-        public virtual ICollection<pNCT> pNCT { get; set; }
+        public virtual ICollection<pNCT> pNCTs { get; set; }
     }
 }

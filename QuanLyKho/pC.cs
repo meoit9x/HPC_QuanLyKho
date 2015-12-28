@@ -16,7 +16,7 @@ namespace QuanLyKho
     {
         public pC()
         {
-            this.pCCT = new HashSet<pCCT>();
+            this.pCCTs = new HashSet<pCCT>();
         }
     
         public int cid { get; set; }
@@ -27,6 +27,6 @@ namespace QuanLyKho
     
         public virtual dK dK { get; set; }
         public virtual dK dK1 { get; set; }
-        public virtual ICollection<pCCT> pCCT { get; set; }
+        public virtual ICollection<pCCT> pCCTs { get; set; }
     }
 }

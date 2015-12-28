@@ -26,6 +26,7 @@ namespace QuanLyKho
         }
     
         public DbSet<dDVT> dDVT { get; set; }
+        public DbSet<dEmail> dEmail { get; set; }
         public DbSet<dK> dK { get; set; }
         public DbSet<dKH> dKH { get; set; }
         public DbSet<dMay> dMay { get; set; }
@@ -33,7 +34,7 @@ namespace QuanLyKho
         public DbSet<dQC> dQC { get; set; }
         public DbSet<dQCCT> dQCCT { get; set; }
         public DbSet<duser> duser { get; set; }
-        public DbSet<dVT> dVT { get; set; }
+        public DbSet<dVT> dVTs { get; set; }
         public DbSet<pC> pC { get; set; }
         public DbSet<pCCT> pCCT { get; set; }
         public DbSet<pN> pN { get; set; }
@@ -43,6 +44,6 @@ namespace QuanLyKho
         public DbSet<pSD> pSD { get; set; }
         public DbSet<pSDCT> pSDCT { get; set; }
         public DbSet<pTB> pTB { get; set; }
-        public DbSet<dEmail> dEmail { get; set; }
+        public DbSet<pTon> pTon { get; set; }
     }
 }

@@ -16,27 +16,29 @@ namespace QuanLyKho
     {
         public dK()
         {
-            this.dMay = new HashSet<dMay>();
-            this.duser = new HashSet<duser>();
-            this.pC = new HashSet<pC>();
-            this.pC1 = new HashSet<pC>();
-            this.pN = new HashSet<pN>();
-            this.pNC = new HashSet<pNC>();
-            this.pSD = new HashSet<pSD>();
-            this.pTB = new HashSet<pTB>();
+            this.dMays = new HashSet<dMay>();
+            this.dusers = new HashSet<duser>();
+            this.pCs = new HashSet<pC>();
+            this.pCs1 = new HashSet<pC>();
+            this.pNs = new HashSet<pN>();
+            this.pNCs = new HashSet<pNC>();
+            this.pSDs = new HashSet<pSD>();
+            this.pTBs = new HashSet<pTB>();
+            this.pTons = new HashSet<pTon>();
         }
     
         public int kid { get; set; }
         public string kten { get; set; }
         public string diachi { get; set; }
     
-        public virtual ICollection<dMay> dMay { get; set; }
-        public virtual ICollection<duser> duser { get; set; }
-        public virtual ICollection<pC> pC { get; set; }
-        public virtual ICollection<pC> pC1 { get; set; }
-        public virtual ICollection<pN> pN { get; set; }
-        public virtual ICollection<pNC> pNC { get; set; }
-        public virtual ICollection<pSD> pSD { get; set; }
-        public virtual ICollection<pTB> pTB { get; set; }
+        public virtual ICollection<dMay> dMays { get; set; }
+        public virtual ICollection<duser> dusers { get; set; }
+        public virtual ICollection<pC> pCs { get; set; }
+        public virtual ICollection<pC> pCs1 { get; set; }
+        public virtual ICollection<pN> pNs { get; set; }
+        public virtual ICollection<pNC> pNCs { get; set; }
+        public virtual ICollection<pSD> pSDs { get; set; }
+        public virtual ICollection<pTB> pTBs { get; set; }
+        public virtual ICollection<pTon> pTons { get; set; }
     }
 }

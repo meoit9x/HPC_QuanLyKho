@@ -38,43 +38,13 @@ namespace QuanLyKho.Service
         public static List<dNVT> EditNhomHang(dNVT objNVT, string tenNhom)
         {
             Main.db.SaveChanges();
-            var lvt = (from vt in Main.db.dVT where vt.nvtid == objNVT.nvtid select vt).ToList();
+            var lvt = (from vt in Main.db.dVTs where vt.nvtid == objNVT.nvtid select vt).ToList();
             //foreach (dVT dvt in lvt)
             //{
             //EditTenVatTu(dvt);
             //}
             return SearchNVT(tenNhom);
         }
-
-        public static dNVT SelectNVTbyID(int idNVT)
-        {
-            return (from dnvt in Main.db.dNVT where dnvt.nvtid == idNVT select dnvt).FirstOrDefault();
-        }
-
-        public static void EditTenVatTu1(dVT dvt)
-        {
-            string vten;
-            int idvt = (int)dvt.nvtid;
-            dNVT dnvt = new dNVT();
-            dnvt = SelectNVTbyID(idvt);
-            List<dQCCT> lQCCT = new List<dQCCT>();
-            lQCCT = SQCCT.SelectQCCTByidVT(dvt.vid);
-            vten = dnvt.tennhom;
-            if (lQCCT.Count() != 0)
-            {
-                vten += " ";
-                foreach (dQCCT qcct in lQCCT)
-                {
-                    vten += qcct.qthongso + "/";
-                }
-                vten = vten.Substring(0, vten.Length - 1);
-            }
-            dvt.vTen = vten;
-            Main.db.SaveChanges();
-
-        }
-
-
 
         public static List<dNVT> XoaNhomHang(dNVT objNVT, string tenNhom)
         {
@@ -88,7 +58,7 @@ namespace QuanLyKho.Service
 
         public static List<dVT> SelectVTByidNVT(int idVatTu)
         {
-            return (from dvt in Main.db.dVT where dvt.nvtid == idVatTu select dvt).ToList();
+            return (from dvt in Main.db.dVTs where dvt.nvtid == idVatTu select dvt).ToList();
         }
     }
 }

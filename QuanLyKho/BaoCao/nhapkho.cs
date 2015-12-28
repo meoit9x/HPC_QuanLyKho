@@ -42,9 +42,9 @@ namespace QuanLyKho.BaoCao
             dataSheet.Cells[5, 3].Value = "Ngày " + ngaynhap.Day + " tháng " + ngaynhap.Month + " năm " + ngaynhap.Year;
             dataSheet.Cells[5, 6].Value = item.nmaso;
 
-            dataSheet.InsertRow(rowStart, item.pNCT.Count, rowStart);
+            dataSheet.InsertRow(rowStart, item.pNCTs.Count, rowStart);
 
-            foreach (var ct in item.pNCT.ToList())
+            foreach (var ct in item.pNCTs.ToList())
             {
                 dataSheet.Cells[rowCurrent, 1].Value = i;
                 dataSheet.Cells[rowCurrent, 2].Value = ct.dVT1.vTen;
@@ -193,9 +193,9 @@ namespace QuanLyKho.BaoCao
             dataSheet.Cells[5, 6].Value = item.cmaso;
             dataSheet.Cells[7, 3].Value = item.dK1.kten;
 
-            dataSheet.InsertRow(rowCurrent, item.pCCT.Count, rowStart);
+            dataSheet.InsertRow(rowCurrent, item.pCCTs.Count, rowStart);
 
-            foreach (var pc in item.pCCT.ToList())
+            foreach (var pc in item.pCCTs.ToList())
             {
                 double? thanhtien = pc.dongia * pc.cctsoluong;
 

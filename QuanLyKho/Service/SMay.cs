@@ -14,12 +14,17 @@ namespace QuanLyKho.Service
             return (from smay in Main.db.dMay where smay.kid == Main.OBJ_KHO.kid select smay).ToList();
         }
 
-        public static List<dMay> SearchTen(string tenMay)
+        public static List<dMay> GetByKho(int kid)
+        {
+            return (from smay in Main.db.dMay where smay.kid == kid select smay).ToList();
+        }
+
+        public static List<dMay> SearchTen(string tenMay,int kid)
         {
             if (!"".Equals(tenMay))
-                return (from smay in Main.db.dMay where smay.tenmay.Contains(tenMay) where smay.kid == Main.OBJ_KHO.kid select smay).ToList();
+                return (from smay in Main.db.dMay where smay.maso.Contains(tenMay) where smay.kid == kid select smay).ToList();
             else
-                return (from smay in Main.db.dMay where smay.kid == Main.OBJ_KHO.kid select smay).ToList();
+                return (from smay in Main.db.dMay where smay.kid == kid select smay).ToList();
         }
 
         public static dMay SearchMay(int idmay)

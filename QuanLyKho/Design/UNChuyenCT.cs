@@ -82,6 +82,7 @@ namespace QuanLyKho.Design
             cbDonVi.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
+
         private void EditForm(bool isEdit)
         {
             btTao.Text = (isEdit && objPhieuChuyen.dK == null) ? "Sửa" : "Tạo";

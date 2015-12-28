@@ -13,8 +13,9 @@ namespace QuanLyKho.Design
 {
     public partial class UCMay : UserControl
     {
-        List<dMay> lMay;
-        dMay dmay = new dMay();
+        private List<dMay> lMay;
+        private dMay dmay = new dMay();
+        private List<dK> lkho;
 
         public UCMay()
         {
@@ -66,7 +67,6 @@ namespace QuanLyKho.Design
 
         private void DisplayEdit(bool isShow)
         {
-            btXoa.Visible = isShow;
             btThoat.Visible = isShow;
             if (isShow)
             {
@@ -106,6 +106,7 @@ namespace QuanLyKho.Design
             {
                 dmay.tenmay = tbTenMay.Text;
                 dmay.maso = tbMaSo.Text;
+                dmay.kid = lkho[cbDonVi.SelectedIndex].kid;
                 Main.db.SaveChanges();
                 lbLoi.Text = "Sửa thành công.";
             }
@@ -113,14 +114,14 @@ namespace QuanLyKho.Design
             {
                 dmay = new dMay();
                 dmay.tenmay = tbTenMay.Text;
-                dmay.kid = Main.OBJ_KHO.kid;
+                dmay.kid = lkho[cbDonVi.SelectedIndex].kid;
                 dmay.maso = tbMaSo.Text;
                 Main.db.dMay.Add(dmay);
                 Main.db.SaveChanges();
                 lbLoi.Text = "Tạo thành công.";
                 DisplayEdit(false);
             }
-            lMay = SMay.GetAll();
+            lMay = SMay.GetByKho(lkho[cbDonVi.SelectedIndex].kid);
             Load_LvKhachHang();
         }
 
@@ -140,7 +141,7 @@ namespace QuanLyKho.Design
         {
             Main.db.dMay.Remove(dmay);
             Main.db.SaveChanges();
-            lMay = SMay.GetAll();
+            lMay = SMay.GetByKho(lkho[cbDonVi.SelectedIndex].kid);
             Load_LvKhachHang();
             DisplayEdit(false);
             lbLoi.Text = "Xóa thành công.";
@@ -148,13 +149,31 @@ namespace QuanLyKho.Design
 
         private void UCMay_Load(object sender, EventArgs e)
         {
-            lMay = SMay.GetAll();
-            Load_LvKhachHang();
+            SetupComboBox();
         }
 
         private void tbSearch_KeyUp(object sender, KeyEventArgs e)
         {
-            lMay = SMay.SearchTen(tbSearch.Text);
+            lMay = SMay.SearchTen(tbSearch.Text, lkho[cbDonVi.SelectedIndex].kid);
+            Load_LvKhachHang();
+        }
+
+        private void SetupComboBox()
+        {
+            lkho = new List<dK>();
+            lkho = SKho.SearchKho();
+            foreach (dK objKho in lkho)
+            {
+                cbDonVi.Items.Add(objKho.kten);
+            }
+            cbDonVi.SelectedIndex = 0;
+            cbDonVi.DropDownStyle = ComboBoxStyle.DropDownList;
+
+        }
+
+        private void cbDonVi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lMay = SMay.GetByKho(lkho[cbDonVi.SelectedIndex].kid);
             Load_LvKhachHang();
         }
 

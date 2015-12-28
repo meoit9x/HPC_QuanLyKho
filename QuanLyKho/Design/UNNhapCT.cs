@@ -303,7 +303,7 @@ namespace QuanLyKho.Design
             {
                 ngayhoadon = Convert.ToDateTime(tbNHD.Text);
             }
-            catch (Exception ex)
+            catch 
             {
                 lbLoi.Text = "Sai định dạng ngày tháng.";
                 tbNgayHoaDon.Focus();

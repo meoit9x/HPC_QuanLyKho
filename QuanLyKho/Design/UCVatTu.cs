@@ -18,7 +18,6 @@ namespace QuanLyKho.Design
     {
         private List<dVT> lvt;
         private dVT dvt = new dVT();
-        private List<dNVT> lNVT;
 
         public UCVatTu()
         {

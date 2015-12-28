@@ -230,6 +230,7 @@
             this.tbSoLuong.Name = "tbSoLuong";
             this.tbSoLuong.Size = new System.Drawing.Size(226, 26);
             this.tbSoLuong.TabIndex = 59;
+            this.tbSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSoLuong_KeyPress_1);
             // 
             // label2
             // 

@@ -278,7 +278,7 @@ namespace QuanLyKho.Design
             {
                 tgCan = Convert.ToDateTime(tbTgCan.Text);
             }
-            catch (Exception ex)
+            catch 
             {
                 lbLoi.Text = "Định dạng ngày tháng không đúng.";
                 tbTgCan.Focus();
@@ -309,6 +309,11 @@ namespace QuanLyKho.Design
             btInPhieu.Text = inphieu;
             gbContent.Enabled = false;
             loading.Dispose();
+        }
+
+        private void tbSoLuong_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            Unit.IsNumberic(sender, e);
         }
 
     }

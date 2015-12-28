@@ -144,7 +144,7 @@ namespace QuanLyKho.Util
                 excelStream.Close();
                 return excelPackage;
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("Phát sinh lỗi ở lấy template");
                 return null;

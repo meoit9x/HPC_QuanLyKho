@@ -103,7 +103,7 @@ namespace QuanLyKho.Service
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
 

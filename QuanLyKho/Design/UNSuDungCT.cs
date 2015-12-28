@@ -17,7 +17,6 @@ namespace QuanLyKho.Design
         pSD objSD = new pSD();
         pSDCT objSDCT;
         List<pSDCT> lsd = new List<pSDCT>();
-        List<dK> lkho;
         List<dMay> lMSD;
         private int indexlv = 0;
         List<ItemPhieu> lTonKho;

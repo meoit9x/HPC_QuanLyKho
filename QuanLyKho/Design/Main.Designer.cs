@@ -62,6 +62,7 @@
             this.mcSLXuat = new DevExpress.XtraBars.Navigation.TileNavItem();
             this.mcSLChuyen = new DevExpress.XtraBars.Navigation.TileNavItem();
             this.mcSLTon = new DevExpress.XtraBars.Navigation.TileNavItem();
+            this.mnTaiKhoan = new DevExpress.XtraBars.Navigation.TileNavCategory();
             this.btExit = new DevExpress.XtraBars.Navigation.NavButton();
             this.mnsThang = new DevExpress.XtraBars.Navigation.TileNavSubItem();
             this.mnsPhatSinh = new DevExpress.XtraBars.Navigation.TileNavSubItem();
@@ -90,6 +91,7 @@
             this.tileNavPane1.Buttons.Add(this.mnDanhMuc);
             this.tileNavPane1.Buttons.Add(this.mnNghiepVu);
             this.tileNavPane1.Buttons.Add(this.mnThongKe);
+            this.tileNavPane1.Buttons.Add(this.mnTaiKhoan);
             this.tileNavPane1.Buttons.Add(this.btExit);
             // 
             // tileNavCategory1
@@ -386,6 +388,23 @@
             this.mcSLTon.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mcSLTon.Tile.Name = "tileBarItem4";
             // 
+            // mnTaiKhoan
+            // 
+            this.mnTaiKhoan.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.mnTaiKhoan.Appearance.Options.UseForeColor = true;
+            this.mnTaiKhoan.AppearanceHovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.mnTaiKhoan.AppearanceHovered.Options.UseForeColor = true;
+            this.mnTaiKhoan.Caption = "Tài khoản";
+            this.mnTaiKhoan.Name = "mnTaiKhoan";
+            this.mnTaiKhoan.OptionsDropDown.BackColor = System.Drawing.Color.Empty;
+            this.mnTaiKhoan.OwnerCollection = null;
+            // 
+            // 
+            // 
+            this.mnTaiKhoan.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
+            this.mnTaiKhoan.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
+            this.mnTaiKhoan.Visible = false;
+            // 
             // btExit
             // 
             this.btExit.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Right;
@@ -563,6 +582,7 @@
         private DevExpress.XtraBars.Navigation.TileNavItem mncMaySuDung;
         private DevExpress.XtraBars.Navigation.TileNavItem mncDieuChuyen;
         private DevExpress.XtraBars.Navigation.TileNavItem mncXetDuyet;
+        private DevExpress.XtraBars.Navigation.TileNavCategory mnTaiKhoan;
 
     }
 }

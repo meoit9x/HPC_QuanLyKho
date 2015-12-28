@@ -36,7 +36,7 @@ namespace QuanLyKho.Design
                     string id = tacvu.Substring(1);
                     pCid = Convert.ToInt32(id);
                 }
-                catch (Exception ex)
+                catch
                 {
                     return;
                 }

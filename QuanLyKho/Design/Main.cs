@@ -39,6 +39,7 @@ namespace QuanLyKho.Design
             mncDuTru.ElementClick += mncNhuCau_ElementClick;
             mncKhachHang.ElementClick += mncKhachHang_ElementClick;
             mncMaySuDung.ElementClick += mncTMaySuDung_ElementClick;
+            mnTaiKhoan.ElementClick += mnTaiKhoan_ElementClick;
             mncXetDuyet.ElementClick += mncXetNhuCau_ElementClick;
             tbMatKhau.PasswordChar = '*';
             
@@ -157,6 +158,13 @@ namespace QuanLyKho.Design
             pnParent.Controls.Add(khachhang);
         }
 
+        public static void AddTaiKhoan()
+        {
+            UNTaiKhoan taikhoan = new UNTaiKhoan();
+            pnParent.Controls.Clear();
+            pnParent.Controls.Add(taikhoan);
+        }
+
         public static void AddNhapNhuCau()
         {
             UNNhuCau ucnhapnhucau = new UNNhuCau();
@@ -255,6 +263,7 @@ namespace QuanLyKho.Design
             mnNghiepVu.Visible = isShow;
             mnThongKe.Visible = isShow;
             mnThongBao.Visible = isShow;
+            mnTaiKhoan.Visible = isShow;
             btExit.Visible = isShow;
             pnLogin.Visible = !isShow;
             if (position == 1)
@@ -373,6 +382,12 @@ namespace QuanLyKho.Design
         private void mncKhachHang_ElementClick(object sender, DevExpress.XtraBars.Navigation.NavElementEventArgs e)
         {
             AddKhachHang();
+            tileNavPane1.HideDropDownWindow();
+        }
+
+        private void mnTaiKhoan_ElementClick(object sender, DevExpress.XtraBars.Navigation.NavElementEventArgs e)
+        {
+            AddTaiKhoan();
             tileNavPane1.HideDropDownWindow();
         }
 

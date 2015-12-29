@@ -212,7 +212,7 @@ namespace QuanLyKho.Util
                 {
                     foreach (MemoryStream item in attachs)
                     {
-                        mail.Attachments.Add(new Attachment(item, "example.txt", "text/plain"));
+                        mail.Attachments.Add(new Attachment(item, "filereport.xlsx", "application/vnd.ms-excel"));
                     }
                 }
 

@@ -242,7 +242,7 @@ namespace QuanLyKho.BaoCao
             Util.Utils.DialogSave(excelStream);
         }
 
-        public static void xuatbaocaonhucau(pNC objNC, List<pNCCT> lpncct)
+        public static MemoryStream xuatbaocaonhucau(pNC objNC, List<pNCCT> lpncct)
         {
             int i = 1;
             int rowStart = 11;
@@ -254,7 +254,7 @@ namespace QuanLyKho.BaoCao
             if (excelPackage == null)
             {
                 MessageBox.Show("Chưa có template");
-                return;
+                return null;
             }
 
             OfficeOpenXml.ExcelWorkbook book = excelPackage.Workbook;
@@ -325,7 +325,7 @@ namespace QuanLyKho.BaoCao
             excelPackage.SaveAs(excelStream);
             excelStream.Seek(0, SeekOrigin.Begin);
 
-            Util.Utils.DialogSave(excelStream);
+            return excelStream;
         }
     }
 }

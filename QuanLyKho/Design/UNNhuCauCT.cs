@@ -15,6 +15,7 @@ using System.Net.Mail;
 using System.Net;
 using QuanLyKho.Service;
 using QuanLyKho.ObjectRefrence;
+using System.IO;
 
 namespace QuanLyKho.Design
 {
@@ -25,7 +26,7 @@ namespace QuanLyKho.Design
         private List<pNCCT> lpncct = new List<pNCCT>();
         private string xoaphieu = "Xóa phiếu";
         private string inphieu = "In phiếu";
-
+        private MemoryStream ms = null;
         public UNNhuCauCT(pNC objNC)
         {
             InitializeComponent();
@@ -263,7 +264,8 @@ namespace QuanLyKho.Design
             }
             else
             {
-                QuanLyKho.BaoCao.nhapkho.xuatbaocaonhucau(objNC, lpncct);
+                ms = QuanLyKho.BaoCao.nhapkho.xuatbaocaonhucau(objNC, lpncct);
+                QuanLyKho.Util.Utils.DialogSave(ms);
             }
             ViewEdit(false);
         }
@@ -303,7 +305,12 @@ namespace QuanLyKho.Design
                 + "\nXin phép được gửi nhu cầu vật tư, chi tiết trong file đính kèm."
                 + "\n\nKính thư!"
                 + "\nNhân viên : " + Main.OBJ_KHO.uname;
-            Unit.sendMail(subject, body);
+
+            var lEmail = (from objEmail in Main.db.dEmail select objEmail).ToList();
+            List<string> touser = lEmail.Select(x => x.addEmail).ToList();
+
+            QuanLyKho.Util.Utils.SendMail(subject, body, touser, "ktcd.hpc@gmail.com", "1AnhTuan1*", ms);
+            //Unit.sendMail(subject, body);
 
             lbLoi.Text = "Gửi mail thành công.";
             btInPhieu.Text = inphieu;

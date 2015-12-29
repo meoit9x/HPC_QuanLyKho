@@ -49,14 +49,14 @@ namespace QuanLyKho.Design
 
             ColumnHeader chDiaChi;
             chDiaChi = new ColumnHeader();
-            chDiaChi.Text = "Ngày cần vật tư";
+            chDiaChi.Text = "Trạng thái";
             chDiaChi.Width = 120;
             chDiaChi.TextAlign = HorizontalAlignment.Center;
             lvPhieuNhap.Columns.Add(chDiaChi);
 
             ColumnHeader chTrangThai;
             chTrangThai = new ColumnHeader();
-            chTrangThai.Text = "Trạng thái";
+            chTrangThai.Text = "Ngày cần vật tư";
             chTrangThai.Width = 120;
             chTrangThai.TextAlign = HorizontalAlignment.Center;
             lvPhieuNhap.Columns.Add(chTrangThai);
@@ -77,7 +77,7 @@ namespace QuanLyKho.Design
             {
                 lvPhieuNhap.Items.Add((i + 1) + "");
                 lvPhieuNhap.Items[i].SubItems.Add(Convert.ToString(pn.ncdate));
-                lvPhieuNhap.Items[i].SubItems.Add(pn.isgui == 1 ?"Đã gửi chờ duyệt":"Chưa gửi");
+                lvPhieuNhap.Items[i].SubItems.Add(pn.xetduyet == 2 ? "Đã duyệt" : "Đang chờ");
                 lvPhieuNhap.Items[i].SubItems.Add(Convert.ToString(pn.tgcan));
                 lvPhieuNhap.Items[i].SubItems.Add(pn.mucdich);
                 i++;

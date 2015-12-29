@@ -82,6 +82,11 @@ namespace QuanLyKho.Design
             }
         }
 
+        private void btXemBaoCao_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

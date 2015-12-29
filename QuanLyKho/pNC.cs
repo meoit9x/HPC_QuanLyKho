@@ -28,6 +28,7 @@ namespace QuanLyKho
         public Nullable<int> isgui { get; set; }
         public Nullable<int> xetduyet { get; set; }
         public Nullable<int> idpn { get; set; }
+        public string lydohuy { get; set; }
     
         public virtual dK dK { get; set; }
         public virtual ICollection<pNCCT> pNCCTs { get; set; }

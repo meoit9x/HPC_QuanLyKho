@@ -269,6 +269,7 @@
           <Property Name="isgui" Type="int" />
           <Property Name="xetduyet" Type="int" />
           <Property Name="idpn" Type="int" />
+          <Property Name="lydohuy" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="pNCCT">
           <Key>
@@ -971,6 +972,7 @@
           <Property Name="idpn" Type="Int32" />
           <NavigationProperty Name="dK" Relationship="HPC_DBModel.FK_pNC_dK" FromRole="pNC" ToRole="dK" />
           <NavigationProperty Name="pNCCTs" Relationship="HPC_DBModel.FK_pNCCT_pNC" FromRole="pNC" ToRole="pNCCT" />
+          <Property Type="String" Name="lydohuy" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="pNCCT">
           <Key>
@@ -1524,6 +1526,7 @@
           <EntitySetMapping Name="pNC">
             <EntityTypeMapping TypeName="HPC_DBModel.pNC">
               <MappingFragment StoreEntitySet="pNC">
+                <ScalarProperty Name="lydohuy" ColumnName="lydohuy" />
                 <ScalarProperty Name="ncid" ColumnName="ncid" />
                 <ScalarProperty Name="ncdate" ColumnName="ncdate" />
                 <ScalarProperty Name="kid" ColumnName="kid" />

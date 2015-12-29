@@ -37,8 +37,8 @@ namespace QuanLyKho.Design
                 btInPhieu.Text = xoaphieu;
             }
             else
-            {
-                tbMucDich.Text = objNC.mucdich;
+            {                tbMucDich.Text = objNC.mucdich;
+
                 if (objNC.tgcan == null)
                     objNC.tgcan = Main.getDateServer();
                 tbTgCan.Text = Convert.ToDateTime(objNC.tgcan).ToString("dd/MM/yyyy");
@@ -48,8 +48,13 @@ namespace QuanLyKho.Design
                 }
                 else
                 {
+                    if (objNC.xetduyet == 2)
+                    {
+                        tbTgCan.Enabled = false;
+                        tbMucDich.Enabled = false;
+                        btHoanTat.Enabled = false;
+                    }
                     gbContent.Enabled = false;
-                    btHoanTat.Enabled = false;
                     btInPhieu.Text = inphieu;
                 }
             }
@@ -85,10 +90,6 @@ namespace QuanLyKho.Design
             if (objNC == null)
                 return;
             lpncct = SNhuCau.GetNCCTByIDNC(objNC.ncid);
-            if (lpncct.Count != 0)
-                btHoanTat.Enabled = true;
-            else
-                btHoanTat.Enabled = false;
             lvNhuCau.Items.Clear();
             lvNhuCau.Columns.Clear();
             lvNhuCau.View = View.Details;

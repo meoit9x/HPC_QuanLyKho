@@ -90,6 +90,7 @@
             this.btXemBaoCao.TabIndex = 73;
             this.btXemBaoCao.Text = "Xem báo cáo";
             this.btXemBaoCao.UseVisualStyleBackColor = true;
+            this.btXemBaoCao.Click += new System.EventHandler(this.btXemBaoCao_Click);
             // 
             // label3
             // 

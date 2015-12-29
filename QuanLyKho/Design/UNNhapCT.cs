@@ -44,6 +44,7 @@ namespace QuanLyKho.Design
                 tbVatTu.Enabled = false;
                 cbKhachHang.Enabled = false;
                 tbSoLuong.Enabled = false;
+
             }
         }
 

@@ -14,10 +14,10 @@ namespace QuanLyKho.Design
 {
     public partial class UNSuDungCT : UserControl
     {
-        pSD objSD = new pSD();
-        pSDCT objSDCT;
-        List<pSDCT> lsd = new List<pSDCT>();
-        List<dMay> lMSD;
+        private pSD objSD = new pSD();
+        private pSDCT objSDCT;
+        private List<pSDCT> lsd = new List<pSDCT>();
+        private List<dMay> lMSD;
         private int indexlv = 0;
         private List<pTon> tonkho = new List<pTon>();
         private pTon objectton;
@@ -44,13 +44,14 @@ namespace QuanLyKho.Design
                 tbSoLuong.Enabled = false;
                 cbMaySuDung.Enabled = false;
             }
-            tonkho = STon.getTon();
-            Load_LvVatTu();
         }
 
         private void UNSDChiTiet_Load(object sender, EventArgs e)
         {
             SetupComboBoxMay();
+            tonkho = new List<pTon>();
+            tonkho = STon.getTon();
+            Load_LvVatTu();
             Load_LvSuDung();
 
         }
@@ -234,7 +235,7 @@ namespace QuanLyKho.Design
             objTon.vid = Convert.ToInt32(objSDCT.vid);
             objTon.soluong = Convert.ToDouble(objSDCT.sdctsoluong);
 
-            pTon objItem = new pTon();
+            /*pTon objItem = new pTon();
             objItem = tonkho.Find(x => x.vid == objTon.vid);
             if (objItem == null)
             {
@@ -253,7 +254,7 @@ namespace QuanLyKho.Design
                         break;
                     }
                 }
-            }
+            }*/
             Load_LvVatTu();
             Load_LvSuDung();
             EditForm(false);
@@ -302,6 +303,12 @@ namespace QuanLyKho.Design
                 return;
             }
 
+            if (lMSD.Count == 0)
+                {
+                    lbLoi.Text = "Máy sử dụng không được để trống.";
+                    return;
+                }
+
             if (btThoat.Enabled == true)
             {
                 objSDCT.sdctsoluong = long.Parse(tbSoLuong.Text);
@@ -318,7 +325,7 @@ namespace QuanLyKho.Design
                 lsd.RemoveAt(indexlv);
                 lsd.Add(objSDCT);
                 //}
-                int indexfind = tonkho.FindIndex(x => x.vid == objSDCT.vid);
+                /*int indexfind = tonkho.FindIndex(x => x.vid == objSDCT.vid);
                 pTon objTon = new pTon();
                 if (indexfind >= 0)
                 {
@@ -334,7 +341,7 @@ namespace QuanLyKho.Design
                     objTon.vid = vattu.vid;
                     objTon.soluong = soluong - Convert.ToDouble(tbSoLuong.Text);
                     tonkho.Add(objTon);
-                }
+                }*/
                 lbLoi.Text = "Sửa thành công.";
             }
             else
@@ -345,13 +352,8 @@ namespace QuanLyKho.Design
                 objSDCT.dVT = vattu;
                 objSDCT.dongia = Unit.GetGiaVTTB(vattu.vid);
                 objSDCT.diengiai = tbDienGiai.Text;
-                if (lMSD.Count != 0)
-                    objSDCT.mid = lMSD[cbMaySuDung.SelectedIndex].id;
-                else
-                {
-                    lbLoi.Text = "Máy sử dụng không được để trống.";
-                    return;
-                }
+                objSDCT.mid = lMSD[cbMaySuDung.SelectedIndex].id;
+                
                 if (objSD.dK != null)
                 {
                     lsd = SPhieuSuDung.EditMotPhieuSD(objSDCT);
@@ -362,12 +364,12 @@ namespace QuanLyKho.Design
                 }
 
                 lbLoi.Text = "Tạo thành công.";
-
+                /*
                 double soluong = Convert.ToDouble(objectton.soluong) - Convert.ToDouble(objSDCT.sdctsoluong);
                 tonkho.RemoveAt(indexTon);
                 objectton.soluong = soluong;
                 if (soluong != 0)
-                    tonkho.Add(objectton);
+                    tonkho.Add(objectton);*/
                 EditForm(false);
             }
             Load_LvVatTu();
@@ -403,7 +405,7 @@ namespace QuanLyKho.Design
             try
             {
                 soluong = Convert.ToDouble(objectton.soluong);
-                if (lsd.Count == 0)
+                /*if (lsd.Count == 0)
                 {
                     soluong = Convert.ToDouble(objectton.soluong);
                 }
@@ -414,7 +416,7 @@ namespace QuanLyKho.Design
                         if (objItem.vid == vattu.vid)
                             soluong += Convert.ToDouble(objItem.sdctsoluong);
                     }
-                }
+                }*/
                 if (Convert.ToInt32(tbSoLuong.Text) > soluong)
                 {
                     lbLoi.Text = "Số lượng không được vượt quá số tồn.";

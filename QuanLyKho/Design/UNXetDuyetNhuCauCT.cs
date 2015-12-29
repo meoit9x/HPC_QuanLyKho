@@ -279,6 +279,7 @@ namespace QuanLyKho.Design
                 gbContent.Enabled = false;
                 tbNHD.Enabled = false;
                 tbSoHoaDon.Enabled = false;
+                btHuy.Enabled = false;
 
                 String subject = "Xác nhận nhu cầu vật tư " + Main.OBJ_KHO.dK.kten;
                 String body = "Kính gửi TGĐ, PTGĐ, KTCĐ,"
@@ -302,25 +303,23 @@ namespace QuanLyKho.Design
 
         private void btHuy_Click(object sender, EventArgs e)
         {
+
             // show dialog
-            DialogLoading loading = new DialogLoading();
+            DialogHuyNC loading = new DialogHuyNC(objNC);
             loading.Show();
-            String subject = "Hủy nhu cầu vật tư " + Main.OBJ_KHO.dK.kten;
-            String body = "Kính gửi TGĐ, PTGĐ, KTCĐ,"
-                + "\n\nTổ trưởng tổ sửa chữa đơn vị " + Main.OBJ_KHO.dK.kten + "."
-                + "\nXin phép được gửi nhu cầu vật tư, chi tiết trong file đính kèm."
-                + "\n\nKính thư!"
-                + "\nNhân viên : " + Main.OBJ_KHO.uname;
+            Main.pnParent.Enabled = false;
+            
 
-            var lEmail = (from objEmail in Main.db.dEmail select objEmail).ToList();
-            List<string> touser = lEmail.Select(x => x.addEmail).ToList();
-            // lấy báo cáo
-
-            // gửi mail và báo cáo
-            QuanLyKho.Util.Utils.SendMail(subject, body, touser, "ktcd.hpc@gmail.com",
-                "1AnhTuan1*", "NhuCau_" + Main.OBJ_KHO.dK.kten + ".xlsx", null);
-            loading.Dispose();
-            lbLoi.Text = "Hoàn tất nhu cầu.";
+            if (objNC.xetduyet == 3)
+            {
+                btHoanTat.Enabled = false;
+                gbContent.Enabled = false;
+                tbNHD.Enabled = false;
+                tbSoHoaDon.Enabled = false;
+                btHuy.Enabled = false;
+                lbLoi.Text = "Hoàn tất nhu cầu.";
+            }
+            
         }
 
     }

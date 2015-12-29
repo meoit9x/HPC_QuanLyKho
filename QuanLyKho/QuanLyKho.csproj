@@ -171,6 +171,12 @@
     <Compile Include="dEmail.cs">
       <DependentUpon>KhoDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Design\DialogHuyNC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Design\DialogHuyNC.Designer.cs">
+      <DependentUpon>DialogHuyNC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Design\DialogLoading.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -438,6 +444,9 @@
     <Compile Include="Service\SVatTu.cs" />
     <Compile Include="Service\Unit.cs" />
     <Compile Include="Util\Utils.cs" />
+    <EmbeddedResource Include="Design\DialogHuyNC.resx">
+      <DependentUpon>DialogHuyNC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Design\DialogLoading.resx">
       <DependentUpon>DialogLoading.cs</DependentUpon>
     </EmbeddedResource>

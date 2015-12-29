@@ -222,7 +222,7 @@ namespace QuanLyKho.Design
             objPCCT = lpcct[indexlv];
             lpcct.RemoveAt(indexlv);
 
-            pTon objTon = new pTon();
+            /*pTon objTon = new pTon();
             objTon.dongia = Convert.ToDouble(objPCCT.dongia);
             objTon.vid = Convert.ToInt32(objPCCT.vid);
             objTon.soluong = Convert.ToDouble(objPCCT.cctsoluong);
@@ -246,7 +246,7 @@ namespace QuanLyKho.Design
                         break;
                     }
                 }
-            }
+            }*/
             Load_LvVatTu();
             Load_LvPhieuNhap();
             EditForm(false);
@@ -310,7 +310,7 @@ namespace QuanLyKho.Design
                 lpcct.RemoveAt(indexlv);
                 lpcct.Add(objCCT);
                 //}
-                int indexfind = tonkho.FindIndex(x => x.vid == objCCT.vid);
+                /*int indexfind = tonkho.FindIndex(x => x.vid == objCCT.vid);
                 pTon objItem = new pTon();
                 if (indexfind >= 0)
                 {
@@ -326,7 +326,7 @@ namespace QuanLyKho.Design
                     objItem.vid = vattu.vid;
                     objItem.soluong = soluong - Convert.ToDouble(tbSoLuong.Text);
                     tonkho.Add(objItem);
-                }
+                }*/
                 lbLoi.Text = "Sửa thành công.";
             }
             else
@@ -348,11 +348,11 @@ namespace QuanLyKho.Design
 
                 lbLoi.Text = "Tạo thành công.";
 
-                double soluong = Convert.ToDouble(objectton.soluong) - Convert.ToDouble(objCCT.cctsoluong);
+                /*double soluong = Convert.ToDouble(objectton.soluong) - Convert.ToDouble(objCCT.cctsoluong);
                 tonkho.RemoveAt(indexTon);
                 objectton.soluong = soluong;
                 if (soluong != 0)
-                    tonkho.Add(objectton);
+                    tonkho.Add(objectton);*/
                 EditForm(false);
             }
             Load_LvVatTu();
@@ -387,7 +387,7 @@ namespace QuanLyKho.Design
             try
             {
                 soluong = Convert.ToDouble(objectton.soluong);
-                if (lpcct.Count == 0)
+                /*if (lpcct.Count == 0)
                 {
                     soluong = Convert.ToDouble(objectton.soluong);
                 }
@@ -398,7 +398,7 @@ namespace QuanLyKho.Design
                         if (objItem.vid == vattu.vid)
                             soluong += Convert.ToDouble(objItem.cctsoluong);
                     }
-                }
+                }*/
                 if (Convert.ToInt32(tbSoLuong.Text) > soluong)
                 {
                     lbLoi.Text = "Số lượng không được vượt quá số tồn.";

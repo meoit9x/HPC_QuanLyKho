@@ -63,7 +63,7 @@
             // tbSoHoaDon
             // 
             this.tbSoHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbSoHoaDon.Location = new System.Drawing.Point(114, 378);
+            this.tbSoHoaDon.Location = new System.Drawing.Point(126, 378);
             this.tbSoHoaDon.Name = "tbSoHoaDon";
             this.tbSoHoaDon.Size = new System.Drawing.Size(93, 26);
             this.tbSoHoaDon.TabIndex = 86;

@@ -296,6 +296,7 @@
             this.btHuy.TabIndex = 95;
             this.btHuy.Text = "Hủy nhu cầu";
             this.btHuy.UseVisualStyleBackColor = true;
+            this.btHuy.Visible = false;
             this.btHuy.Click += new System.EventHandler(this.btHuy_Click);
             // 
             // UNXetDuyetNhuCauCT

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -144,7 +145,7 @@ namespace QuanLyKho.Util
                 excelStream.Close();
                 return excelPackage;
             }
-            catch 
+            catch
             {
                 MessageBox.Show("Phát sinh lỗi ở lấy template");
                 return null;
@@ -177,6 +178,39 @@ namespace QuanLyKho.Util
                         excelStream.CopyTo(fileStream);
                     }
                 }
+            }
+        }
+
+        public static void SendMail(string title, string body, List<string> toUser, string from, string pass, params object[] attachs)
+        {
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential(from, pass);
+            SmtpServer.EnableSsl = true;
+
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress(from);
+            if (toUser.Count > 0)
+            {
+                foreach (var item in toUser)
+                {
+                    mail.To.Add(item);
+                }
+
+                mail.Subject = title;
+                mail.Body = body;
+
+                if (attachs != null)
+                {
+                    foreach (MemoryStream item in attachs)
+                    {
+                        mail.Attachments.Add(new Attachment(item, "example.txt", "text/plain"));
+                    }
+                }
+
+                SmtpServer.Send(mail);
+
+                MessageBox.Show("mail Send");
             }
         }
     }

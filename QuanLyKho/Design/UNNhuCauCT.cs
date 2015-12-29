@@ -308,7 +308,10 @@ namespace QuanLyKho.Design
 
             var lEmail = (from objEmail in Main.db.dEmail select objEmail).ToList();
             List<string> touser = lEmail.Select(x => x.addEmail).ToList();
+            // lấy báo cáo
+            ms = QuanLyKho.BaoCao.nhapkho.xuatbaocaonhucau(objNC, lpncct);
 
+            // gửi mail và báo cáo
             QuanLyKho.Util.Utils.SendMail(subject, body, touser, "ktcd.hpc@gmail.com", "1AnhTuan1*", ms);
             //Unit.sendMail(subject, body);
 

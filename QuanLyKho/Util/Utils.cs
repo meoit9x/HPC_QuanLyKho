@@ -180,7 +180,15 @@ namespace QuanLyKho.Util
                 }
             }
         }
-
+        /// <summary>
+        /// send mail
+        /// </summary>
+        /// <param name="title">subject in mail</param>
+        /// <param name="body">body in mail</param>
+        /// <param name="toUser">send to mail of user</param>
+        /// <param name="from">user send mail </param>
+        /// <param name="pass">password of mail</param>
+        /// <param name="attachs">file need attack</param>
         public static void SendMail(string title, string body, List<string> toUser, string from, string pass, params object[] attachs)
         {
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");

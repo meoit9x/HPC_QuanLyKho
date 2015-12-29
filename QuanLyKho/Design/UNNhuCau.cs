@@ -40,13 +40,6 @@ namespace QuanLyKho.Design
             chSTT.TextAlign = HorizontalAlignment.Center;
             lvPhieuNhap.Columns.Add(chSTT);
 
-            ColumnHeader chMaVT;
-            chMaVT = new ColumnHeader();
-            chMaVT.Text = "Mã số";
-            chMaVT.Width = 80;
-            chMaVT.TextAlign = HorizontalAlignment.Center;
-            lvPhieuNhap.Columns.Add(chMaVT);
-
             ColumnHeader chTenNhom;
             chTenNhom = new ColumnHeader();
             chTenNhom.Text = "Ngày tạo";
@@ -83,7 +76,6 @@ namespace QuanLyKho.Design
             foreach (pNC pn in lNC)
             {
                 lvPhieuNhap.Items.Add((i + 1) + "");
-                lvPhieuNhap.Items[i].SubItems.Add(pn.maso);
                 lvPhieuNhap.Items[i].SubItems.Add(Convert.ToString(pn.ncdate));
                 lvPhieuNhap.Items[i].SubItems.Add(pn.isgui == 1 ?"Đã gửi chờ duyệt":"Chưa gửi");
                 lvPhieuNhap.Items[i].SubItems.Add(Convert.ToString(pn.tgcan));

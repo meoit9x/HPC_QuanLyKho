@@ -348,7 +348,7 @@ namespace QuanLyKho.Design
 
         private void btXuatThang_Click(object sender, EventArgs e)
         {
-            QuanLyKho.BaoCao.nhapkho.xuatbaocaonhap(objPN.nid);
+            Util.Utils.DialogSave(QuanLyKho.BaoCao.nhapkho.xuatbaocaonhap(objPN.nid));
         }
 
     }

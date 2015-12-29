@@ -272,9 +272,7 @@ namespace QuanLyKho.Design
 
         private void btHoanTat_Click(object sender, EventArgs e)
         {
-            DialogLoading loading = new DialogLoading();
-            loading.Show();
-            //string reportPath = "D:\\PhanMemKCS\\BaoCao\\BaoCaoKCS_" + dateBaoCao.Date.ToString("dd_MM_yyy") + ".jpg";
+            
             DateTime tgCan = new DateTime();
             try
             {
@@ -294,12 +292,15 @@ namespace QuanLyKho.Design
                 return;
             }
 
+            DialogLoading loading = new DialogLoading();
+            loading.Show();
+
             objNC.isgui = 1;
             objNC.mucdich = tbMucDich.Text;
             objNC.tgcan = tgCan;
             Main.db.SaveChanges();
 
-            String subject = "Nhu cầu vật tư ";
+            String subject = "Nhu cầu vật tư " + Main.OBJ_KHO.dK.kten;
             String body = "Kính gửi TGĐ, PTGĐ, KTCĐ,"
                 + "\n\nTổ trưởng tổ sửa chữa đơn vị " + Main.OBJ_KHO.dK.kten + "."
                 + "\nXin phép được gửi nhu cầu vật tư, chi tiết trong file đính kèm."
@@ -312,8 +313,7 @@ namespace QuanLyKho.Design
             ms = QuanLyKho.BaoCao.nhapkho.xuatbaocaonhucau(objNC, lpncct);
 
             // gửi mail và báo cáo
-            QuanLyKho.Util.Utils.SendMail(subject, body, touser, "ktcd.hpc@gmail.com", "1AnhTuan1*", ms);
-            //Unit.sendMail(subject, body);
+            QuanLyKho.Util.Utils.SendMail(subject, body, touser, "ktcd.hpc@gmail.com", "1AnhTuan1*","NhuCau_"+Main.OBJ_KHO.dK.kten+".xlsx", ms);
 
             lbLoi.Text = "Gửi mail thành công.";
             btInPhieu.Text = inphieu;

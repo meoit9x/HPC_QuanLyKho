@@ -11,6 +11,7 @@ using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraPrintingLinks;
 using System.Text.RegularExpressions;
+using System.IO;
 using QuanLyKho.Service;
 
 namespace QuanLyKho.Design
@@ -215,6 +216,12 @@ namespace QuanLyKho.Design
             }
             else
             {
+                int index = lpncct.FindIndex(x => x.tongtien != null);
+                if (index == -1)
+                {
+                    lbLoi.Text = "Chi tiết nhu cầu chưa được xác nhận.";
+                    return;
+                }
                 if (tbSoHoaDon.Text.Equals(""))
                 {
                     lbLoi.Text = "Số hóa đơn không được để trống.";
@@ -250,15 +257,20 @@ namespace QuanLyKho.Design
                 
                 foreach (pNCCT objPNCCT in lpncct)
                 {
-                    pNCT objPNCT = new pNCT();
-                    objPNCT.nctsoluong = objPNCCT.ncsoluong;
-                    objPNCT.giathanh = objPNCCT.tongtien;
-                    objPNCT.idKH = objPNCCT.idkh;
-                    objPNCT.nid = phieunhap.nid;
-                    objPNCT.vid = objPNCCT.vid;
-                    Main.db.pNCT.Add(objPNCT);
-                    Main.db.SaveChanges();
-                    STon.AddTon(Convert.ToDouble(objPNCT.nctsoluong), Convert.ToInt32(objPNCT.vid), Convert.ToDouble(objPNCT.giathanh / objPNCT.nctsoluong), true, Convert.ToInt32(Main.OBJ_KHO.kid));
+                    if (objPNCCT.tongtien != null)
+                    {
+                        pNCT objPNCT = new pNCT();
+                        objPNCT.nctsoluong = objPNCCT.ncsoluong;
+                        objPNCT.giathanh = objPNCCT.tongtien;
+                        objPNCT.idKH = objPNCCT.idkh;
+                        objPNCT.nid = phieunhap.nid;
+                        objPNCT.vid = objPNCCT.vid;
+                        Main.db.pNCT.Add(objPNCT);
+                        Main.db.SaveChanges();
+                        STon.AddTon(Convert.ToDouble(objPNCT.nctsoluong), Convert.ToInt32(objPNCT.vid), 
+                            Convert.ToDouble(objPNCT.giathanh / objPNCT.nctsoluong), true, Convert.ToInt32(Main.OBJ_KHO.kid));
+                    }
+                    
                 }
                 objNC.xetduyet = 2;
                 objNC.idpn = phieunhap.nid;
@@ -268,16 +280,47 @@ namespace QuanLyKho.Design
                 tbNHD.Enabled = false;
                 tbSoHoaDon.Enabled = false;
 
-                String subject = "Xác nhận nhu cầu vật tư";
+                String subject = "Xác nhận nhu cầu vật tư " + Main.OBJ_KHO.dK.kten;
                 String body = "Kính gửi TGĐ, PTGĐ, KTCĐ,"
                     + "\n\nTổ trưởng tổ sửa chữa đơn vị " + Main.OBJ_KHO.dK.kten + "."
                     + "\nXin phép được gửi nhu cầu vật tư, chi tiết trong file đính kèm."
                     + "\n\nKính thư!"
                     + "\nNhân viên : " + Main.OBJ_KHO.uname;
-                Unit.sendMail(subject, body);
+
+                var lEmail = (from objEmail in Main.db.dEmail select objEmail).ToList();
+                List<string> touser = lEmail.Select(x => x.addEmail).ToList();
+                // lấy báo cáo
+                MemoryStream ms = null;
+                ms = QuanLyKho.BaoCao.nhapkho.xuatbaocaonhap(phieunhap.nid);
+
+                // gửi mail và báo cáo
+                QuanLyKho.Util.Utils.SendMail(subject, body, touser, "ktcd.hpc@gmail.com", "1AnhTuan1*", "NhuCau_" + Main.OBJ_KHO.dK.kten + ".xlsx", ms);
                 loading.Dispose();
                 lbLoi.Text = "Hoàn tất nhu cầu.";
             }
+        }
+
+        private void btHuy_Click(object sender, EventArgs e)
+        {
+            // show dialog
+            DialogLoading loading = new DialogLoading();
+            loading.Show();
+            String subject = "Hủy nhu cầu vật tư " + Main.OBJ_KHO.dK.kten;
+            String body = "Kính gửi TGĐ, PTGĐ, KTCĐ,"
+                + "\n\nTổ trưởng tổ sửa chữa đơn vị " + Main.OBJ_KHO.dK.kten + "."
+                + "\nXin phép được gửi nhu cầu vật tư, chi tiết trong file đính kèm."
+                + "\n\nKính thư!"
+                + "\nNhân viên : " + Main.OBJ_KHO.uname;
+
+            var lEmail = (from objEmail in Main.db.dEmail select objEmail).ToList();
+            List<string> touser = lEmail.Select(x => x.addEmail).ToList();
+            // lấy báo cáo
+
+            // gửi mail và báo cáo
+            QuanLyKho.Util.Utils.SendMail(subject, body, touser, "ktcd.hpc@gmail.com",
+                "1AnhTuan1*", "NhuCau_" + Main.OBJ_KHO.dK.kten + ".xlsx", null);
+            loading.Dispose();
+            lbLoi.Text = "Hoàn tất nhu cầu.";
         }
 
     }

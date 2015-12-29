@@ -14,7 +14,7 @@ namespace QuanLyKho.BaoCao
 {
     class nhapkho
     {
-        public static void xuatbaocaonhap(int id)
+        public static MemoryStream xuatbaocaonhap(int id)
         {
             int i = 1;
             int rowStart = 8;
@@ -26,7 +26,7 @@ namespace QuanLyKho.BaoCao
             if (excelPackage == null)
             {
                 MessageBox.Show("Chưa có template");
-                return;
+                return null;
             }
 
             OfficeOpenXml.ExcelWorkbook book = excelPackage.Workbook;
@@ -81,7 +81,7 @@ namespace QuanLyKho.BaoCao
             excelPackage.SaveAs(excelStream);
             excelStream.Seek(0, SeekOrigin.Begin);
 
-            Util.Utils.DialogSave(excelStream);
+            return excelStream;
         }
 
         public static void xuatbaocaosudung(List<pSDCT> lpsdct)

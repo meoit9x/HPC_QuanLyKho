@@ -42,7 +42,6 @@ namespace QuanLyKho.Design
             mnTaiKhoan.ElementClick += mnTaiKhoan_ElementClick;
             mncXetDuyet.ElementClick += mncXetNhuCau_ElementClick;
             tbMatKhau.PasswordChar = '*';
-            
         }
 
         private void Main_Load(object sender, EventArgs e)

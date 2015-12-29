@@ -7,6 +7,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace QuanLyKho.Util
 {
@@ -189,7 +190,7 @@ namespace QuanLyKho.Util
         /// <param name="from">user send mail </param>
         /// <param name="pass">password of mail</param>
         /// <param name="attachs">file need attack</param>
-        public static void SendMail(string title, string body, List<string> toUser, string from, string pass, params object[] attachs)
+        public static void SendMail(string title, string body, List<string> toUser, string from, string pass,string namefile, params object[] attachs)
         {
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
             SmtpServer.Port = 587;
@@ -212,14 +213,20 @@ namespace QuanLyKho.Util
                 {
                     foreach (MemoryStream item in attachs)
                     {
-                        mail.Attachments.Add(new Attachment(item, "filereport.xlsx", "application/vnd.ms-excel"));
+                        mail.Attachments.Add(new Attachment(item, namefile, "application/vnd.ms-excel"));
                     }
                 }
 
                 SmtpServer.Send(mail);
 
-                MessageBox.Show("mail Send");
             }
+        }
+
+        public static string FormateDate(DateTime formatedate)
+        {
+            string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+            sysFormat =  formatedate.ToString(sysFormat);
+            return sysFormat;
         }
     }
 }

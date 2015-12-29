@@ -50,6 +50,7 @@
             this.tbNHD = new System.Windows.Forms.MaskedTextBox();
             this.tbNgayHoaDon = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btHuy = new System.Windows.Forms.Button();
             this.gbContent.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -229,7 +230,7 @@
             // btHoanTat
             // 
             this.btHoanTat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btHoanTat.Location = new System.Drawing.Point(631, 372);
+            this.btHoanTat.Location = new System.Drawing.Point(646, 372);
             this.btHoanTat.Name = "btHoanTat";
             this.btHoanTat.Size = new System.Drawing.Size(106, 36);
             this.btHoanTat.TabIndex = 90;
@@ -286,10 +287,22 @@
             this.label5.TabIndex = 92;
             this.label5.Text = "Số hóa đơn : ";
             // 
+            // btHuy
+            // 
+            this.btHuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btHuy.Location = new System.Drawing.Point(534, 372);
+            this.btHuy.Name = "btHuy";
+            this.btHuy.Size = new System.Drawing.Size(106, 36);
+            this.btHuy.TabIndex = 95;
+            this.btHuy.Text = "Hủy nhu cầu";
+            this.btHuy.UseVisualStyleBackColor = true;
+            this.btHuy.Click += new System.EventHandler(this.btHuy_Click);
+            // 
             // UNXetDuyetNhuCauCT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btHuy);
             this.Controls.Add(this.tbSoHoaDon);
             this.Controls.Add(this.tbNHD);
             this.Controls.Add(this.tbNgayHoaDon);
@@ -332,5 +345,6 @@
         private System.Windows.Forms.TextBox tbDienGiai;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btHuy;
     }
 }

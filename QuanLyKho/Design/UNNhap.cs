@@ -61,7 +61,7 @@ namespace QuanLyKho.Design
             ColumnHeader chDiaChi;
             chDiaChi = new ColumnHeader();
             chDiaChi.Text = "Ngày tạo";
-            chDiaChi.Width = 120;
+            chDiaChi.Width = 130;
             chDiaChi.TextAlign = HorizontalAlignment.Center;
             lvPhieuNhap.Columns.Add(chDiaChi);
 

@@ -318,6 +318,9 @@ namespace QuanLyKho.BaoCao
                 rng.Style.Font.Bold = true;
             }
 
+            dataSheet.Cells[rowCurrent, 6].Formula = "=SUM(F" + rowStart + ":F" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 6].Style.Numberformat.Format = "#,###";
+
             dataSheet.Cells[rowCurrent, 11].Formula = "=SUM(K" + rowStart + ":K" + (rowCurrent - 1) + ")";
             dataSheet.Cells[rowCurrent, 11].Style.Numberformat.Format = "#,###";
 

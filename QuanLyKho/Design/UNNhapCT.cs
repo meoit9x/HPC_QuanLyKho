@@ -35,7 +35,7 @@ namespace QuanLyKho.Design
                 this.objPN = objPN;
                 if (objPN.ngayhd != null)
                 {
-                    tbNHD.Text = objPN.ngayhd.ToString();
+                    tbNHD.Text = QuanLyKho.Util.Utils.ConvertDate(Convert.ToDateTime(objPN.ngayhd));
                 }
                 lpnc = SPhieuNhapCT.SearchNhapChiTietByIDPN(objPN.nid);
                 tbSoHoaDon.Text = objPN.nmaso;
@@ -332,6 +332,11 @@ namespace QuanLyKho.Design
                 lbLoi.Text = "Dữ liệu đã được lưu.";
                 btXuatThang.Enabled = true;
                 btXuatThang.Text = "Báo cáo";
+                btTao.Enabled = false;
+                tbTongTien.Enabled = false;
+                tbVatTu.Enabled = false;
+                cbKhachHang.Enabled = false;
+                tbSoLuong.Enabled = false;
             }
             else
             {

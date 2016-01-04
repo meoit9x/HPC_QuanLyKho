@@ -41,7 +41,7 @@ namespace QuanLyKho.Design
 
                 if (objNC.tgcan == null)
                     objNC.tgcan = Main.getDateServer();
-                tbTgCan.Text = Convert.ToDateTime(objNC.tgcan).ToString("dd/MM/yyyy");
+                tbTgCan.Text = Util.Utils.ConvertDate(Convert.ToDateTime(objNC.tgcan));
                 if (objNC.isgui == 0)
                 {
                     btInPhieu.Text = xoaphieu;

@@ -261,7 +261,6 @@ namespace QuanLyKho.Design
             bool isShow = position != -1 ? true : false;
             mnNghiepVu.Visible = isShow;
             mnThongKe.Visible = isShow;
-            mnThongBao.Visible = isShow;
             mnTaiKhoan.Visible = isShow;
             btExit.Visible = isShow;
             pnLogin.Visible = !isShow;

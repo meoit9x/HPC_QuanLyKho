@@ -13,6 +13,20 @@ namespace QuanLyKho.Util
 {
     class Utils
     {
+
+        public static string ConvertDate(DateTime dateconvert)
+        {
+            string stringtext = dateconvert.ToString();
+            string textreturn = "";
+            char[] delimiterChars = {'/'};
+            string[] works = stringtext.Split(delimiterChars);
+            foreach (string text in works)
+            {
+                string localtext = (text.Length == 1) ? "0" + text : text;
+                textreturn += localtext;
+            }
+            return textreturn;
+        }
         private static string[] ChuSo = new string[10] { " không", " một", " hai", " ba", " bốn", " năm", " sáu", " bẩy", " tám", " chín" };
         private static string[] Tien = new string[6] { "", " nghìn", " triệu", " tỷ", " nghìn tỷ", " triệu tỷ" };
         // Hàm đọc số thành chữ

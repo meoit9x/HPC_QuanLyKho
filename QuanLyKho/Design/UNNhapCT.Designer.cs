@@ -47,8 +47,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbTongTien = new System.Windows.Forms.TextBox();
             this.btXoa = new System.Windows.Forms.Button();
-            this.tbVatTu = new System.Windows.Forms.TextBox();
             this.lvPhieuNhap = new System.Windows.Forms.ListView();
+            this.tbVatTu = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -254,14 +254,6 @@
             this.btXoa.UseVisualStyleBackColor = true;
             this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
             // 
-            // tbVatTu
-            // 
-            this.tbVatTu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbVatTu.Location = new System.Drawing.Point(124, 81);
-            this.tbVatTu.Name = "tbVatTu";
-            this.tbVatTu.Size = new System.Drawing.Size(226, 26);
-            this.tbVatTu.TabIndex = 1;
-            // 
             // lvPhieuNhap
             // 
             this.lvPhieuNhap.Location = new System.Drawing.Point(17, 13);
@@ -270,6 +262,14 @@
             this.lvPhieuNhap.TabIndex = 75;
             this.lvPhieuNhap.UseCompatibleStateImageBehavior = false;
             this.lvPhieuNhap.SelectedIndexChanged += new System.EventHandler(this.lvPhieuNhap_SelectedIndexChanged);
+            // 
+            // tbVatTu
+            // 
+            this.tbVatTu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.tbVatTu.Location = new System.Drawing.Point(124, 81);
+            this.tbVatTu.Name = "tbVatTu";
+            this.tbVatTu.Size = new System.Drawing.Size(226, 26);
+            this.tbVatTu.TabIndex = 1;
             // 
             // UNNhapCT
             // 
@@ -312,11 +312,11 @@
         private System.Windows.Forms.Button btThoat;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox tbVatTu;
         private System.Windows.Forms.ListView lvPhieuNhap;
         private System.Windows.Forms.Button btXoa;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbTongTien;
+        private System.Windows.Forms.TextBox tbVatTu;
 
     }
 }

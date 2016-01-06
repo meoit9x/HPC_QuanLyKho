@@ -84,13 +84,22 @@ namespace QuanLyKho.Design
         private void btTao_Click(object sender, EventArgs e)
         {
             tbSearch.Text = "";
-            dNVT dnvt = new dNVT();
+
             if ("".Equals(tbMaVT.Text))
             {
                 lbLoi.Text = "Mã vật tư không được để trống.";
                 tbMaVT.Focus();
                 return;
             }
+
+            dvt = SVatTu.SelectVTbyMa(tbMaVT.Text);
+            if (dvt != null)
+            {
+                lbLoi.Text = "Mã vật tư " + dvt.mavt + " đã tồn tại.";
+                tbMaVT.Focus();
+                return;
+            }
+
             if ("".Equals(tbTenVT.Text))
             {
                 lbLoi.Text = "Tên vật tư không được để trống.";

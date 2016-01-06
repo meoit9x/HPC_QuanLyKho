@@ -32,7 +32,7 @@ namespace QuanLyKho.Service
 
         public static List<pN> GetAll()
         {
-            return (from pn in Main.db.pN select pn).ToList();
+            return (from pn in Main.db.pN where pn.kid ==  Main.OBJ_KHO.kid select pn).ToList();
         }
 
         public static List<pN> SearchSoHoaDon(string text,string ttuNgay, string tdenngay)

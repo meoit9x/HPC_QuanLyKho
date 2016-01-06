@@ -66,6 +66,10 @@ namespace QuanLyKho.Design
             tbVatTu.AutoCompleteMode = AutoCompleteMode.Append;
             tbVatTu.AutoCompleteSource = AutoCompleteSource.CustomSource;
             tbVatTu.AutoCompleteCustomSource = combData;
+
+            tbVatTu.AutoCompleteMode = AutoCompleteMode.Suggest;
+            tbVatTu.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            tbVatTu.AutoCompleteCustomSource = combData;
         }
 
         private void SetupComboBox()

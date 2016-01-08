@@ -44,6 +44,8 @@ namespace QuanLyKho.Design
                 tbSoLuong.Enabled = false;
                 cbMaySuDung.Enabled = false;
             }
+            cbDateType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbDateType.SelectedIndex = 0;
         }
 
         private void UNSDChiTiet_Load(object sender, EventArgs e)
@@ -303,18 +305,39 @@ namespace QuanLyKho.Design
                 return;
             }
 
+            if ("".Equals(tbHanDung.Text))
+            {
+                lbLoi.Text = "Hạn sử dụng không được để trống.";
+                tbHanDung.Focus();
+                return;
+            }
+
             if (lMSD.Count == 0)
                 {
                     lbLoi.Text = "Máy sử dụng không được để trống.";
                     return;
                 }
-
+            double hansudung = 0;
+            hansudung = Convert.ToDouble(tbHanDung.Text);
+            switch (cbDateType.SelectedIndex)
+            {
+                case 1:
+                    hansudung = hansudung * 7;
+                    break;
+                case 2:
+                    hansudung = hansudung * 30;
+                    break;
+                case 3:
+                    hansudung = hansudung * 365;
+                    break;
+            }
             if (btThoat.Enabled == true)
             {
                 objSDCT.sdctsoluong = long.Parse(tbSoLuong.Text);
                 objSDCT.vid = vattu.vid;
                 objSDCT.dongia = Unit.GetGiaVTTB(vattu.vid);
                 objSDCT.diengiai = tbDienGiai.Text;
+                objSDCT.hansudung = hansudung;
                 objSDCT.mid = lMSD[cbMaySuDung.SelectedIndex].id;
                 /*if (objSD.dK != null)
                 {
@@ -351,6 +374,7 @@ namespace QuanLyKho.Design
                 objSDCT.vid = vattu.vid;
                 objSDCT.dVT = vattu;
                 objSDCT.dongia = Unit.GetGiaVTTB(vattu.vid);
+                objSDCT.hansudung = hansudung;
                 objSDCT.diengiai = tbDienGiai.Text;
                 objSDCT.mid = lMSD[cbMaySuDung.SelectedIndex].id;
                 
@@ -487,6 +511,11 @@ namespace QuanLyKho.Design
         private void cbDonVi_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void tbHanDung_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Unit.IsNumberic(sender, e);
         }
 
     }

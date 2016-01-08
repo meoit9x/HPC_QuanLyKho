@@ -47,6 +47,9 @@
             this.lvTonKho = new System.Windows.Forms.ListView();
             this.lbMay = new System.Windows.Forms.Label();
             this.cbMaySuDung = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbHanDung = new System.Windows.Forms.TextBox();
+            this.cbDateType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btHoanTat
@@ -82,7 +85,7 @@
             // 
             this.btXoa.Enabled = false;
             this.btXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btXoa.Location = new System.Drawing.Point(407, 296);
+            this.btXoa.Location = new System.Drawing.Point(398, 318);
             this.btXoa.Name = "btXoa";
             this.btXoa.Size = new System.Drawing.Size(106, 36);
             this.btXoa.TabIndex = 48;
@@ -116,7 +119,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(302, 109);
+            this.label2.Location = new System.Drawing.Point(302, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 20);
             this.label2.TabIndex = 36;
@@ -126,7 +129,7 @@
             // 
             this.btThoat.Enabled = false;
             this.btThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btThoat.Location = new System.Drawing.Point(295, 296);
+            this.btThoat.Location = new System.Drawing.Point(286, 318);
             this.btThoat.Name = "btThoat";
             this.btThoat.Size = new System.Drawing.Size(106, 36);
             this.btThoat.TabIndex = 34;
@@ -138,7 +141,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label5.Location = new System.Drawing.Point(309, 198);
+            this.label5.Location = new System.Drawing.Point(309, 172);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 20);
             this.label5.TabIndex = 50;
@@ -147,7 +150,7 @@
             // tbDienGiai
             // 
             this.tbDienGiai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbDienGiai.Location = new System.Drawing.Point(400, 195);
+            this.tbDienGiai.Location = new System.Drawing.Point(400, 169);
             this.tbDienGiai.Multiline = true;
             this.tbDienGiai.Name = "tbDienGiai";
             this.tbDienGiai.Size = new System.Drawing.Size(226, 79);
@@ -159,7 +162,7 @@
             this.lbLoi.BackColor = System.Drawing.SystemColors.Control;
             this.lbLoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbLoi.ForeColor = System.Drawing.Color.Red;
-            this.lbLoi.Location = new System.Drawing.Point(302, 32);
+            this.lbLoi.Location = new System.Drawing.Point(302, 6);
             this.lbLoi.Name = "lbLoi";
             this.lbLoi.Size = new System.Drawing.Size(0, 17);
             this.lbLoi.TabIndex = 41;
@@ -168,7 +171,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.Location = new System.Drawing.Point(309, 157);
+            this.label3.Location = new System.Drawing.Point(309, 131);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 20);
             this.label3.TabIndex = 39;
@@ -177,7 +180,7 @@
             // tbSoLuong
             // 
             this.tbSoLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbSoLuong.Location = new System.Drawing.Point(400, 154);
+            this.tbSoLuong.Location = new System.Drawing.Point(400, 128);
             this.tbSoLuong.Name = "tbSoLuong";
             this.tbSoLuong.Size = new System.Drawing.Size(226, 26);
             this.tbSoLuong.TabIndex = 2;
@@ -187,7 +190,7 @@
             // btTao
             // 
             this.btTao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btTao.Location = new System.Drawing.Point(519, 296);
+            this.btTao.Location = new System.Drawing.Point(510, 318);
             this.btTao.Name = "btTao";
             this.btTao.Size = new System.Drawing.Size(106, 36);
             this.btTao.TabIndex = 37;
@@ -199,7 +202,7 @@
             // 
             this.tbVatTu.Enabled = false;
             this.tbVatTu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tbVatTu.Location = new System.Drawing.Point(400, 109);
+            this.tbVatTu.Location = new System.Drawing.Point(400, 83);
             this.tbVatTu.Name = "tbVatTu";
             this.tbVatTu.Size = new System.Drawing.Size(226, 26);
             this.tbVatTu.TabIndex = 1;
@@ -226,7 +229,7 @@
             // 
             this.lbMay.AutoSize = true;
             this.lbMay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbMay.Location = new System.Drawing.Point(283, 67);
+            this.lbMay.Location = new System.Drawing.Point(283, 41);
             this.lbMay.Name = "lbMay";
             this.lbMay.Size = new System.Drawing.Size(111, 20);
             this.lbMay.TabIndex = 96;
@@ -236,15 +239,51 @@
             // 
             this.cbMaySuDung.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cbMaySuDung.FormattingEnabled = true;
-            this.cbMaySuDung.Location = new System.Drawing.Point(400, 65);
+            this.cbMaySuDung.Location = new System.Drawing.Point(400, 39);
             this.cbMaySuDung.Name = "cbMaySuDung";
             this.cbMaySuDung.Size = new System.Drawing.Size(226, 28);
             this.cbMaySuDung.TabIndex = 97;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label4.Location = new System.Drawing.Point(300, 268);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 20);
+            this.label4.TabIndex = 99;
+            this.label4.Text = "Hạn dùng : ";
+            // 
+            // tbHanDung
+            // 
+            this.tbHanDung.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.tbHanDung.Location = new System.Drawing.Point(398, 265);
+            this.tbHanDung.Name = "tbHanDung";
+            this.tbHanDung.Size = new System.Drawing.Size(94, 26);
+            this.tbHanDung.TabIndex = 98;
+            this.tbHanDung.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbHanDung_KeyPress);
+            // 
+            // cbDateType
+            // 
+            this.cbDateType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.cbDateType.FormattingEnabled = true;
+            this.cbDateType.Items.AddRange(new object[] {
+            "Ngày ",
+            "Tuần",
+            "Tháng ",
+            "Năm"});
+            this.cbDateType.Location = new System.Drawing.Point(510, 265);
+            this.cbDateType.Name = "cbDateType";
+            this.cbDateType.Size = new System.Drawing.Size(116, 28);
+            this.cbDateType.TabIndex = 100;
             // 
             // UNSuDungCT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbDateType);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.tbHanDung);
             this.Controls.Add(this.cbMaySuDung);
             this.Controls.Add(this.lbMay);
             this.Controls.Add(this.lvTonKho);
@@ -293,5 +332,8 @@
         private System.Windows.Forms.ListView lvTonKho;
         private System.Windows.Forms.Label lbMay;
         private System.Windows.Forms.ComboBox cbMaySuDung;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbHanDung;
+        private System.Windows.Forms.ComboBox cbDateType;
     }
 }

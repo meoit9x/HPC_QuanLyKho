@@ -272,6 +272,7 @@ namespace QuanLyKho.Design
             mnTaiKhoan.Visible = isShow;
             btExit.Visible = isShow;
             pnLogin.Visible = !isShow;
+            mnBaoCao.Visible = true;
             if (position == 1)
             {
                 mnDanhMuc.Visible = false;

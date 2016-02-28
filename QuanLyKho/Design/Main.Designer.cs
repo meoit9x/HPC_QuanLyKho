@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.TileItemElement tileItemElement33 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement34 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement35 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement36 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement37 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement38 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement39 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement40 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement41 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement46 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement42 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement43 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement44 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement45 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement47 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement48 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement7 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement8 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement9 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement14 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement10 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement11 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement12 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement13 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement15 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement16 = new DevExpress.XtraEditors.TileItemElement();
             this.tileNavPane1 = new DevExpress.XtraBars.Navigation.TileNavPane();
             this.mnThongBao = new DevExpress.XtraBars.Navigation.NavButton();
             this.mnDanhMuc = new DevExpress.XtraBars.Navigation.TileNavCategory();
@@ -63,6 +63,7 @@
             this.mcSLChuyen = new DevExpress.XtraBars.Navigation.TileNavItem();
             this.mcSLTon = new DevExpress.XtraBars.Navigation.TileNavItem();
             this.mnTaiKhoan = new DevExpress.XtraBars.Navigation.TileNavCategory();
+            this.mnBaoCao = new DevExpress.XtraBars.Navigation.TileNavCategory();
             this.btExit = new DevExpress.XtraBars.Navigation.NavButton();
             this.mnsThang = new DevExpress.XtraBars.Navigation.TileNavSubItem();
             this.mnsPhatSinh = new DevExpress.XtraBars.Navigation.TileNavSubItem();
@@ -75,7 +76,6 @@
             this.tbMatKhau = new System.Windows.Forms.TextBox();
             this.btLogin = new System.Windows.Forms.Button();
             this.navButton1 = new DevExpress.XtraBars.Navigation.NavButton();
-            this.mnBaoCao = new DevExpress.XtraBars.Navigation.TileNavCategory();
             this.pnContent.SuspendLayout();
             this.pnLogin.SuspendLayout();
             this.SuspendLayout();
@@ -158,8 +158,8 @@
             // 
             // 
             this.mncVatTu.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement33.Text = "Vật tư";
-            this.mncVatTu.Tile.Elements.Add(tileItemElement33);
+            tileItemElement1.Text = "Vật tư";
+            this.mncVatTu.Tile.Elements.Add(tileItemElement1);
             this.mncVatTu.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mncVatTu.Tile.Name = "tileBarItem1";
             // 
@@ -173,8 +173,8 @@
             // 
             // 
             this.mncKho.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement34.Text = "Kho";
-            this.mncKho.Tile.Elements.Add(tileItemElement34);
+            tileItemElement2.Text = "Kho";
+            this.mncKho.Tile.Elements.Add(tileItemElement2);
             this.mncKho.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mncKho.Tile.Name = "tileBarItem7";
             // 
@@ -188,8 +188,8 @@
             // 
             // 
             this.mncKhachHang.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement35.Text = "Khách hàng";
-            this.mncKhachHang.Tile.Elements.Add(tileItemElement35);
+            tileItemElement3.Text = "Khách hàng";
+            this.mncKhachHang.Tile.Elements.Add(tileItemElement3);
             this.mncKhachHang.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mncKhachHang.Tile.Name = "tileBarItem1";
             // 
@@ -203,8 +203,8 @@
             // 
             // 
             this.mncMaySuDung.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement36.Text = "Máy sử dụng";
-            this.mncMaySuDung.Tile.Elements.Add(tileItemElement36);
+            tileItemElement4.Text = "Máy sử dụng";
+            this.mncMaySuDung.Tile.Elements.Add(tileItemElement4);
             this.mncMaySuDung.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mncMaySuDung.Tile.Name = "tileBarItem1";
             // 
@@ -241,8 +241,8 @@
             // 
             // 
             this.mncNhapVatTu.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement37.Text = "Nhập vật tư";
-            this.mncNhapVatTu.Tile.Elements.Add(tileItemElement37);
+            tileItemElement5.Text = "Nhập vật tư";
+            this.mncNhapVatTu.Tile.Elements.Add(tileItemElement5);
             this.mncNhapVatTu.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mncNhapVatTu.Tile.Name = "tileBarItem1";
             // 
@@ -256,8 +256,8 @@
             // 
             // 
             this.mncSuDung.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement38.Text = "Sử dụng ";
-            this.mncSuDung.Tile.Elements.Add(tileItemElement38);
+            tileItemElement6.Text = "Sử dụng ";
+            this.mncSuDung.Tile.Elements.Add(tileItemElement6);
             this.mncSuDung.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mncSuDung.Tile.Name = "tileBarItem1";
             // 
@@ -271,8 +271,8 @@
             // 
             // 
             this.mncDieuChuyen.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement39.Text = "Điều chuyển";
-            this.mncDieuChuyen.Tile.Elements.Add(tileItemElement39);
+            tileItemElement7.Text = "Điều chuyển";
+            this.mncDieuChuyen.Tile.Elements.Add(tileItemElement7);
             this.mncDieuChuyen.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mncDieuChuyen.Tile.Name = "tileBarItem1";
             // 
@@ -286,8 +286,8 @@
             // 
             // 
             this.mncDuTru.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement40.Text = "Dự trù vật tư";
-            this.mncDuTru.Tile.Elements.Add(tileItemElement40);
+            tileItemElement8.Text = "Dự trù vật tư";
+            this.mncDuTru.Tile.Elements.Add(tileItemElement8);
             this.mncDuTru.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mncDuTru.Tile.Name = "tileBarItem1";
             // 
@@ -301,8 +301,8 @@
             // 
             // 
             this.mncXetDuyet.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement41.Text = "Xét duyệt vật tư";
-            this.mncXetDuyet.Tile.Elements.Add(tileItemElement41);
+            tileItemElement9.Text = "Xét duyệt vật tư";
+            this.mncXetDuyet.Tile.Elements.Add(tileItemElement9);
             this.mncXetDuyet.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mncXetDuyet.Tile.Name = "tileBarItem1";
             // 
@@ -325,8 +325,8 @@
             // 
             // 
             this.mnThongKe.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement46.Text = "Thống kê";
-            this.mnThongKe.Tile.Elements.Add(tileItemElement46);
+            tileItemElement14.Text = "Thống kê";
+            this.mnThongKe.Tile.Elements.Add(tileItemElement14);
             this.mnThongKe.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mnThongKe.Visible = false;
             // 
@@ -340,8 +340,8 @@
             // 
             // 
             this.mcSLNhap.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement42.Text = "Số lượng nhập";
-            this.mcSLNhap.Tile.Elements.Add(tileItemElement42);
+            tileItemElement10.Text = "Số lượng nhập";
+            this.mcSLNhap.Tile.Elements.Add(tileItemElement10);
             this.mcSLNhap.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mcSLNhap.Tile.Name = "tileBarItem1";
             // 
@@ -355,8 +355,8 @@
             // 
             // 
             this.mcSLXuat.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement43.Text = "Số lượng sử dụng";
-            this.mcSLXuat.Tile.Elements.Add(tileItemElement43);
+            tileItemElement11.Text = "Số lượng sử dụng";
+            this.mcSLXuat.Tile.Elements.Add(tileItemElement11);
             this.mcSLXuat.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mcSLXuat.Tile.Name = "tileBarItem2";
             // 
@@ -370,8 +370,8 @@
             // 
             // 
             this.mcSLChuyen.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement44.Text = "Số lượng chuyển";
-            this.mcSLChuyen.Tile.Elements.Add(tileItemElement44);
+            tileItemElement12.Text = "Số lượng chuyển";
+            this.mcSLChuyen.Tile.Elements.Add(tileItemElement12);
             this.mcSLChuyen.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mcSLChuyen.Tile.Name = "tileBarItem3";
             // 
@@ -385,8 +385,8 @@
             // 
             // 
             this.mcSLTon.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement45.Text = "Số lượng tồn";
-            this.mcSLTon.Tile.Elements.Add(tileItemElement45);
+            tileItemElement13.Text = "Số lượng tồn";
+            this.mcSLTon.Tile.Elements.Add(tileItemElement13);
             this.mcSLTon.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mcSLTon.Tile.Name = "tileBarItem4";
             // 
@@ -406,6 +406,23 @@
             this.mnTaiKhoan.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
             this.mnTaiKhoan.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mnTaiKhoan.Visible = false;
+            // 
+            // mnBaoCao
+            // 
+            this.mnBaoCao.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.mnBaoCao.Appearance.Options.UseForeColor = true;
+            this.mnBaoCao.AppearanceHovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.mnBaoCao.AppearanceHovered.Options.UseForeColor = true;
+            this.mnBaoCao.Caption = " Báo cáo ";
+            this.mnBaoCao.Name = "mnBaoCao";
+            this.mnBaoCao.OptionsDropDown.BackColor = System.Drawing.Color.Empty;
+            this.mnBaoCao.OwnerCollection = null;
+            // 
+            // 
+            // 
+            this.mnBaoCao.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
+            this.mnBaoCao.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
+            this.mnBaoCao.Visible = false;
             // 
             // btExit
             // 
@@ -430,8 +447,8 @@
             // 
             // 
             this.mnsThang.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement47.Text = "Nhu cầu theo tháng";
-            this.mnsThang.Tile.Elements.Add(tileItemElement47);
+            tileItemElement15.Text = "Nhu cầu theo tháng";
+            this.mnsThang.Tile.Elements.Add(tileItemElement15);
             this.mnsThang.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mnsThang.Tile.Name = "tileBarItem5";
             // 
@@ -444,8 +461,8 @@
             // 
             // 
             this.mnsPhatSinh.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement48.Text = "Nhu cầu trong ngày";
-            this.mnsPhatSinh.Tile.Elements.Add(tileItemElement48);
+            tileItemElement16.Text = "Nhu cầu trong ngày";
+            this.mnsPhatSinh.Tile.Elements.Add(tileItemElement16);
             this.mnsPhatSinh.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             this.mnsPhatSinh.Tile.Name = "tileBarItem6";
             // 
@@ -533,22 +550,6 @@
             this.navButton1.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Right;
             this.navButton1.Caption = "navButton2";
             this.navButton1.Name = "navButton1";
-            // 
-            // mnBaoCao
-            // 
-            this.mnBaoCao.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.mnBaoCao.Appearance.Options.UseForeColor = true;
-            this.mnBaoCao.AppearanceHovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.mnBaoCao.AppearanceHovered.Options.UseForeColor = true;
-            this.mnBaoCao.Caption = " Báo cáo ";
-            this.mnBaoCao.Name = "mnBaoCao";
-            this.mnBaoCao.OptionsDropDown.BackColor = System.Drawing.Color.Empty;
-            this.mnBaoCao.OwnerCollection = null;
-            // 
-            // 
-            // 
-            this.mnBaoCao.Tile.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            this.mnBaoCao.Tile.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Default;
             // 
             // Main
             // 

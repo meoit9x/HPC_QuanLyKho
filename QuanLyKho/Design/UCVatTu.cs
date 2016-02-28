@@ -8,9 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyKho.Service;
-using DevExpress.XtraPrinting;
-using DevExpress.XtraReports.UI;
-using DevExpress.XtraPrintingLinks;
 
 namespace QuanLyKho.Design
 {

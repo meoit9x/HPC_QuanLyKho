@@ -7,9 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraPrinting;
-using DevExpress.XtraReports.UI;
-using DevExpress.XtraPrintingLinks;
 using System.Text.RegularExpressions;
 using QuanLyKho.Service;
 

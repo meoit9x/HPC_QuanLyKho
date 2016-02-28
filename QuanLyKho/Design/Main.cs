@@ -41,6 +41,7 @@ namespace QuanLyKho.Design
             mncMaySuDung.ElementClick += mncTMaySuDung_ElementClick;
             mnTaiKhoan.ElementClick += mnTaiKhoan_ElementClick;
             mncXetDuyet.ElementClick += mncXetNhuCau_ElementClick;
+            mnBaoCao.ElementClick += mnBaoCao_ElementClick;
             tbMatKhau.PasswordChar = '*';
         }
 
@@ -188,6 +189,13 @@ namespace QuanLyKho.Design
             pnContent.Controls.Add(utnhap);
         }
 
+        public void AddBaoCao()
+        {
+            TBaoCao baocao = new TBaoCao();
+            pnContent.Controls.Clear();
+            pnContent.Controls.Add(baocao);
+        }
+
         public void AddThongKeXuat()
         {
             UTXuat utxuat = new UTXuat();
@@ -325,6 +333,12 @@ namespace QuanLyKho.Design
         private void mncNhomVatTu_ElementClick(object sender, DevExpress.XtraBars.Navigation.NavElementEventArgs e)
         {
             AddNhomVat();
+            tileNavPane1.HideDropDownWindow();
+        }
+
+        private void mnBaoCao_ElementClick(object sender, DevExpress.XtraBars.Navigation.NavElementEventArgs e)
+        {
+            AddBaoCao();
             tileNavPane1.HideDropDownWindow();
         }
 

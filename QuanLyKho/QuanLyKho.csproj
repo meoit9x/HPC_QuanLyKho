@@ -195,11 +195,11 @@
     <Compile Include="Design\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Design\TKNhap.cs">
+    <Compile Include="Design\TBaoCao.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Design\TKNhap.Designer.cs">
-      <DependentUpon>TKNhap.cs</DependentUpon>
+    <Compile Include="Design\TBaoCao.Designer.cs">
+      <DependentUpon>TBaoCao.cs</DependentUpon>
     </Compile>
     <Compile Include="Design\UCDonViTinh.cs">
       <SubType>UserControl</SubType>
@@ -390,10 +390,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KhoDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ObjectRefrence\baocaonhap.cs" />
     <Compile Include="ObjectRefrence\ItemPhieu.cs" />
     <Compile Include="ObjectRefrence\phieuchuyen.cs" />
     <Compile Include="ObjectRefrence\phieunhap.cs" />
     <Compile Include="ObjectRefrence\phieusudung.cs" />
+    <Compile Include="ObjectRefrence\phieuton.cs" />
     <Compile Include="pC.cs">
       <DependentUpon>KhoDB.tt</DependentUpon>
     </Compile>
@@ -457,8 +459,8 @@
     <EmbeddedResource Include="Design\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Design\TKNhap.resx">
-      <DependentUpon>TKNhap.cs</DependentUpon>
+    <EmbeddedResource Include="Design\TBaoCao.resx">
+      <DependentUpon>TBaoCao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Design\UCdonvitinh.resx">
       <DependentUpon>UCDonViTinh.cs</DependentUpon>
@@ -578,6 +580,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Templates\baocaoton.xlsx" />
     <None Include="Templates\nhucau.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

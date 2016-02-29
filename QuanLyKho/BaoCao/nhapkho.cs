@@ -435,10 +435,10 @@ namespace QuanLyKho.BaoCao
                 dataSheet.Cells[rowCurrent, 2].Value = item.Ten;
                 dataSheet.Cells[rowCurrent, 3].Value = item.DonViTinh;
                 dataSheet.Cells[rowCurrent, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                dataSheet.Cells[rowCurrent, 4].Formula = "=F" + rowCurrent + "+H" + rowCurrent + ")";
+                dataSheet.Cells[rowCurrent, 4].Formula = "=(F" + rowCurrent + "+ H" + rowCurrent + ")";
                 dataSheet.Cells[rowCurrent, 4].Style.Numberformat.Format = "#,###.00";
                 dataSheet.Cells[rowCurrent, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-                dataSheet.Cells[rowCurrent, 5].Formula = "=G" + rowCurrent + "+I" + rowCurrent + ")";
+                dataSheet.Cells[rowCurrent, 5].Formula = "=(G" + rowCurrent + "+I" + rowCurrent + ")";
                 dataSheet.Cells[rowCurrent, 5].Style.Numberformat.Format = "#,###.00";
                 dataSheet.Cells[rowCurrent, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                 dataSheet.Cells[rowCurrent, 6].Value = item.Soluongnhap == null ? 0 : item.Soluongnhap;
@@ -529,10 +529,10 @@ namespace QuanLyKho.BaoCao
                 dataSheet.Cells[rowCurrent, 2].Value = item.Ten;
                 dataSheet.Cells[rowCurrent, 3].Value = item.DonViTinh;
                 dataSheet.Cells[rowCurrent, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                dataSheet.Cells[rowCurrent, 4].Formula = "=F" + rowCurrent + "+H" + rowCurrent + ")";
+                dataSheet.Cells[rowCurrent, 4].Formula = "=(F" + rowCurrent + "+H" + rowCurrent + ")";
                 dataSheet.Cells[rowCurrent, 4].Style.Numberformat.Format = "#,###.00";
                 dataSheet.Cells[rowCurrent, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-                dataSheet.Cells[rowCurrent, 5].Formula = "=G" + rowCurrent + "+I" + rowCurrent + ")";
+                dataSheet.Cells[rowCurrent, 5].Formula = "=(G" + rowCurrent + "+I" + rowCurrent + ")";
                 dataSheet.Cells[rowCurrent, 5].Style.Numberformat.Format = "#,###.00";
                 dataSheet.Cells[rowCurrent, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                 dataSheet.Cells[rowCurrent, 6].Value = item.Soluongsd == null ? 0 : item.Soluongsd;

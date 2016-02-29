@@ -96,12 +96,14 @@ namespace QuanLyKho.Design
                 case 4:
                     from = DateTime.Parse(tbTuNgay.Text);
                     to = DateTime.Parse(tbDenNgay.Text);
-                    //ms = QuanLyKho.BaoCao.nhapkho.baocaosudung(from, to);
+                    var objVatTu = SVatTu.SelectVTbyMa(tbVatTu.Text);
+                    ms = QuanLyKho.BaoCao.nhapkho.baocaosudung(from, to,objVatTu.vid);
                     break;
                 case 5:
                     from = DateTime.Parse(tbTuNgay.Text);
                     to = DateTime.Parse(tbDenNgay.Text);
-                    //ms = QuanLyKho.BaoCao.nhapkho.baocaosudungmay(from, to);
+                    var objMay = SMay.SearchMayTen(cbMaySuDung.Text);
+                    ms = QuanLyKho.BaoCao.nhapkho.baocaosudungmay(from, to,objMay.id);
                     break;
                 default:
                     break;

@@ -336,7 +336,6 @@ namespace QuanLyKho.BaoCao
             int i = 1;
             int rowStart = 11;
             int rowCurrent = rowStart;
-            double? money = 0;
             DateTime now = DateTime.Now;
             ExcelPackage excelPackage = Util.Utils.LoadExcelTemplate("Templates/baocaoton.xlsx");
             ExcelWorksheet dataSheet = null;
@@ -798,7 +797,7 @@ namespace QuanLyKho.BaoCao
 
             var dK = Main.db.dK.FirstOrDefault(x => x.kid == Main.OBJ_KHO.kid);
             var sudungmays = SBaoCao.GetSuDungMay(Main.OBJ_KHO.kid, from, to, idMay);
-
+            if (sudungmays.Count == 0) return null;
             dataSheet.Cells[1, 1].Value = dK.kten;
             dataSheet.Cells[2, 2].Value = dK.diachi;
             dataSheet.Cells[5, 1].Value = "Từ ngày: " + from.Day + "/" + from.Month + "/" + from.Year + " đến ngày " + to.Day + "/" + to.Month + "/" + to.Year;

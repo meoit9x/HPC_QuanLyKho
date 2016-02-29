@@ -399,6 +399,7 @@
     <Compile Include="ObjectRefrence\baocaonhap.cs" />
     <Compile Include="ObjectRefrence\baocaonhapxuatton.cs" />
     <Compile Include="ObjectRefrence\baocaosudung.cs" />
+    <Compile Include="ObjectRefrence\baocaosudungmay.cs" />
     <Compile Include="ObjectRefrence\baocaoxuat.cs" />
     <Compile Include="ObjectRefrence\ItemPhieu.cs" />
     <Compile Include="ObjectRefrence\phieuchuyen.cs" />
@@ -600,6 +601,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Templates\baocaosudung.xlsx" />
+    <None Include="Templates\baocaosudungmay.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Templates\baocaoton.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

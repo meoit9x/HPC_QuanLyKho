@@ -31,5 +31,10 @@ namespace QuanLyKho.Service
         {
             return (from kh in Main.db.dMay where kh.id == idmay where kh.kid == Main.OBJ_KHO.kid select kh).FirstOrDefault();
         }
+
+        public static dMay SearchMayTen(string maso)
+        {
+            return (from kh in Main.db.dMay where kh.maso == maso where kh.kid == Main.OBJ_KHO.kid select kh).FirstOrDefault();
+        }
     }
 }

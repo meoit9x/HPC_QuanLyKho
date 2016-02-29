@@ -69,7 +69,8 @@
             this.cbBaoCao.Items.AddRange(new object[] {
             "báo cáo tồn vật tư",
             "báo cáo xuất vật tư",
-            "báo cáo nhập vật tư"});
+            "báo cáo nhập vật tư",
+            "báo cáo xuất nhập tồn vật tư"});
             this.cbBaoCao.Location = new System.Drawing.Point(512, 181);
             this.cbBaoCao.Margin = new System.Windows.Forms.Padding(4);
             this.cbBaoCao.Name = "cbBaoCao";

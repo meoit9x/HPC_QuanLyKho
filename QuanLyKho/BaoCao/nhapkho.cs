@@ -584,5 +584,135 @@ namespace QuanLyKho.BaoCao
 
             return excelStream;
         }
+
+        public static MemoryStream baocaoxuatnhapton(DateTime from, DateTime to)
+        {
+            int i = 1;
+            int rowStart = 11;
+            int rowCurrent = rowStart;
+            DateTime now = DateTime.Now;
+            ExcelPackage excelPackage = Util.Utils.LoadExcelTemplate("Templates/baocaonhapxuatton.xlsx");
+            ExcelWorksheet dataSheet = null;
+
+            if (excelPackage == null)
+            {
+                MessageBox.Show("Chưa có template");
+                return null;
+            }
+
+            OfficeOpenXml.ExcelWorkbook book = excelPackage.Workbook;
+            dataSheet = book.Worksheets.FirstOrDefault();
+
+            var dK = Main.db.dK.FirstOrDefault(x => x.kid == Main.OBJ_KHO.kid);
+            var xuatnhaptons = SBaoCao.GetXuatNhapTon(Main.OBJ_KHO.kid, from, to);
+
+            dataSheet.Cells[1, 1].Value = dK.kten;
+            dataSheet.Cells[2, 2].Value = dK.diachi;
+            dataSheet.Cells[5, 1].Value = "Từ ngày: " + from.Day + "/" + from.Month + "/" + from.Year + " đến ngày " + to.Day + "/" + to.Month + "/" + to.Year;
+
+            dataSheet.InsertRow(rowCurrent, xuatnhaptons.Count, rowStart);
+
+            foreach (var item in xuatnhaptons)
+            {
+                using (ExcelRange rng = dataSheet.Cells["A" + rowCurrent + ":" + "O" + rowCurrent])
+                {
+                    rng.Style.Border.Top.Style = rng.Style.Border.Left.Style = rng.Style.Border.Right.Style = rng.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                }
+
+                dataSheet.Cells[rowCurrent, 1].Value = i;
+                dataSheet.Cells[rowCurrent, 2].Value = item.Ten;
+                dataSheet.Cells[rowCurrent, 3].Value = item.DonViTinh;
+                dataSheet.Cells[rowCurrent, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                dataSheet.Cells[rowCurrent, 4].Value = item.soluongtondau == null ? 0 : item.soluongtondau;
+                dataSheet.Cells[rowCurrent, 4].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 5].Value = item.tiendauky == null ? 0 : item.tiendauky;
+                dataSheet.Cells[rowCurrent, 5].Style.Numberformat.Format = "#,###.00";
+
+                dataSheet.Cells[rowCurrent, 6].Value = item.Soluongnhap == null ? 0 : item.Soluongnhap;
+                dataSheet.Cells[rowCurrent, 6].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 7].Value = item.Dongianhap == null ? 0 : item.Dongianhap;
+                dataSheet.Cells[rowCurrent, 7].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 8].Value = item.soluongnhapchuyen == null ? 0 : item.soluongnhapchuyen;
+                dataSheet.Cells[rowCurrent, 8].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 9].Value = item.dongianhapchuyen == null ? 0 : (item.soluongnhapchuyen * item.dongianhapchuyen);
+                dataSheet.Cells[rowCurrent, 9].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 10].Value = item.soluongSD == null ? 0 : item.soluongSD;
+                dataSheet.Cells[rowCurrent, 10].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 11].Value = item.dongiaSD == null ? 0 : (item.soluongSD * item.dongiaSD);
+                dataSheet.Cells[rowCurrent, 11].Style.Numberformat.Format = "#,###.00";
+
+                dataSheet.Cells[rowCurrent, 12].Value = item.soluongxuatchuyen == null ? 0 : item.soluongxuatchuyen;
+                dataSheet.Cells[rowCurrent, 12].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 13].Value = item.dongiaxuatchuyen == null ? 0 : (item.soluongxuatchuyen * item.dongiaxuatchuyen);
+                dataSheet.Cells[rowCurrent, 13].Style.Numberformat.Format = "#,###.00";
+
+                dataSheet.Cells[rowCurrent, 14].Formula = "=(D" + rowCurrent + "+F" + rowCurrent + "+H" + rowCurrent + "-J" + rowCurrent + "-L" + rowCurrent +")";
+                dataSheet.Cells[rowCurrent, 14].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                dataSheet.Cells[rowCurrent, 14].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 15].Formula = "=(E" + rowCurrent + "+G" + rowCurrent + "+I" + rowCurrent + "-K" + rowCurrent + "-M" + rowCurrent + ")";
+                dataSheet.Cells[rowCurrent, 15].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                dataSheet.Cells[rowCurrent, 15].Style.Numberformat.Format = "#,###.00";
+
+                i++;
+                rowCurrent++;
+            }
+
+            using (ExcelRange rng = dataSheet.Cells["A" + rowCurrent + ":" + "O" + rowCurrent])
+            {
+                rng.Style.Border.Top.Style = rng.Style.Border.Left.Style = rng.Style.Border.Right.Style = rng.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+            }
+
+            dataSheet.Cells[rowCurrent, 2].Value = "Tổng";
+            dataSheet.Cells[rowCurrent, 2].Style.Font.Bold = true;
+            dataSheet.Cells[rowCurrent, 4].Formula = "=SUM(D" + rowStart + ":D" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 4].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+            dataSheet.Cells[rowCurrent, 5].Formula = "=SUM(E" + rowStart + ":E" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 5].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
+            dataSheet.Cells[rowCurrent, 6].Formula = "=SUM(F" + rowStart + ":F" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 6].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+            dataSheet.Cells[rowCurrent, 7].Formula = "=SUM(G" + rowStart + ":G" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 7].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
+            dataSheet.Cells[rowCurrent, 8].Formula = "=SUM(H" + rowStart + ":H" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 8].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 8].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+            dataSheet.Cells[rowCurrent, 9].Formula = "=SUM(I" + rowStart + ":I" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 9].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
+            dataSheet.Cells[rowCurrent, 10].Formula = "=SUM(J" + rowStart + ":J" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 10].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 10].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+            dataSheet.Cells[rowCurrent, 11].Formula = "=SUM(K" + rowStart + ":K" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 11].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 11].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
+            dataSheet.Cells[rowCurrent, 12].Formula = "=SUM(L" + rowStart + ":L" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 12].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 12].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+            dataSheet.Cells[rowCurrent, 13].Formula = "=SUM(M" + rowStart + ":M" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 13].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 13].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
+            dataSheet.Cells[rowCurrent, 14].Formula = "=SUM(N" + rowStart + ":N" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 14].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 14].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+            dataSheet.Cells[rowCurrent, 15].Formula = "=SUM(O" + rowStart + ":O" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 15].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 15].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
+            MemoryStream excelStream = new MemoryStream();
+            excelPackage.SaveAs(excelStream);
+            excelStream.Seek(0, SeekOrigin.Begin);
+
+            Util.Utils.DialogSave(excelStream);
+
+            return excelStream;
+        }
     }
 }

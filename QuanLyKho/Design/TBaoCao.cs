@@ -49,6 +49,11 @@ namespace QuanLyKho.Design
                     to = DateTime.Parse(tbDenNgay.Text);
                     QuanLyKho.BaoCao.nhapkho.baocaoxuat(from, to);
                     break;
+                case 3:
+                    from = DateTime.Parse(tbTuNgay.Text);
+                    to = DateTime.Parse(tbDenNgay.Text);
+                    QuanLyKho.BaoCao.nhapkho.baocaoxuatnhapton(from, to);
+                    break;
                 default:
                     break;
             }

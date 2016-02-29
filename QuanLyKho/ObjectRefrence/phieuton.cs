@@ -14,7 +14,7 @@ namespace QuanLyKho.ObjectRefrence
 
         public string DonViTinh { get; set; }
 
-        public Int64 SoLuong { get; set; }
+        public double SoLuong { get; set; }
 
         public double Tien { get; set; }
 

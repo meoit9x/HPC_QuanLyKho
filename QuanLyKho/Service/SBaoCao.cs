@@ -41,7 +41,7 @@ namespace QuanLyKho.Service
 
         public static List<baocaonhap> GetNhap(int? idK, DateTime from, DateTime to)
         {
-            List<baocaonhap> items = Main.db.Database.SqlQuery<baocaonhap>("exec baocaonhap @id",
+            List<baocaonhap> items = Main.db.Database.SqlQuery<baocaonhap>("exec baocaonhap @id, @fromdate, @todate",
                 new SqlParameter("@id", idK),
                 new SqlParameter("@fromdate", from),
                 new SqlParameter("@todate", to)).ToList();
@@ -51,7 +51,7 @@ namespace QuanLyKho.Service
 
         public static List<baocaoxuat> GetXuat(int? idK, DateTime from, DateTime to)
         {
-            List<baocaoxuat> items = Main.db.Database.SqlQuery<baocaoxuat>("exec baocaoxuat @id",
+            List<baocaoxuat> items = Main.db.Database.SqlQuery<baocaoxuat>("exec baocaoxuat @id, @fromdate, @todate",
                 new SqlParameter("@id", idK),
                 new SqlParameter("@fromdate", from),
                 new SqlParameter("@todate", to)).ToList();

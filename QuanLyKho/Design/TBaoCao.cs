@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyKho.Service;
 using QuanLyKho.ObjectRefrence;
+using System.IO;
 
 namespace QuanLyKho.Design
 {
@@ -66,6 +67,7 @@ namespace QuanLyKho.Design
 
         private void btIn_Click(object sender, EventArgs e)
         {
+            MemoryStream ms = new MemoryStream();
             var value = cbBaoCao.SelectedIndex;
 
             var from = new DateTime();
@@ -79,27 +81,27 @@ namespace QuanLyKho.Design
                 case 1:
                     from = DateTime.Parse(tbTuNgay.Text);
                     to = DateTime.Parse(tbDenNgay.Text);
-                    QuanLyKho.BaoCao.nhapkho.baocaonhap(from, to);
+                    ms = QuanLyKho.BaoCao.nhapkho.baocaonhap(from, to);
                     break;
                 case 2:
                     from = DateTime.Parse(tbTuNgay.Text);
                     to = DateTime.Parse(tbDenNgay.Text);
-                    QuanLyKho.BaoCao.nhapkho.baocaoxuat(from, to);
+                    ms = QuanLyKho.BaoCao.nhapkho.baocaoxuat(from, to);
                     break;
                 case 3:
                     from = DateTime.Parse(tbTuNgay.Text);
                     to = DateTime.Parse(tbDenNgay.Text);
-                    QuanLyKho.BaoCao.nhapkho.baocaoxuatnhapton(from, to);
+                    ms = QuanLyKho.BaoCao.nhapkho.baocaoxuatnhapton(from, to);
                     break;
                 case 4:
                     from = DateTime.Parse(tbTuNgay.Text);
                     to = DateTime.Parse(tbDenNgay.Text);
-                    //QuanLyKho.BaoCao.nhapkho.baocaosudung(from, to);
+                    //ms = QuanLyKho.BaoCao.nhapkho.baocaosudung(from, to);
                     break;
                 case 5:
                     from = DateTime.Parse(tbTuNgay.Text);
                     to = DateTime.Parse(tbDenNgay.Text);
-                    //QuanLyKho.BaoCao.nhapkho.baocaosudungmay(from, to);
+                    //ms = QuanLyKho.BaoCao.nhapkho.baocaosudungmay(from, to);
                     break;
                 default:
                     break;

@@ -441,13 +441,13 @@ namespace QuanLyKho.BaoCao
                 dataSheet.Cells[rowCurrent, 5].Formula = "=G" + rowCurrent + "+I" + rowCurrent + ")";
                 dataSheet.Cells[rowCurrent, 5].Style.Numberformat.Format = "#,###.00";
                 dataSheet.Cells[rowCurrent, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-                dataSheet.Cells[rowCurrent, 6].Value = item.Soluongnhap;
+                dataSheet.Cells[rowCurrent, 6].Value = item.Soluongnhap == null ? 0 : item.Soluongnhap;
                 dataSheet.Cells[rowCurrent, 6].Style.Numberformat.Format = "#,###.00";
-                dataSheet.Cells[rowCurrent, 7].Value = item.Dongianhap * item.Soluongnhap;
+                dataSheet.Cells[rowCurrent, 7].Value = item.Dongianhap == null ? 0 : item.Dongianhap * item.Soluongnhap;
                 dataSheet.Cells[rowCurrent, 7].Style.Numberformat.Format = "#,###.00";
-                dataSheet.Cells[rowCurrent, 8].Value = item.Soluongchuyen;
+                dataSheet.Cells[rowCurrent, 8].Value = item.Soluongchuyen == null ? 0 : item.Soluongchuyen;
                 dataSheet.Cells[rowCurrent, 8].Style.Numberformat.Format = "#,###.00";
-                dataSheet.Cells[rowCurrent, 9].Value = item.Dongiachuyen;
+                dataSheet.Cells[rowCurrent, 9].Value = item.Dongiachuyen == null ? 0 : item.Dongiachuyen * item.Soluongchuyen;
                 dataSheet.Cells[rowCurrent, 9].Style.Numberformat.Format = "#,###.00";
 
                 i++;
@@ -535,13 +535,13 @@ namespace QuanLyKho.BaoCao
                 dataSheet.Cells[rowCurrent, 5].Formula = "=G" + rowCurrent + "+I" + rowCurrent + ")";
                 dataSheet.Cells[rowCurrent, 5].Style.Numberformat.Format = "#,###.00";
                 dataSheet.Cells[rowCurrent, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-                dataSheet.Cells[rowCurrent, 6].Value = item.Soluongsd;
+                dataSheet.Cells[rowCurrent, 6].Value = item.Soluongsd == null ? 0 : item.Soluongsd;
                 dataSheet.Cells[rowCurrent, 6].Style.Numberformat.Format = "#,###.00";
-                dataSheet.Cells[rowCurrent, 7].Value = item.Dongiasd * item.Soluongsd;
+                dataSheet.Cells[rowCurrent, 7].Value = item.Dongiasd == null ? 0 : (item.Dongiasd * item.Soluongsd);
                 dataSheet.Cells[rowCurrent, 7].Style.Numberformat.Format = "#,###.00";
-                dataSheet.Cells[rowCurrent, 8].Value = item.Soluongchuyen;
+                dataSheet.Cells[rowCurrent, 8].Value = item.Soluongchuyen == null ? 0 : item.Soluongchuyen;
                 dataSheet.Cells[rowCurrent, 8].Style.Numberformat.Format = "#,###.00";
-                dataSheet.Cells[rowCurrent, 9].Value = item.Dongiachuyen;
+                dataSheet.Cells[rowCurrent, 9].Value = item.Dongiachuyen == null ? 0 : item.Dongiachuyen * item.Soluongchuyen;
                 dataSheet.Cells[rowCurrent, 9].Style.Numberformat.Format = "#,###.00";
 
                 i++;

@@ -12,12 +12,12 @@ namespace QuanLyKho.ObjectRefrence
 
         public string DonViTinh { get; set; }
 
-        public double Soluongchuyen { get; set; }
+        public double? Soluongchuyen { get; set; }
 
-        public double Dongiachuyen { get; set; }
+        public double? Dongiachuyen { get; set; }
 
-        public double Soluongsd { get; set; }
+        public double? Soluongsd { get; set; }
 
-        public double Dongiasd { get; set; }
+        public double? Dongiasd { get; set; }
     }
 }

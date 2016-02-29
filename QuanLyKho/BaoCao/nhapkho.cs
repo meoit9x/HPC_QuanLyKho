@@ -714,5 +714,68 @@ namespace QuanLyKho.BaoCao
 
             return excelStream;
         }
+
+        public static MemoryStream baocaosudung(DateTime from, DateTime to, int? idVT)
+        {
+            int i = 1;
+            int rowStart = 11;
+            int rowCurrent = rowStart;
+            DateTime now = DateTime.Now;
+            ExcelPackage excelPackage = Util.Utils.LoadExcelTemplate("Templates/baocaoxuat.xlsx");
+            ExcelWorksheet dataSheet = null;
+
+            if (excelPackage == null)
+            {
+                MessageBox.Show("Chưa có template");
+                return null;
+            }
+
+            OfficeOpenXml.ExcelWorkbook book = excelPackage.Workbook;
+            dataSheet = book.Worksheets.FirstOrDefault();
+
+            var dK = Main.db.dK.FirstOrDefault(x => x.kid == Main.OBJ_KHO.kid);
+            var sudungs = SBaoCao.GetSuDung(Main.OBJ_KHO.kid, from, to, idVT);
+
+            dataSheet.Cells[1, 1].Value = dK.kten;
+            dataSheet.Cells[2, 2].Value = dK.diachi;
+            dataSheet.Cells[5, 1].Value = "Từ ngày: " + from.Day + "/" + from.Month + "/" + from.Year + " đến ngày " + to.Day + "/" + to.Month + "/" + to.Year;
+
+            dataSheet.Cells[6, 2].Value = sudungs.FirstOrDefault().Ten;
+
+            dataSheet.InsertRow(rowCurrent, sudungs.Count, rowStart);
+
+            foreach (var item in sudungs)
+            {
+                using (ExcelRange rng = dataSheet.Cells["A" + rowCurrent + ":" + "F" + rowCurrent])
+                {
+                    rng.Style.Border.Top.Style = rng.Style.Border.Left.Style = rng.Style.Border.Right.Style = rng.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                }
+
+                dataSheet.Cells[rowCurrent, 1].Value = item.NgaySD.Day + "/" + item.NgaySD.Month + "/" + item.NgaySD.Year;
+                dataSheet.Cells[rowCurrent, 2].Value = item.NoiDung;
+                dataSheet.Cells[rowCurrent, 3].Value = item.dongia;
+                dataSheet.Cells[rowCurrent, 3].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                dataSheet.Cells[rowCurrent, 4].Formula = "=(C" + rowCurrent + "+E" + rowCurrent + ")";
+                dataSheet.Cells[rowCurrent, 4].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                dataSheet.Cells[rowCurrent, 5].Value = item.soluong;
+                dataSheet.Cells[rowCurrent, 5].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                dataSheet.Cells[rowCurrent, 6].Value = item.tenmay;
+                dataSheet.Cells[rowCurrent, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
+                i++;
+                rowCurrent++;
+            }
+
+            MemoryStream excelStream = new MemoryStream();
+            excelPackage.SaveAs(excelStream);
+            excelStream.Seek(0, SeekOrigin.Begin);
+
+            Util.Utils.DialogSave(excelStream);
+
+            return excelStream;
+        }
     }
 }

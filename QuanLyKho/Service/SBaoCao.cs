@@ -68,5 +68,16 @@ namespace QuanLyKho.Service
 
             return items;
         }
+
+        public static List<baocaosudung> GetSuDung(int? idK, DateTime from, DateTime to, int? idVT)
+        {
+            List<baocaosudung> items = Main.db.Database.SqlQuery<baocaosudung>("exec baocaosudungvt @id, @fromdate, @todate, @idVT",
+                new SqlParameter("@id", idK),
+                new SqlParameter("@fromdate", from),
+                new SqlParameter("@todate", to),
+                new SqlParameter("@idVT", idVT)).ToList();
+
+            return items;
+        }
     }
 }

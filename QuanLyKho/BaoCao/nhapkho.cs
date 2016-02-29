@@ -486,5 +486,95 @@ namespace QuanLyKho.BaoCao
 
             return excelStream;
         }
+
+        public static MemoryStream baocaoxuat(DateTime from, DateTime to)
+        {
+            int i = 1;
+            int rowStart = 11;
+            int rowCurrent = rowStart;
+            double? money = 0;
+            DateTime now = DateTime.Now;
+            ExcelPackage excelPackage = Util.Utils.LoadExcelTemplate("Templates/baocaoton.xlsx");
+            ExcelWorksheet dataSheet = null;
+
+            if (excelPackage == null)
+            {
+                MessageBox.Show("Chưa có template");
+                return null;
+            }
+
+            OfficeOpenXml.ExcelWorkbook book = excelPackage.Workbook;
+            dataSheet = book.Worksheets.FirstOrDefault();
+
+            var dK = Main.db.dK.FirstOrDefault(x => x.kid == Main.OBJ_KHO.kid);
+            var xuats = SBaoCao.GetXuat(Main.OBJ_KHO.kid, from, to);
+
+            dataSheet.Cells[1, 1].Value = dK.kten;
+            dataSheet.Cells[2, 2].Value = dK.diachi;
+            dataSheet.Cells[5, 2].Value = "Ngày: " + now.Day + "/" + now.Month + "/" + now.Year;
+
+            dataSheet.InsertRow(rowCurrent, xuats.Count, rowStart);
+
+            foreach (var item in xuats)
+            {
+                using (ExcelRange rng = dataSheet.Cells["A" + rowCurrent + ":" + "I" + rowCurrent])
+                {
+                    rng.Style.Border.Top.Style = rng.Style.Border.Left.Style = rng.Style.Border.Right.Style = rng.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                }
+
+                dataSheet.Cells[rowCurrent, 1].Value = i;
+                dataSheet.Cells[rowCurrent, 2].Value = item.Ten;
+                dataSheet.Cells[rowCurrent, 3].Value = item.DonViTinh;
+                dataSheet.Cells[rowCurrent, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                dataSheet.Cells[rowCurrent, 4].Formula = "=F" + rowCurrent + "+H" + rowCurrent + ")";
+                dataSheet.Cells[rowCurrent, 4].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                dataSheet.Cells[rowCurrent, 5].Formula = "=G" + rowCurrent + "+I" + rowCurrent + ")";
+                dataSheet.Cells[rowCurrent, 5].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                dataSheet.Cells[rowCurrent, 6].Value = item.Soluongnhap;
+                dataSheet.Cells[rowCurrent, 6].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 7].Value = item.Dongianhap;
+                dataSheet.Cells[rowCurrent, 7].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 8].Value = item.Soluongchuyen;
+                dataSheet.Cells[rowCurrent, 8].Style.Numberformat.Format = "#,###.00";
+                dataSheet.Cells[rowCurrent, 9].Value = item.Dongiachuyen;
+                dataSheet.Cells[rowCurrent, 9].Style.Numberformat.Format = "#,###.00";
+
+                i++;
+                rowCurrent++;
+            }
+
+            dataSheet.Cells[rowCurrent, 2].Value = "Tổng";
+            dataSheet.Cells[rowCurrent, 2].Style.Font.Bold = true;
+            dataSheet.Cells[rowCurrent, 4].Formula = "=SUM(D" + rowStart + ":D" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 4].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+            dataSheet.Cells[rowCurrent, 5].Formula = "=SUM(E" + rowStart + ":E" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 5].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
+            dataSheet.Cells[rowCurrent, 6].Formula = "=SUM(F" + rowStart + ":F" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 6].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+            dataSheet.Cells[rowCurrent, 7].Formula = "=SUM(G" + rowStart + ":G" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 7].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
+            dataSheet.Cells[rowCurrent, 8].Formula = "=SUM(H" + rowStart + ":H" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 8].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 8].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+            dataSheet.Cells[rowCurrent, 9].Formula = "=SUM(I" + rowStart + ":I" + (rowCurrent - 1) + ")";
+            dataSheet.Cells[rowCurrent, 9].Style.Numberformat.Format = "#,###.00";
+            dataSheet.Cells[rowCurrent, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
+            MemoryStream excelStream = new MemoryStream();
+            excelPackage.SaveAs(excelStream);
+            excelStream.Seek(0, SeekOrigin.Begin);
+
+            Util.Utils.DialogSave(excelStream);
+
+            return excelStream;
+        }
     }
 }

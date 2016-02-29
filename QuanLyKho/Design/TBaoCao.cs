@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyKho.Service;
+using QuanLyKho.ObjectRefrence;
 
 namespace QuanLyKho.Design
 {
     public partial class TBaoCao : UserControl
     {
+        List<dMay> lMSD = new List<dMay>();
+
         public TBaoCao()
         {
             InitializeComponent();
@@ -19,7 +23,40 @@ namespace QuanLyKho.Design
 
         private void TBaoCao_Load(object sender, EventArgs e)
         {
+            SetupComboBoxMay();
+            autoCompleteTBVatTu();
+        }
 
+        private void SetupComboBoxMay()
+        {
+            lMSD = SMay.GetAll();
+            foreach (dMay objMSD in lMSD)
+            {
+                cbMaySuDung.Items.Add(objMSD.maso);
+            }
+
+            if (cbMaySuDung.Items.Count > 0)
+                cbMaySuDung.SelectedIndex = 0;
+
+            cbMaySuDung.DropDownStyle = ComboBoxStyle.DropDownList;
+
+        }
+
+        private void autoCompleteTBVatTu()
+        {
+            var dmNVT = SVatTu.SearchVatTubyMa("");
+            AutoCompleteStringCollection combData = new AutoCompleteStringCollection();
+            foreach (dVT vt in dmNVT)
+            {
+                combData.Add(vt.mavt);
+            }
+            tbVatTu.AutoCompleteMode = AutoCompleteMode.Append;
+            tbVatTu.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            tbVatTu.AutoCompleteCustomSource = combData;
+
+            tbVatTu.AutoCompleteMode = AutoCompleteMode.Suggest;
+            tbVatTu.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            tbVatTu.AutoCompleteCustomSource = combData;
         }
 
         private void btXoa_Click(object sender, EventArgs e)

@@ -72,36 +72,64 @@ namespace QuanLyKho.Design
 
             var from = new DateTime();
             var to = new DateTime();
+
+            try
+            {
+                from = DateTime.Parse(tbTuNgay.Text);
+            }
+            catch
+            {
+                lbLoi.Text = "Sai định dạng ngày tháng.";
+                tbDenNgay.Focus();
+                return;
+            }
+
+            try
+            {
+                to = DateTime.Parse(tbDenNgay.Text);
+            }
+            catch
+            {
+                lbLoi.Text = "Sai định dạng ngày tháng.";
+                tbTuNgay.Focus();
+                return;
+            }
             
             switch (value)
             {
-                case 0:
-                    QuanLyKho.BaoCao.nhapkho.baocaoton();
+                case 6:
+                    ms = QuanLyKho.BaoCao.nhapkho.baocaonhapdieuchuyen(from, to);
                     break;
-                case 1:
-                    from = DateTime.Parse(tbTuNgay.Text);
-                    to = DateTime.Parse(tbDenNgay.Text);
-                    ms = QuanLyKho.BaoCao.nhapkho.baocaonhap(from, to);
-                    break;
-                case 2:
-                    from = DateTime.Parse(tbTuNgay.Text);
-                    to = DateTime.Parse(tbDenNgay.Text);
-                    ms = QuanLyKho.BaoCao.nhapkho.baocaoxuat(from, to);
+                case 7:
+                    ms = QuanLyKho.BaoCao.nhapkho.baocaoxuatdieuchuyen(from, to);
                     break;
                 case 3:
-                    from = DateTime.Parse(tbTuNgay.Text);
-                    to = DateTime.Parse(tbDenNgay.Text);
-                    ms = QuanLyKho.BaoCao.nhapkho.baocaoxuatnhapton(from, to);
+                    QuanLyKho.BaoCao.nhapkho.baocaoton();
                     break;
                 case 4:
                     from = DateTime.Parse(tbTuNgay.Text);
                     to = DateTime.Parse(tbDenNgay.Text);
-                    var objVatTu = SVatTu.SelectVTbyMa(tbVatTu.Text);
-                    ms = QuanLyKho.BaoCao.nhapkho.baocaosudung(from, to,objVatTu.vid);
+                    ms = QuanLyKho.BaoCao.nhapkho.baocaonhap(from, to);
                     break;
                 case 5:
                     from = DateTime.Parse(tbTuNgay.Text);
                     to = DateTime.Parse(tbDenNgay.Text);
+                    ms = QuanLyKho.BaoCao.nhapkho.baocaoxuat(from, to);
+                    break;
+                case 0:
+                    ms = QuanLyKho.BaoCao.nhapkho.baocaoxuatnhapton(from, to);
+                    break;
+                case 1:
+                    var objVatTu = SVatTu.SelectVTbyMa(tbVatTu.Text);
+                    if (objVatTu == null)
+                    {
+                        lbLoi.Text = "Mã vật tư không tồn tại.";
+                        tbVatTu.Focus();
+                        break;
+                    }
+                    ms = QuanLyKho.BaoCao.nhapkho.baocaosudung(from, to,objVatTu.vid);
+                    break;
+                case 2:
                     var objMay = SMay.SearchMayTen(cbMaySuDung.Text);
                     ms = QuanLyKho.BaoCao.nhapkho.baocaosudungmay(from, to,objMay.id);
                     break;

@@ -49,6 +49,26 @@ namespace QuanLyKho.Service
             return items;
         }
 
+        public static List<baocaochuyen> BaoCaoChuyen(int? idK, DateTime from, DateTime to)
+        {
+            List<baocaochuyen> items = Main.db.Database.SqlQuery<baocaochuyen>("exec baocaonhapdieuchuyen @id, @fromdate, @todate",
+                new SqlParameter("@id", idK),
+                new SqlParameter("@fromdate", from),
+                new SqlParameter("@todate", to)).ToList();
+
+            return items;
+        }
+
+        public static List<baocaochuyen> BaoCaoChuyenDi(int? idK, DateTime from, DateTime to)
+        {
+            List<baocaochuyen> items = Main.db.Database.SqlQuery<baocaochuyen>("exec baocaoxuatdieuchuyen @id, @fromdate, @todate",
+                new SqlParameter("@id", idK),
+                new SqlParameter("@fromdate", from),
+                new SqlParameter("@todate", to)).ToList();
+
+            return items;
+        }
+
         public static List<baocaoxuat> GetXuat(int? idK, DateTime from, DateTime to)
         {
             List<baocaoxuat> items = Main.db.Database.SqlQuery<baocaoxuat>("exec baocaoxuat @id, @fromdate, @todate",

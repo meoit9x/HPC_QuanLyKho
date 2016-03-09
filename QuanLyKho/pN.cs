@@ -23,7 +23,7 @@ namespace QuanLyKho
         public Nullable<System.DateTime> ndate { get; set; }
         public Nullable<int> kid { get; set; }
         public string nmaso { get; set; }
-        public Nullable<System.DateTime> ngayhd { get; set; }
+        public DateTime ngayhd { get; set; }
         public Nullable<int> isupdate { get; set; }
     
         public virtual dK dK { get; set; }
